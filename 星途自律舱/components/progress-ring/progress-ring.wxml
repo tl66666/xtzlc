@@ -1,0 +1,8 @@
+<view class="ring">
+  <view class="ring-bg"></view>
+  <view class="ring-fill" style="transform: rotate({{degrees}}deg);"></view>
+  <view class="ring-core">
+    <view class="ring-value">{{value}}/{{total}}</view>
+    <view class="ring-label">{{label}}</view>
+  </view>
+</view>

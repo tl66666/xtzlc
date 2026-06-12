@@ -1,0 +1,12 @@
+<view class="canvas-wrap" bindtap="burst">
+  <image class="overview-image {{hasImage ? 'show' : ''}}" src="/assets/images/planet-overview.jpg" mode="aspectFit" bindload="onImageLoad" binderror="onImageError"></image>
+  <view class="fallback-planet {{hasImage ? 'hide' : ''}}">
+    <view class="fallback-ring"></view>
+    <view class="fallback-body"></view>
+  </view>
+  <canvas wx:if="{{!hasImage}}" class="planet-canvas" canvas-id="planetCanvas" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd"></canvas>
+  <view class="hint {{hasImage ? 'image-hint' : ''}}">
+    <view>{{levelName}}</view>
+    <view class="hint-code">点击进入生态区</view>
+  </view>
+</view>

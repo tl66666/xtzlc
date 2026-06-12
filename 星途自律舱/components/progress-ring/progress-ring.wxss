@@ -1,0 +1,47 @@
+.ring {
+  position: relative;
+  width: 164rpx;
+  height: 164rpx;
+  border-radius: 50%;
+}
+
+.ring-bg,
+.ring-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.ring-bg {
+  border: 12rpx solid rgba(23, 32, 51, 0.08);
+}
+
+.ring-fill {
+  border: 12rpx solid #d9972f;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  transition: transform 260ms ease-out;
+}
+
+.ring-core {
+  position: absolute;
+  inset: 22rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+}
+
+.ring-value {
+  color: #9a651f;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.ring-label {
+  margin-top: 4rpx;
+  color: rgba(23,32,51,0.52);
+  font-size: 18rpx;
+}

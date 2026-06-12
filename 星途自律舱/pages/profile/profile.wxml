@@ -1,0 +1,110 @@
+<view class="page">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+  <view class="profile-card cabin-panel">
+    <view class="avatar">星</view>
+    <view class="profile-main">
+      <view class="scan-label">个人中心</view>
+      <view class="section-title">{{profile.nickname || '星途旅人'}}</view>
+      <view class="muted intro">{{profile.planetName || '未命名星球'}} · {{profile.levelInfo.name || '荒芜星'}}</view>
+    </view>
+  </view>
+
+  <view class="identity-actions">
+    <view class="identity-button" bindtap="editNickname">改旅人名</view>
+    <view class="identity-button" bindtap="editPlanetName">命名星球</view>
+  </view>
+
+  <view class="metric-grid">
+    <view class="metric cabin-panel">
+      <view class="metric-value">{{profile.totalStarlight || 0}}</view>
+      <view class="muted">星光值</view>
+    </view>
+    <view class="metric cabin-panel">
+      <view class="metric-value">{{totalCheckins}}</view>
+      <view class="muted">打卡数</view>
+    </view>
+    <view class="metric cabin-panel">
+      <view class="metric-value">{{achievementCount}}</view>
+      <view class="muted">成就</view>
+    </view>
+  </view>
+
+  <view class="cloud-card cabin-panel">
+    <view>
+      <view class="scan-label">云端状态</view>
+      <view class="cloud-title">{{cloudStatus.status === 'online' ? '云端同步已连接' : cloudStatus.status === 'error' ? '云端暂未同步' : '本地演示模式'}}</view>
+      <view class="muted cloud-copy">{{cloudStatus.message || '数据会先保存在本地，云端可用后自动同步。'}}</view>
+    </view>
+    <view class="cloud-dot {{cloudStatus.status}}"></view>
+  </view>
+
+  <view class="reminder-card cabin-panel">
+    <view class="reminder-head">
+      <view>
+        <view class="scan-label">打卡提醒舱</view>
+        <view class="reminder-title">{{reminder.enabled ? '今晚会提醒你补光' : '还没有开启提醒'}}</view>
+        <view class="muted reminder-copy">{{reminder.message}}</view>
+      </view>
+      <switch checked="{{reminder.enabled}}" bindchange="toggleReminder" color="#d9972f"></switch>
+    </view>
+    <view class="reminder-controls">
+      <picker mode="time" value="{{reminder.time}}" bindchange="bindReminderTime">
+        <view class="reminder-chip">提醒时间 {{reminder.time}}</view>
+      </picker>
+      <view class="reminder-chip" bindtap="editReminderMessage">改文案</view>
+      <view class="reminder-chip" bindtap="requestReminderGuide">订阅说明</view>
+    </view>
+  </view>
+
+  <view class="menu cabin-panel">
+    <view class="menu-row" bindtap="openAchievements">
+      <view>
+        <view class="menu-title">成就墙</view>
+        <view class="muted">查看已解锁的星光徽章</view>
+      </view>
+      <view class="chevron">›</view>
+    </view>
+    <view class="menu-row" bindtap="exportData">
+      <view>
+        <view class="menu-title">数据导出</view>
+        <view class="muted">复制本地打卡数据 JSON</view>
+      </view>
+      <view class="chevron">›</view>
+    </view>
+    <view class="menu-row" bindtap="syncCloud">
+      <view>
+        <view class="menu-title">同步云端数据</view>
+        <view class="muted">从微信云开发恢复最新打卡记录</view>
+      </view>
+      <view class="chevron">›</view>
+    </view>
+    <view class="menu-row" bindtap="replayIntro">
+      <view>
+        <view class="menu-title">重看星球启动动画</view>
+        <view class="muted">再次播放新手引导视频和点亮说明</view>
+      </view>
+      <view class="chevron">›</view>
+    </view>
+    <view class="menu-row" bindtap="exportCloud">
+      <view>
+        <view class="menu-title">导出云端数据</view>
+        <view class="muted">复制云数据库里的记录 JSON</view>
+      </view>
+      <view class="chevron">›</view>
+    </view>
+    <view class="menu-row" bindtap="showCloudGuide">
+      <view>
+        <view class="menu-title">云开发配置</view>
+        <view class="muted">查看微信云开发接入说明</view>
+      </view>
+      <view class="chevron">›</view>
+    </view>
+    <view class="menu-row last" bindtap="showAbout">
+      <view>
+        <view class="menu-title">关于星途自律舱</view>
+        <view class="muted">查看功能说明与版本信息</view>
+      </view>
+      <view class="chevron">›</view>
+    </view>
+  </view>
+</view>

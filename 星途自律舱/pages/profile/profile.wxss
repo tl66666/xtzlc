@@ -1,0 +1,175 @@
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 28rpx;
+}
+
+.avatar {
+  width: 104rpx;
+  height: 104rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18rpx;
+  color: #050a18;
+  background: linear-gradient(135deg, #fff0aa, #d9972f 66%, #b98f24);
+  font-size: 42rpx;
+  font-weight: 900;
+}
+
+.profile-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.identity-actions {
+  margin-top: 16rpx;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14rpx;
+}
+
+.identity-button {
+  height: 78rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid rgba(181,118,34,0.14);
+  border-radius: 18rpx;
+  color: #8f5b18;
+  background: rgba(255,255,255,0.62);
+  font-size: 25rpx;
+  font-weight: 900;
+}
+
+.intro {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+}
+
+.metric-grid {
+  margin-top: 24rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+.metric {
+  padding: 24rpx 14rpx;
+  text-align: center;
+}
+
+.metric-value {
+  color: #9a651f;
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+.cloud-card {
+  margin-top: 24rpx;
+  padding: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22rpx;
+}
+
+.cloud-title {
+  margin-top: 8rpx;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.cloud-copy {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  line-height: 1.45;
+}
+
+.cloud-dot {
+  width: 24rpx;
+  height: 24rpx;
+  flex: 0 0 24rpx;
+  border-radius: 50%;
+  background: #c8bca9;
+  box-shadow: 0 0 0 10rpx rgba(200,188,169,0.14);
+}
+
+.cloud-dot.online {
+  background: #63a55c;
+  box-shadow: 0 0 0 10rpx rgba(99,165,92,0.14);
+}
+
+.cloud-dot.error {
+  background: #d96b48;
+  box-shadow: 0 0 0 10rpx rgba(217,107,72,0.14);
+}
+
+.reminder-card {
+  margin-top: 24rpx;
+  padding: 26rpx;
+}
+
+.reminder-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22rpx;
+}
+
+.reminder-title {
+  margin-top: 8rpx;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.reminder-copy {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  line-height: 1.45;
+}
+
+.reminder-controls {
+  margin-top: 22rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.reminder-chip {
+  padding: 12rpx 16rpx;
+  border-radius: 999rpx;
+  color: #8f5b18;
+  background: rgba(245,200,66,0.15);
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.menu {
+  margin-top: 24rpx;
+  padding: 8rpx 26rpx;
+}
+
+.menu-row {
+  min-height: 118rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid rgba(23,32,51,0.08);
+}
+
+.menu-row.last {
+  border-bottom: 0;
+}
+
+.menu-title {
+  margin-bottom: 8rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.chevron {
+  color: rgba(23,32,51,0.45);
+  font-size: 48rpx;
+}

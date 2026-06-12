@@ -1,0 +1,19 @@
+<view class="page">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+  <view class="cabinet-head cabin-panel">
+    <view class="scan-label">成就墙</view>
+    <view class="section-title">星光成就</view>
+    <view class="muted intro">这里记录你照亮星球的关键时刻。</view>
+  </view>
+  <view class="achievement-grid">
+    <view wx:for="{{achievements}}" wx:key="id" class="badge cabin-panel {{item.unlocked ? 'unlocked' : 'locked'}}">
+      <view class="badge-orbit" style="border-color: {{item.tone}};">
+        <image wx:if="{{assets.unlockBadge}}" class="badge-image" src="{{assets.unlockBadge}}" mode="aspectFit"></image>
+        <view class="badge-icon" style="background: {{item.tone}};">{{item.iconText}}</view>
+      </view>
+      <view class="badge-name">{{item.name}}</view>
+      <view class="badge-desc">{{item.description}}</view>
+      <view class="badge-time">{{item.unlocked ? '已解锁' : '未解锁'}}</view>
+    </view>
+  </view>
+</view>

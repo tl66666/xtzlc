@@ -1,0 +1,22 @@
+<view class="checkin-card cabin-panel {{completed ? 'is-completed' : ''}}" bindtap="handleTap">
+  <view class="tone-line" style="background: {{dimension.color}};"></view>
+  <view class="card-head">
+    <view class="icon-shell" style="color: {{dimension.color}};">
+      <image class="svg-icon" src="{{dimension.icon}}" mode="aspectFit"></image>
+    </view>
+    <view class="meta">
+      <view class="name-row">
+        <view class="name">{{dimension.name}}</view>
+        <view class="streak-badge">连续 {{streak}} 天</view>
+      </view>
+      <view class="summary">{{summary}}</view>
+    </view>
+    <view class="status-dot" style="background: {{dimension.color}};">{{completed ? '✓' : ''}}</view>
+  </view>
+  <view class="card-foot">
+    <view class="streak">本周完成率</view>
+    <view class="mini-track">
+      <view class="mini-fill" style="width: {{rate}}%; background: {{dimension.color}};"></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,119 @@
+.checkin-card {
+  position: relative;
+  min-height: 224rpx;
+  box-sizing: border-box;
+  padding: 24rpx 22rpx;
+  overflow: hidden;
+}
+
+.checkin-card.is-completed {
+  border-color: rgba(245, 200, 66, 0.32);
+  background:
+    radial-gradient(circle at 90% 10%, rgba(245,200,66,0.16), transparent 38%),
+    rgba(255,255,255,0.78);
+}
+
+.tone-line {
+  position: absolute;
+  left: 0;
+  top: 24rpx;
+  width: 6rpx;
+  height: 74rpx;
+  border-radius: 999rpx;
+}
+
+.card-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+}
+
+.icon-shell {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid rgba(23,32,51,0.08);
+  border-radius: 14rpx;
+  background: rgba(255,255,255,0.58);
+}
+
+.svg-icon {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.meta {
+  min-width: 0;
+  flex: 1;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.name {
+  font-size: 31rpx;
+  font-weight: 700;
+}
+
+.streak-badge {
+  padding: 5rpx 10rpx;
+  border: 1rpx solid rgba(245, 200, 66, 0.2);
+  border-radius: 999rpx;
+  color: rgba(245, 200, 66, 0.86);
+  background: rgba(245, 200, 66, 0.08);
+  font-size: 18rpx;
+}
+
+.summary {
+  margin-top: 8rpx;
+  color: rgba(23, 32, 51, 0.55);
+  font-size: 22rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 32rpx;
+  height: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #050a18;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
+.card-foot {
+  position: relative;
+  z-index: 1;
+  margin-top: 34rpx;
+}
+
+.streak {
+  color: rgba(23, 32, 51, 0.5);
+  font-size: 18rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+}
+
+.mini-track {
+  height: 6rpx;
+  margin-top: 16rpx;
+  overflow: hidden;
+  border-radius: 999rpx;
+  background: rgba(23, 32, 51, 0.1);
+}
+
+.mini-fill {
+  height: 100%;
+  border-radius: inherit;
+}

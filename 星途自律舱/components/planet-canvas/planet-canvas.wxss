@@ -1,0 +1,95 @@
+.canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 640rpx;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 52%, rgba(245,200,66,0.08), transparent 44%),
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+}
+
+.overview-image {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 48%;
+  width: 620rpx;
+  height: 560rpx;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.overview-image.show {
+  opacity: 1;
+}
+
+.fallback-planet {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 360rpx;
+  height: 360rpx;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+}
+
+.fallback-planet.hide {
+  opacity: 0;
+}
+
+.fallback-ring {
+  position: absolute;
+  left: -80rpx;
+  right: -80rpx;
+  top: 128rpx;
+  height: 100rpx;
+  border: 3rpx solid rgba(245, 200, 66, 0.28);
+  border-radius: 50%;
+  transform: rotate(-16deg);
+}
+
+.fallback-body {
+  position: absolute;
+  inset: 34rpx;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255,255,255,0.9), transparent 0 8%, transparent 18%),
+    radial-gradient(circle at 36% 30%, #8fd68f 0 18%, #4a9bd9 19% 45%, #20365f 46% 72%, #101729 100%);
+  box-shadow: 0 0 70rpx rgba(126, 196, 240, 0.32), 0 0 120rpx rgba(245, 200, 66, 0.12);
+}
+
+.planet-canvas {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 640rpx;
+}
+
+.hint {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 26rpx;
+  transform: translateX(-50%);
+  padding: 12rpx 24rpx;
+  border: 1rpx solid rgba(245, 200, 66, 0.18);
+  border-radius: 14rpx;
+  color: #8f5b18;
+  background: rgba(255,255,255,0.72);
+  font-size: 22rpx;
+  text-align: center;
+}
+
+.image-hint {
+  z-index: 4;
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.68);
+}
+
+.hint-code {
+  margin-bottom: 4rpx;
+  color: rgba(23,32,51,0.48);
+  font-size: 15rpx;
+  font-weight: 800;
+  letter-spacing: 0;
+}

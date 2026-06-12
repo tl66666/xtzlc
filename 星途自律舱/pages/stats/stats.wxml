@@ -1,0 +1,60 @@
+<view class="page">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+  <view class="station-head cabin-panel">
+    <view class="scan-label">数据仪表盘</view>
+    <view class="section-title">自律数据</view>
+    <view class="muted intro">查看星球成长背后的打卡趋势。</view>
+  </view>
+
+  <view class="metric-grid">
+    <view class="metric cabin-panel">
+      <view class="metric-value">{{stats.weekCompletionRate || 0}}%</view>
+      <view class="muted">本周完成率</view>
+    </view>
+    <view class="metric cabin-panel">
+      <view class="metric-value">{{profile.currentStreak || 0}}</view>
+      <view class="muted">连续天数</view>
+    </view>
+    <view class="metric cabin-panel">
+      <view class="metric-value">{{stats.totalCheckins || 0}}</view>
+      <view class="muted">累计打卡</view>
+    </view>
+  </view>
+
+  <view class="cabin-panel chart-card">
+    <view class="chart-head">
+      <view>
+        <view class="scan-label">打卡热力</view>
+        <view class="chart-title">近 30 天星轨热力</view>
+      </view>
+      <view class="muted">越亮代表当天完成越多</view>
+    </view>
+    <view class="heatmap">
+      <view wx:for="{{stats.heatmap}}" wx:key="date" class="heat-cell level-{{item.count}}"></view>
+    </view>
+  </view>
+
+  <view class="cabin-panel chart-card">
+    <view class="scan-label">维度统计</view>
+    <view class="chart-title">六维完成分布</view>
+    <view class="bar-list">
+      <view wx:for="{{dimensionBars}}" wx:key="id" class="bar-item">
+        <view class="bar-name">{{item.name}}</view>
+        <view class="bar-track">
+          <view class="bar-fill" style="width: {{item.percent}}%; background: {{item.color}};"></view>
+        </view>
+        <view class="bar-count">{{item.count}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cabin-panel chart-card">
+    <view class="scan-label">最近记录</view>
+    <view class="chart-title">打卡记录</view>
+    <view wx:if="{{!stats.recentRecords.length}}" class="empty-state">还没有记录，先去完成一次打卡。</view>
+    <view wx:for="{{stats.recentRecords}}" wx:key="createdAt" class="record-row">
+      <view>{{item.dimension}}</view>
+      <view class="muted">{{item.date}}</view>
+    </view>
+  </view>
+</view>

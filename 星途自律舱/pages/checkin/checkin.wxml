@@ -1,0 +1,200 @@
+<view class="page checkin-page">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+
+  <cover-view wx:if="{{rewardModal}}" class="reward-layer" catchtouchmove="noop">
+    <cover-view class="reward-sheet">
+      <cover-view class="reward-aura" style="background: {{rewardModal.color}};"></cover-view>
+      <cover-image wx:for="{{rewardFrames}}" wx:for-item="frame" wx:key="*this" class="reward-spark frame-{{index}}" src="{{frame}}"></cover-image>
+      <cover-image wx:if="{{assets.rewardChest}}" class="reward-chest" src="{{assets.rewardChest}}"></cover-image>
+      <cover-view class="reward-label">星光结算</cover-view>
+      <cover-view class="reward-title">{{rewardModal.title}}</cover-view>
+      <cover-view class="reward-copy">{{rewardModal.subtitle}}</cover-view>
+      <cover-view class="reward-numbers">
+        <cover-view class="reward-cell">
+          <cover-view class="reward-number">+{{rewardModal.starlight}}</cover-view>
+          <cover-view class="reward-cell-label">本次星光</cover-view>
+        </cover-view>
+        <cover-view class="reward-cell">
+          <cover-view class="reward-number">{{rewardModal.totalStarlight}}</cover-view>
+          <cover-view class="reward-cell-label">累计星光</cover-view>
+        </cover-view>
+        <cover-view class="reward-cell">
+          <cover-view class="reward-number">{{rewardModal.starCoins}}</cover-view>
+          <cover-view class="reward-cell-label">星光币</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view class="unlock-preview">
+        <cover-image wx:if="{{assets.unlockBadge}}" class="unlock-icon" src="{{assets.unlockBadge}}"></cover-image>
+        <cover-view class="unlock-copy">
+          <cover-view class="unlock-name">{{rewardModal.ecosystemUnlockName || rewardModal.sceneName}}</cover-view>
+          <cover-view class="unlock-desc">{{rewardModal.ecosystemUnlockDesc}}</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view wx:if="{{rewardModal.achievementName}}" class="achievement-line">新成就：{{rewardModal.achievementName}}</cover-view>
+      <cover-view wx:if="{{rewardModal.isPerfect}}" class="perfect-line">今日宝箱已开启：六个生态区全部点亮</cover-view>
+      <cover-view class="reward-actions">
+        <cover-view class="ghost-button" bindtap="continueNext">继续打卡</cover-view>
+        <cover-view class="solid-button" bindtap="goRewardEcology">看生态变化</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+
+  <view class="checkin-head">
+    <view>
+      <view class="scan-label">行动中心</view>
+      <view class="section-title">今日打卡</view>
+      <view class="muted head-subtitle">{{dateDisplay.fullText}} · 自定义今天真正要完成的事</view>
+    </view>
+    <view class="today-box">
+      <view class="today-count">{{stats.today.completedCount}}/6</view>
+      <view class="today-label">已点亮</view>
+    </view>
+  </view>
+
+  <view class="chest-panel cabin-panel">
+    <view class="chest-copy">
+      <view class="scan-label">今日宝箱</view>
+      <view class="chest-title">{{dailyChest.ready ? '完美宝箱已开启' : '点亮六类后开启宝箱'}}</view>
+      <view class="muted">{{dailyChest.label}} · 完成六类会额外获得星光和成就进度</view>
+    </view>
+    <view class="chest-visual {{dailyChest.ready ? 'ready' : ''}}">
+      <image wx:if="{{assets.rewardChest}}" src="{{assets.rewardChest}}" mode="aspectFit"></image>
+      <view wx:else>宝</view>
+    </view>
+    <view class="chest-track">
+      <view class="chest-fill" style="width: {{dailyChest.progress}}%;"></view>
+    </view>
+  </view>
+
+  <view class="dimension-board cabin-panel">
+    <view class="board-head">
+      <view>
+        <view class="scan-label">选择生态区</view>
+        <view class="board-title">今天要点亮哪一块？</view>
+      </view>
+      <view class="muted">{{active.sceneName}}</view>
+    </view>
+    <view class="dimension-grid">
+      <view
+        wx:for="{{dimensions}}"
+        wx:key="id"
+        class="dimension-chip {{activeId === item.id ? 'active' : ''}} {{item.completed ? 'done' : ''}}"
+        style="border-color: {{activeId === item.id ? item.color : 'rgba(23,32,51,0.06)'}};"
+        data-id="{{item.id}}"
+        bindtap="selectDimension"
+      >
+        <view class="dimension-icon" style="background: {{item.color}};">
+          <image src="{{item.icon}}" mode="aspectFit"></image>
+        </view>
+        <view class="dimension-name">{{item.name}}</view>
+        <view class="dimension-state">{{item.completed ? '已亮' : '待亮'}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-panel cabin-panel">
+    <view class="panel-top">
+      <view>
+        <view class="scan-label">{{active.name}}行动</view>
+        <view class="panel-title">写下你今天真实会做的事</view>
+      </view>
+      <view class="scene-pill" style="color: {{active.color}};">{{active.sceneName}}</view>
+    </view>
+
+    <view wx:if="{{activePlans.length}}" class="saved-plan-strip">
+      <view class="field-label">先选一个已保存计划，或直接写新的</view>
+      <scroll-view scroll-x class="plan-scroll compact">
+        <view class="plan-row">
+          <view wx:for="{{activePlans}}" wx:key="id" class="plan-card compact" data-id="{{item.id}}" bindtap="usePlan" bindlongpress="deletePlan">
+            <view class="plan-dot" style="background: {{item.color}};"></view>
+            <view class="plan-title">{{item.title}}</view>
+            <view class="muted plan-summary">{{item.summary}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <input
+      class="action-input"
+      value="{{form.customAction}}"
+      placeholder="{{active.preset.placeholder}}"
+      bindinput="inputCustomAction"
+    />
+
+    <view class="quick-label">没有想法时可点一个行动灵感</view>
+    <view class="quick-row">
+      <view
+        wx:for="{{quickActions}}"
+        wx:key="id"
+        class="quick-action"
+        data-id="{{item.id}}"
+        bindtap="useQuickAction"
+      >
+        <view class="quick-title">{{item.title}}</view>
+        <view class="muted quick-desc">{{item.desc}}</view>
+      </view>
+    </view>
+
+    <view class="field-line">
+      <view class="field-label">{{active.preset.primaryLabel}}</view>
+      <scroll-view scroll-x class="chip-scroll">
+        <view class="chip-row">
+          <view wx:for="{{active.preset.primaryOptions}}" wx:key="*this" class="choice-chip {{form.primary === item ? 'active' : ''}}" data-value="{{item}}" bindtap="choosePrimary">{{item}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="field-line compact-fields">
+      <view>
+        <view class="field-label">{{active.preset.metricLabel}}</view>
+        <view class="mini-chip-row">
+          <view wx:for="{{active.preset.metricOptions}}" wx:key="*this" class="choice-chip {{form.metric === item ? 'active' : ''}}" data-value="{{item}}" bindtap="chooseMetric">{{item}}</view>
+        </view>
+      </view>
+      <view>
+        <view class="field-label">投入强度</view>
+        <view class="mini-chip-row">
+          <view class="choice-chip {{form.effort === '轻量' ? 'active' : ''}}" data-value="轻量" bindtap="chooseEffort">轻量</view>
+          <view class="choice-chip {{form.effort === '标准' ? 'active' : ''}}" data-value="标准" bindtap="chooseEffort">标准</view>
+          <view class="choice-chip {{form.effort === '深度' ? 'active' : ''}}" data-value="深度" bindtap="chooseEffort">深度</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="field-line">
+      <view class="field-label">{{active.preset.moodLabel}}</view>
+      <view class="chip-row wrap">
+        <view wx:for="{{active.preset.moodOptions}}" wx:key="*this" class="choice-chip {{form.mood === item ? 'active' : ''}}" data-value="{{item}}" bindtap="chooseMood">{{item}}</view>
+      </view>
+    </view>
+
+    <textarea class="note-input" value="{{form.note}}" placeholder="可选：写一句完成后的感受，星光会多一点" bindinput="inputNote"></textarea>
+
+    <view class="action-buttons">
+      <view class="save-button" bindtap="saveCurrentPlan">保存为我的计划</view>
+      <view class="primary-button submit-button" bindtap="submitActive">完成打卡</view>
+    </view>
+  </view>
+
+  <view class="plan-panel cabin-panel">
+    <view class="board-head">
+      <view>
+        <view class="scan-label">我的计划</view>
+        <view class="board-title">{{active.name}}常用行动</view>
+      </view>
+      <view class="muted">长按可删除</view>
+    </view>
+    <scroll-view wx:if="{{activePlans.length}}" scroll-x class="plan-scroll">
+      <view class="plan-row">
+        <view wx:for="{{activePlans}}" wx:key="id" class="plan-card" data-id="{{item.id}}" bindtap="usePlan" bindlongpress="deletePlan">
+          <view class="plan-dot" style="background: {{item.color}};"></view>
+          <view class="plan-title">{{item.title}}</view>
+          <view class="muted plan-summary">{{item.summary}}</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:else class="empty-plan">
+      你还没有保存{{active.name}}计划。先写一个真实会做的行动，再点“保存为我的计划”。
+    </view>
+  </view>
+</view>

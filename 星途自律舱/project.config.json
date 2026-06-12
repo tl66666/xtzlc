@@ -1,0 +1,154 @@
+{
+    "description":  "星途自律舱 - 星球养成式自律打卡小程序",
+    "packOptions":  {
+                        "ignore":  [
+                                       {
+                                           "type":  "folder",
+                                           "value":  "assets/incoming"
+                                       },
+                                       {
+                                           "type":  "folder",
+                                           "value":  "assets/images-original"
+                                       },
+                                       {
+                                           "type":  "folder",
+                                           "value":  "assets/video"
+                                       },
+                                       {
+                                           "type":  "folder",
+                                           "value":  "assets/fx/onboarding"
+                                       },
+                                       {
+                                           "type":  "folder",
+                                           "value":  "assets/fx"
+                                       },
+                                       {
+                                           "type":  "folder",
+                                           "value":  "docs"
+                                       },
+                                       {
+                                           "type":  "folder",
+                                           "value":  "tests"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/app-bg.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/planet-overview.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/planet-overview-soft.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/planet-empty-soft.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/planet-empty.jpg"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/hub-sport.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/hub-diet.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/hub-study.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/hub-work.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/hub-plan.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/hub-sleep.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/ecology-sport.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/ecology-diet.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/ecology-study.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/ecology-work.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/ecology-plan.png"
+                                       },
+                                       {
+                                           "type":  "file",
+                                           "value":  "assets/images/ecology-sleep.png"
+                                       }
+                                   ],
+                        "include":  [
+
+                                    ]
+                    },
+    "setting":  {
+                    "urlCheck":  true,
+                    "es6":  true,
+                    "enhance":  true,
+                    "postcss":  true,
+                    "minified":  true,
+                    "newFeature":  true,
+                    "coverView":  true,
+                    "nodeModules":  false,
+                    "compileWorklet":  false,
+                    "uglifyFileName":  false,
+                    "uploadWithSourceMap":  false,
+                    "packNpmManually":  false,
+                    "packNpmRelationList":  [
+
+                                            ],
+                    "minifyWXSS":  true,
+                    "minifyWXML":  true,
+                    "localPlugins":  false,
+                    "disableUseStrict":  false,
+                    "useCompilerPlugins":  false,
+                    "condition":  false,
+                    "swc":  false,
+                    "disableSWC":  true,
+                    "babelSetting":  {
+                                         "ignore":  [
+
+                                                    ],
+                                         "disablePlugins":  [
+
+                                                            ],
+                                         "outputPath":  ""
+                                     }
+                },
+    "compileType":  "miniprogram",
+    "libVersion":  "latest",
+    "appid":  "wx96fd1ee9889d6641",
+    "projectname":  "星途自律舱",
+    "condition":  {
+
+                  },
+    "cloudfunctionRoot":  "cloudfunctions/",
+    "simulatorPluginLibVersion":  {
+
+                                  },
+    "editorSetting":  {
+
+                      }
+}

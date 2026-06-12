@@ -1,0 +1,30 @@
+node_modules/
+miniprogram_npm/
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+.env
+.env.*
+.vscode/
+.idea/
+
+# Local WeChat DevTools settings
+星途自律舱/project.private.config.json
+
+# Private drafts and generation notes
+星途自律舱-设计方案.md
+docs/superpowers/
+星途自律舱/docs/asset-prompts.md
+星途自律舱/docs/materials.md
+
+# Heavy source assets kept locally, not in the public repo
+星途自律舱/assets/incoming/
+星途自律舱/assets/images-original/
+星途自律舱/assets/video/
+星途自律舱/assets/fx/
+星途自律舱/assets/images/*.png
+!星途自律舱/assets/images/planet-empty-cut-440.png
+!星途自律舱/assets/images/planet-overview-cut-520.png
+!星途自律舱/assets/images/reward-chest.png
+!星途自律舱/assets/images/unlock-badge.png

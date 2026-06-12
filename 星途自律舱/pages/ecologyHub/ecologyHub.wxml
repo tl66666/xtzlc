@@ -1,0 +1,38 @@
+<view class="page hub-page">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+  <view class="hub-hero">
+    <view>
+      <view class="scan-label">星球生态总览</view>
+      <view class="hub-title">选择一片正在生长的区域</view>
+      <view class="muted hub-subtitle">首页星球负责总览，这里承载六个建筑群。点进任意区域查看详情和行动模板。</view>
+    </view>
+    <view class="hub-progress">{{completedCount}}/6</view>
+  </view>
+
+  <view class="zone-list">
+    <view wx:for="{{dimensions}}" wx:key="id" class="zone-card {{item.completed ? 'done' : ''}}" data-id="{{item.id}}" bindtap="openEcology">
+      <image class="zone-image {{item.imageFailed ? 'hide' : ''}}" src="{{item.displayImage}}" mode="aspectFill" data-id="{{item.id}}" bindload="onZoneImageLoad" binderror="onZoneImageError"></image>
+      <view class="zone-image-fallback {{item.imageFailed ? 'show' : ''}}" style="background: linear-gradient(135deg, {{item.darkColor}}, {{item.color}});">
+        <view class="zone-orb"></view>
+        <view class="zone-mark">{{item.shortName}}</view>
+      </view>
+      <view class="zone-mask"></view>
+      <view class="zone-copy">
+        <view>
+          <view class="zone-name">{{item.sceneName}}</view>
+          <view class="zone-desc">{{item.sceneSubtitle}}</view>
+        </view>
+        <view class="zone-state">{{item.statusText}}</view>
+      </view>
+      <view class="zone-count">累计 {{item.totalCount}} 次</view>
+    </view>
+  </view>
+
+  <view class="hub-action cabin-panel" bindtap="goCheckin">
+    <view>
+      <view class="scan-label">今日行动</view>
+      <view class="hub-action-title">先完成一次打卡，再回来观察生态变化</view>
+    </view>
+    <view class="hub-action-button">去打卡</view>
+  </view>
+</view>

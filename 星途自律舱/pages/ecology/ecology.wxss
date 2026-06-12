@@ -1,0 +1,374 @@
+.ecology-page {
+  padding-bottom: 64rpx;
+}
+
+.ecology-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.ecology-title {
+  margin-top: 8rpx;
+  font-size: 46rpx;
+  font-weight: 900;
+}
+
+.ecology-subtitle {
+  margin-top: 10rpx;
+  font-size: 25rpx;
+}
+
+.state-badge {
+  flex: 0 0 auto;
+  padding: 12rpx 18rpx;
+  border: 1rpx solid rgba(23,32,51,0.1);
+  border-radius: 999rpx;
+  color: rgba(23,32,51,0.76);
+  background: rgba(255,255,255,0.62);
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
+.state-badge.done {
+  color: #10200e;
+  border-color: transparent;
+  background: #d9972f;
+}
+
+.scene-panel {
+  position: relative;
+  height: 640rpx;
+  margin-top: 28rpx;
+  overflow: hidden;
+  border: 1rpx solid rgba(255,255,255,0.72);
+  border-radius: 36rpx;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(255,255,255,0.22), transparent 28%),
+    linear-gradient(180deg, rgba(255,255,255,0.74), rgba(255,255,255,0.46));
+}
+
+.scene-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.with-image .scene-image {
+  opacity: 1;
+}
+
+.with-image .scene-fallback {
+  opacity: 0;
+}
+
+.scene-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.soft-planet {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 430rpx;
+  height: 430rpx;
+  margin-left: -215rpx;
+  margin-top: -215rpx;
+  border-radius: 50%;
+  box-shadow: inset -42rpx -58rpx 86rpx rgba(0,0,0,0.32), 0 40rpx 110rpx rgba(0,0,0,0.42);
+}
+
+.soft-ring {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 590rpx;
+  height: 160rpx;
+  margin-left: -295rpx;
+  margin-top: -80rpx;
+  box-sizing: border-box;
+  border: 2rpx solid rgba(245,200,66,0.28);
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+.fallback-copy {
+  position: absolute;
+  left: 34rpx;
+  right: 34rpx;
+  bottom: 112rpx;
+  text-align: center;
+}
+
+.fallback-title {
+  font-size: 36rpx;
+  font-weight: 900;
+}
+
+.fallback-desc {
+  margin-top: 12rpx;
+  color: rgba(23,32,51,0.56);
+  font-size: 22rpx;
+}
+
+.scene-caption {
+  position: absolute;
+  left: 28rpx;
+  right: 28rpx;
+  bottom: 26rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.caption-name {
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.caption-copy {
+  color: rgba(255,255,255,0.82);
+  font-size: 22rpx;
+  text-align: right;
+}
+
+.growth-strip {
+  margin-top: 22rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14rpx;
+}
+
+.growth-cell {
+  min-height: 118rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18rpx;
+  border: 1rpx solid rgba(23,32,51,0.08);
+  border-radius: 22rpx;
+  background: rgba(255,255,255,0.62);
+}
+
+.growth-number {
+  margin-bottom: 8rpx;
+  color: #9a651f;
+  font-size: 36rpx;
+  font-weight: 900;
+}
+
+.action-panel,
+.records-panel,
+.stage-panel,
+.parts-panel {
+  margin-top: 24rpx;
+  padding: 26rpx;
+}
+
+.parts-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.parts-title {
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.parts-next {
+  flex: 0 0 auto;
+  max-width: 220rpx;
+  padding: 10rpx 14rpx;
+  border-radius: 999rpx;
+  color: #8f5b18;
+  background: rgba(245,200,66,0.16);
+  font-size: 21rpx;
+  font-weight: 900;
+  text-align: center;
+}
+
+.parts-list {
+  margin-top: 22rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.part-item {
+  min-height: 88rpx;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 16rpx;
+  border: 1rpx solid rgba(23,32,51,0.08);
+  border-radius: 18rpx;
+  background: rgba(255,255,255,0.5);
+  opacity: 0.74;
+}
+
+.part-item.unlocked {
+  opacity: 1;
+  border-color: rgba(99,165,92,0.22);
+  background: rgba(220,244,212,0.64);
+}
+
+.part-lock {
+  width: 48rpx;
+  height: 48rpx;
+  flex: 0 0 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(23,32,51,0.18);
+  font-size: 21rpx;
+  font-weight: 900;
+}
+
+.part-item.unlocked .part-lock {
+  background: #63a55c;
+}
+
+.part-name {
+  margin-bottom: 5rpx;
+  font-size: 25rpx;
+  font-weight: 900;
+}
+
+.part-desc {
+  font-size: 21rpx;
+  line-height: 1.38;
+}
+
+.stage-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.stage-title {
+  margin-top: 8rpx;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.stage-next {
+  flex: 0 0 auto;
+  padding: 10rpx 16rpx;
+  border-radius: 999rpx;
+  color: #8f5b18;
+  background: rgba(245,200,66,0.16);
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.stage-track {
+  height: 10rpx;
+  margin-top: 22rpx;
+  overflow: hidden;
+  border-radius: 999rpx;
+  background: rgba(23,32,51,0.08);
+}
+
+.stage-fill {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.stage-desc {
+  margin-top: 16rpx;
+  font-size: 23rpx;
+  line-height: 1.45;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.panel-title {
+  margin-top: 8rpx;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.panel-button {
+  flex: 0 0 auto;
+  padding: 14rpx 22rpx;
+  border-radius: 999rpx;
+  color: #0b1206;
+  background: #d9972f;
+  font-size: 24rpx;
+  font-weight: 900;
+}
+
+.template-list,
+.record-list {
+  margin-top: 22rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.template-card,
+.record-row {
+  min-height: 96rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 18rpx;
+  border: 1rpx solid rgba(23,32,51,0.08);
+  border-radius: 18rpx;
+  background: rgba(255,255,255,0.58);
+}
+
+.template-dot {
+  width: 18rpx;
+  height: 54rpx;
+  flex: 0 0 18rpx;
+  border-radius: 999rpx;
+}
+
+.template-title,
+.record-date {
+  margin-bottom: 6rpx;
+  font-size: 25rpx;
+  font-weight: 800;
+}
+
+.template-subtitle {
+  font-size: 22rpx;
+}
+
+.record-row {
+  justify-content: space-between;
+}
+
+.record-light {
+  color: #9a651f;
+  font-size: 26rpx;
+  font-weight: 900;
+}
+
+.empty-record {
+  margin-top: 20rpx;
+  color: rgba(23,32,51,0.56);
+  font-size: 24rpx;
+  line-height: 1.55;
+}

@@ -1,0 +1,287 @@
+<view class="page planet-page {{showGuide || showNameSetup || showTour ? 'is-onboarding' : ''}}">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+  <block wx:if="{{showGuide}}">
+  <view class="onboarding-stage">
+    <view wx:if="{{guidePhase === 'playing'}}" class="onboarding-media">
+      <video
+        wx:if="{{onboardingVideoUrl}}"
+        class="onboarding-video"
+        src="{{onboardingVideoUrl}}"
+        autoplay
+        muted
+        loop="{{false}}"
+        controls="{{false}}"
+        show-play-btn="{{false}}"
+        show-fullscreen-btn="{{false}}"
+        show-center-play-btn="{{false}}"
+        enable-progress-gesture="{{false}}"
+        object-fit="cover"
+        bindloadedmetadata="onGuideVideoReady"
+        bindcanplay="onGuideVideoReady"
+        bindplay="onGuideVideoReady"
+        bindended="onGuideVideoEnded"
+        binderror="onGuideVideoError"
+      ></video>
+      <view wx:if="{{guideVideoFailed || !onboardingVideoUrl || !guideVideoReady}}" class="onboarding-loading video-failed">
+        <view class="loading-orb"></view>
+        <view>动画暂时没有加载出来，正在进入下一步...</view>
+      </view>
+    </view>
+    <view wx:else class="guide-card">
+      <view class="guide-planet">
+        <view class="guide-planet-glow"></view>
+        <image class="guide-planet-img" src="{{assets.planetEmpty}}" mode="aspectFit"></image>
+      </view>
+      <view class="scan-label">星球启动</view>
+      <view class="guide-title">从荒芜到繁荣，由每次行动点亮</view>
+      <view class="guide-copy">先选一个目标，再完成每日三步。打卡会获得星光，并逐步解锁生态区建筑、装饰和光效。</view>
+      <view class="guide-steps">
+        <view>1. 选择目标</view>
+        <view>2. 完成行动任务</view>
+        <view>3. 查看生态变化</view>
+      </view>
+      <view class="guide-button" bindtap="closeGuide">
+        启动星球
+      </view>
+    </view>
+  </view>
+  </block>
+  <block wx:elif="{{showNameSetup}}">
+  <view class="setup-stage">
+    <view class="setup-planet">
+      <image class="setup-planet-img" src="{{assets.planetEmpty}}" mode="aspectFit"></image>
+    </view>
+    <view class="setup-card cabin-panel">
+      <view class="scan-label">建立星球档案</view>
+      <view class="setup-title">先给你的星球取个名字</view>
+      <view class="muted setup-copy">之后每一次打卡都会把星光注入这颗星球，生态区会按你的行动慢慢长出来。</view>
+      <input class="planet-name-input" value="{{planetNameDraft}}" placeholder="例如：晨光自律星 / 唐乐的绿洲星" bindinput="inputPlanetName"></input>
+      <view class="guide-button" bindtap="savePlanetNameAndTour">保存并继续</view>
+    </view>
+  </view>
+  </block>
+  <block wx:elif="{{showTour}}">
+  <view class="tour-stage">
+    <view class="tour-card cabin-panel">
+      <view class="scan-label">功能导览</view>
+      <view class="setup-title">你接下来会这样使用它</view>
+      <view class="tour-list">
+        <view class="tour-item">
+          <view class="tour-index">1</view>
+          <view>
+            <view class="tour-title">星球总览</view>
+            <view class="muted tour-copy">看今天日期、星光进度和六个生态区是否点亮。</view>
+          </view>
+        </view>
+        <view class="tour-item">
+          <view class="tour-index">2</view>
+          <view>
+            <view class="tour-title">自定义计划打卡</view>
+            <view class="muted tour-copy">自己写真实计划，选择运动、饮食、学习、工作、计划、睡眠六类之一。</view>
+          </view>
+        </view>
+        <view class="tour-item">
+          <view class="tour-index">3</view>
+          <view>
+            <view class="tour-title">生态区成长</view>
+            <view class="muted tour-copy">完成打卡后会结算星光、宝箱和解锁建筑，点进生态区查看变化。</view>
+          </view>
+        </view>
+      </view>
+      <view class="guide-button" bindtap="finishTour">进入星球</view>
+    </view>
+  </view>
+  </block>
+  <block wx:else>
+  <view class="cockpit-head" style="{{homeHeadStyle}}">
+    <view class="user-line">
+      <view class="avatar-small">星</view>
+      <view>
+        <view class="scan-label">成长星球</view>
+        <view class="section-title">{{profile.planetName || '星途自律舱'}}</view>
+        <view class="muted subtitle">{{levelInfo.name || '荒芜星'}} · 你的自律正在让星球复苏</view>
+      </view>
+    </view>
+    <view class="status-stack">
+      <view class="date-pill">
+        <view class="date-main">{{todayDisplay.dateText}}</view>
+        <view class="date-sub">{{todayDisplay.weekText}}</view>
+      </view>
+      <view class="status-pill">{{profile.totalStarlight || 0}} 星光</view>
+    </view>
+  </view>
+
+  <view class="home-meta-row" style="{{homeMetaStyle}}">
+    <view class="date-pill">
+      <view class="date-main">{{todayDisplay.dateText}}</view>
+      <view class="date-sub">{{todayDisplay.weekText}}</view>
+    </view>
+    <view class="status-pill">{{profile.totalStarlight || 0}} 星光</view>
+    <view class="status-pill streak-pill">{{stats.today.completedCount}}/6 今日</view>
+  </view>
+
+  <view class="orbit-card" bindtap="openEcologyHub">
+    <view class="planet-glow"></view>
+    <image class="home-planet" src="{{planetImage}}" mode="aspectFit"></image>
+    <view class="planet-hint">
+      <view>{{levelInfo.name || '荒芜星'}}</view>
+      <view class="planet-hint-sub">点击进入生态区</view>
+    </view>
+  </view>
+
+  <view class="planet-mood cabin-panel">
+    <view class="mood-orb"></view>
+    <view>
+      <view class="scan-label">星球状态</view>
+      <view class="mood-title">{{motivation.planetMood.title}}</view>
+      <view class="muted mood-text">{{motivation.planetMood.text}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{!goal}}" class="goal-picker cabin-panel">
+    <view class="scan-label">先定一个目标</view>
+    <view class="goal-title">你最近最想养成什么节奏？</view>
+    <view class="muted">目标会影响首页推荐任务和打卡模板顺序。</view>
+    <view class="goal-grid">
+      <view wx:for="{{goalPresets}}" wx:key="id" class="goal-option" data-id="{{item.id}}" bindtap="chooseGoal">
+        <view class="goal-name">{{item.name}}</view>
+        <view class="goal-desc">{{item.description}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{goal}}" class="goal-card cabin-panel">
+    <view>
+      <view class="scan-label">当前目标</view>
+      <view class="goal-title">{{goal.name}}</view>
+      <view class="muted">{{goal.weeklyTarget}}</view>
+    </view>
+    <view class="goal-percent">{{goalProgress.percent}}%</view>
+    <view class="goal-track">
+      <view class="goal-fill" style="width: {{goalProgress.percent}}%;"></view>
+    </view>
+    <view wx:if="{{recommendedAction}}" class="recommend" bindtap="openNextAction">
+      今日推荐：{{recommendedAction.title}} · {{recommendedAction.subtitle}}
+    </view>
+  </view>
+
+  <view wx:if="{{goal}}" class="goal-adjust-row" bindtap="openGoalEditor">
+    <view>当前目标：{{goal.name}}</view>
+    <view>调整目标</view>
+  </view>
+
+  <view wx:if="{{showGoalEditor}}" class="goal-drawer-mask" bindtap="closeGoalEditor">
+    <view class="goal-drawer" catchtap="noop">
+      <view class="drawer-handle"></view>
+      <view class="goal-head">
+        <view>
+          <view class="scan-label">目标中枢</view>
+          <view class="goal-title">选择近期主线</view>
+          <view class="muted">它会决定今日推荐、优先生态区和打卡后的成长反馈。</view>
+        </view>
+        <view class="goal-edit" bindtap="closeGoalEditor">完成</view>
+      </view>
+      <view class="goal-drawer-list">
+        <view wx:for="{{goalPresets}}" wx:key="id" class="goal-drawer-option {{goal && goal.id === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="chooseGoal">
+          <view>
+            <view class="goal-name">{{item.name}}</view>
+            <view class="goal-desc">{{item.description}}</view>
+          </view>
+          <view class="goal-select-dot"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cabin-panel progress-card">
+    <view class="inline-ring">
+      <view class="inline-ring-bg"></view>
+      <view class="inline-ring-fill" style="transform: rotate({{motivation.ringDegrees}}deg);"></view>
+      <view class="inline-ring-core">
+        <view class="inline-ring-value">{{stats.today.completedCount}}/6</view>
+        <view class="inline-ring-label">今日</view>
+      </view>
+    </view>
+    <view class="progress-copy">
+      <view class="scan-label">今日概览</view>
+      <view class="progress-title">今日打卡进度 {{stats.today.completedCount}}/6</view>
+      <view class="muted">完成维度越多，星球生态越明亮。下一等级进度 {{levelInfo.progress || 0}}%</view>
+      <view class="level-track">
+        <view class="level-fill" style="width: {{levelInfo.progress || 0}}%;"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="quest-panel cabin-panel">
+    <view class="quest-head">
+      <view>
+        <view class="scan-label">今日三步</view>
+        <view class="quest-title">完成 {{motivation.questDoneCount}}/3 个行动节点</view>
+      </view>
+      <view class="quest-action" bindtap="openNextAction">继续</view>
+    </view>
+    <view class="quest-list">
+      <view wx:for="{{motivation.todayQuests}}" wx:key="id" class="quest-item {{item.done ? 'done' : ''}}">
+        <view class="quest-check">{{item.done ? '✓' : ''}}</view>
+        <view>
+          <view class="quest-name">{{item.title}}</view>
+          <view class="muted quest-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="ecosystem-progress cabin-panel" bindtap="openEcologyHub">
+    <view class="ecosystem-progress-head">
+      <view>
+        <view class="scan-label">生态建设</view>
+        <view class="ecosystem-title">已解锁 {{ecosystemUnlockedTotal}} 个建筑/装饰</view>
+      </view>
+      <view class="ecosystem-link">查看</view>
+    </view>
+    <view class="ecosystem-mini-grid">
+      <view wx:for="{{ecosystem}}" wx:key="id" class="ecosystem-mini">
+        <view class="ecosystem-mini-icon" style="background: {{item.color}};">{{item.shortName}}</view>
+        <view>
+          <view class="ecosystem-mini-name">{{item.sceneName}}</view>
+          <view class="muted ecosystem-mini-count">{{item.unlockedCount}}/{{item.totalParts}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="today-path cabin-panel">
+    <view class="path-head">
+      <view>
+        <view class="scan-label">今日星路</view>
+        <view class="path-title">点亮 {{stats.today.completedCount}} / 6 个生态区</view>
+      </view>
+      <view class="path-bonus">完美一天 +30 星光</view>
+    </view>
+    <view class="path-line">
+      <view wx:for="{{dimensions}}" wx:key="id" class="path-node {{item.completed ? 'active' : ''}}">
+        <view class="path-dot" style="border-color: {{item.color}}; background: {{item.completed ? item.color : 'rgba(255,255,255,0.08)'}};"></view>
+        <view class="path-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="ecosystem-entry" bindtap="openEcologyHub">
+    <view>
+      <view class="scan-label">生态入口</view>
+      <view class="entry-title">进入星球表面</view>
+      <view class="muted">查看六个生态区和对应建筑群</view>
+    </view>
+    <view class="entry-arrow">›</view>
+  </view>
+
+  <view class="mission cabin-panel" bindtap="openCheckin">
+    <view>
+      <view class="scan-label">每日任务</view>
+      <view class="mission-title">{{motivation.nextAction.title}}</view>
+      <view class="muted">{{motivation.nextAction.subtitle}}</view>
+    </view>
+    <view class="mission-action">进入</view>
+  </view>
+  </block>
+</view>

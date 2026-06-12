@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/planet/planet",
+    "pages/ecologyHub/ecologyHub",
+    "pages/ecology/ecology",
+    "pages/checkin/checkin",
+    "pages/stats/stats",
+    "pages/profile/profile",
+    "pages/achievements/achievements"
+  ],
+  "window": {
+    "navigationBarTitleText": "星途自律舱",
+    "navigationBarBackgroundColor": "#F3EBDD",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F3EBDD",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8D7F6C",
+    "selectedColor": "#B57622",
+    "backgroundColor": "#F8F1E5",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/planet/planet",
+        "text": "星球",
+        "iconPath": "assets/tab/planet-normal.png",
+        "selectedIconPath": "assets/tab/planet-active.png"
+      },
+      {
+        "pagePath": "pages/checkin/checkin",
+        "text": "打卡",
+        "iconPath": "assets/tab/checkin-normal.png",
+        "selectedIconPath": "assets/tab/checkin-active.png"
+      },
+      {
+        "pagePath": "pages/stats/stats",
+        "text": "数据",
+        "iconPath": "assets/tab/stats-normal.png",
+        "selectedIconPath": "assets/tab/stats-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "assets/tab/profile-normal.png",
+        "selectedIconPath": "assets/tab/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,123 @@
+.station-head {
+  padding: 26rpx;
+  margin-bottom: 24rpx;
+}
+
+.intro {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+.metric {
+  padding: 24rpx 16rpx;
+  text-align: center;
+}
+
+.metric-value {
+  margin-bottom: 8rpx;
+  color: #9a651f;
+  font-size: 38rpx;
+  font-weight: 800;
+}
+
+.chart-card {
+  margin-top: 24rpx;
+  padding: 28rpx;
+}
+
+.chart-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.chart-title {
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.heatmap {
+  margin-top: 24rpx;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10rpx;
+}
+
+.heat-cell {
+  height: 48rpx;
+  border-radius: 5rpx;
+  background: rgba(23,32,51,0.08);
+}
+
+.level-1 {
+  background: rgba(245,200,66,0.22);
+}
+
+.level-2 {
+  background: rgba(245,200,66,0.42);
+}
+
+.level-3 {
+  background: rgba(245,200,66,0.58);
+}
+
+.level-4,
+.level-5,
+.level-6 {
+  background: rgba(245,200,66,0.86);
+  box-shadow: 0 0 20rpx rgba(245,200,66,0.18);
+}
+
+.bar-list {
+  margin-top: 24rpx;
+}
+
+.bar-item {
+  display: grid;
+  grid-template-columns: 84rpx 1fr 44rpx;
+  align-items: center;
+  gap: 16rpx;
+  margin-top: 20rpx;
+}
+
+.bar-name,
+.bar-count {
+  color: rgba(23,32,51,0.78);
+  font-size: 24rpx;
+}
+
+.bar-count {
+  text-align: right;
+}
+
+.bar-track {
+  height: 12rpx;
+  overflow: hidden;
+  border-radius: 999rpx;
+  background: rgba(23,32,51,0.08);
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.record-row {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 25rpx;
+}
+
+.empty-state {
+  padding: 32rpx 0 8rpx;
+  color: rgba(23, 32, 51, 0.68);
+}

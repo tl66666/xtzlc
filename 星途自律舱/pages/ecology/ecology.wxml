@@ -1,0 +1,108 @@
+<view class="page ecology-page">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+  <view class="ecology-head">
+    <view>
+      <view class="scan-label">星球生态区</view>
+      <view class="ecology-title">{{dimension.sceneName}}</view>
+      <view class="muted ecology-subtitle">{{dimension.sceneSubtitle}}</view>
+    </view>
+    <view class="state-badge {{todayDone ? 'done' : ''}}">{{todayDone ? '今日已点亮' : '等待点亮'}}</view>
+  </view>
+
+  <view class="scene-panel {{sceneClass}} {{hasSceneImage ? 'with-image' : ''}}">
+    <image class="scene-image" src="{{dimension.sceneImage}}" mode="aspectFill" bindload="onSceneImageLoad" binderror="onSceneImageError"></image>
+    <view class="scene-fallback">
+      <view class="soft-planet" style="background: radial-gradient(circle at 34% 24%, rgba(255,255,255,0.72), transparent 12%), linear-gradient(145deg, {{dimension.lightColor}}, {{dimension.darkColor}});"></view>
+      <view class="soft-ring"></view>
+      <view class="fallback-copy">
+        <view class="fallback-title">{{dimension.sceneName}}</view>
+        <view class="fallback-desc">请放入 {{dimension.sceneImage}} 后显示完整生态图</view>
+      </view>
+    </view>
+    <view class="scene-caption">
+      <view class="caption-name">{{dimension.name}}生态</view>
+      <view class="caption-copy">累计点亮 {{totalCount}} 次 · {{profile.totalStarlight || 0}} 星光</view>
+    </view>
+  </view>
+
+  <view class="growth-strip">
+    <view class="growth-cell">
+      <view class="growth-number">{{totalCount}}</view>
+      <view class="muted">累计打卡</view>
+    </view>
+    <view class="growth-cell">
+      <view class="growth-number">{{todayDone ? '100%' : '0%'}}</view>
+      <view class="muted">今日状态</view>
+    </view>
+    <view class="growth-cell">
+      <view class="growth-number">{{templates.length}}</view>
+      <view class="muted">行动模板</view>
+    </view>
+  </view>
+
+  <view class="stage-panel cabin-panel">
+    <view class="stage-head">
+      <view>
+        <view class="scan-label">生态阶段</view>
+        <view class="stage-title">{{growthStage.name}}</view>
+      </view>
+      <view class="stage-next">{{growthStage.nextText}}</view>
+    </view>
+    <view class="stage-track">
+      <view class="stage-fill" style="width: {{growthStage.progress}}%; background: {{dimension.color}};"></view>
+    </view>
+    <view class="muted stage-desc">{{growthStage.desc}}</view>
+  </view>
+
+  <view class="parts-panel cabin-panel">
+    <view class="parts-head">
+      <view>
+        <view class="scan-label">生态部件</view>
+        <view class="parts-title">打卡会逐步解锁这里的建筑和装饰</view>
+      </view>
+      <view wx:if="{{nextUnlock}}" class="parts-next">下一个：{{nextUnlock.name}}</view>
+    </view>
+    <view class="parts-list">
+      <view wx:for="{{parts}}" wx:key="name" class="part-item {{item.unlocked ? 'unlocked' : ''}}">
+        <view class="part-lock">{{item.unlocked ? '✓' : item.threshold}}</view>
+        <view>
+          <view class="part-name">{{item.name}}</view>
+          <view class="muted part-desc">{{item.type}} · {{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-panel cabin-panel">
+    <view class="panel-head">
+      <view>
+        <view class="scan-label">推荐行动</view>
+        <view class="panel-title">用一次小行动升级这里</view>
+      </view>
+      <view class="panel-button" bindtap="goCheckin">去打卡</view>
+    </view>
+    <view class="template-list">
+      <view wx:for="{{templates}}" wx:key="id" class="template-card" bindtap="goCheckin">
+        <view class="template-dot" style="background: {{dimension.color}};"></view>
+        <view>
+          <view class="template-title">{{item.title}}</view>
+          <view class="muted template-subtitle">{{item.subtitle}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="records-panel cabin-panel">
+    <view class="scan-label">最近生长记录</view>
+    <view wx:if="{{records.length}}" class="record-list">
+      <view wx:for="{{records}}" wx:key="id" class="record-row">
+        <view>
+          <view class="record-date">{{item.date}}</view>
+          <view class="muted">{{item.summary}}</view>
+        </view>
+        <view class="record-light">+{{item.starlight}}</view>
+      </view>
+    </view>
+    <view wx:else class="empty-record">这里还没有记录，完成一次打卡后会出现第一束灯光。</view>
+  </view>
+</view>
