@@ -3,108 +3,130 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="唐乐的软件工程项目展示页，包含微信小程序星途自律舱与个人技术能力展示。" />
-    <title>唐乐 | 软件工程项目展示</title>
+    <meta name="description" content="星途自律舱是一款星球养成式自律打卡微信小程序，围绕六类日常行动构建目标、计划、奖励、生态成长和数据复盘。" />
+    <title>星途自律舱 | 星球养成式自律打卡小程序</title>
     <link rel="stylesheet" href="site-assets/styles.css" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="返回首页">
-        <span class="brand-mark">TL</span>
-        <span>唐乐</span>
+        <span class="brand-mark">星</span>
+        <span>星途自律舱</span>
       </a>
-      <nav class="nav" aria-label="主导航">
-        <a href="#project">项目</a>
-        <a href="#skills">能力</a>
-        <a href="#process">过程</a>
-        <a href="#contact">联系</a>
+      <nav class="nav" aria-label="项目导航">
+        <a href="#concept">理念</a>
+        <a href="#features">功能</a>
+        <a href="#growth">成长</a>
+        <a href="#tech">技术</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero project-hero">
         <div class="hero-copy">
-          <p class="eyebrow">Software Engineering Student</p>
-          <h1>把一个自律想法，做成可体验、可展示、可迭代的产品。</h1>
+          <p class="eyebrow">WeChat Mini Program</p>
+          <h1>把每日行动，养成一颗会生长的星球。</h1>
           <p class="hero-lead">
-            我是唐乐，软件工程专业本科生。当前重点项目是
-            <strong>星途自律舱</strong>：一款把运动、饮食、学习、工作、计划、睡眠打卡
-            转化为星球生态成长的微信小程序。
+            星途自律舱不是普通打卡清单。它把运动、饮食、学习、工作、计划、睡眠六类行动
+            连接到星球生态：每一次完成都会获得星光，点亮区域，推动荒芜星球逐渐复苏。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#project">查看项目</a>
-            <a class="button ghost" href="https://github.com/tl66666" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="button primary" href="#features">查看功能设计</a>
+            <a class="button ghost" href="https://github.com/tl66666/xtzlc" target="_blank" rel="noreferrer">查看源码</a>
           </div>
         </div>
-        <div class="hero-stage" aria-label="星途自律舱项目视觉预览">
-          <div class="orbit-card">
-            <img src="site-assets/planet.png" alt="星途自律舱成长星球界面" />
+
+        <div class="hero-stage" aria-label="星球成长预览">
+          <div class="planet-showcase">
+            <img src="site-assets/planet.png" alt="星途自律舱成长星球" />
           </div>
           <div class="metric-card top">
             <span>6</span>
-            <small>生态维度</small>
+            <small>行动维度</small>
           </div>
           <div class="metric-card bottom">
-            <span>云开发</span>
-            <small>登录、打卡、统计同步</small>
+            <span>星光</span>
+            <small>奖励、宝箱、成就</small>
           </div>
         </div>
       </section>
 
-      <section class="section intro-grid">
+      <section class="section intro-grid" id="concept">
         <article>
-          <p class="section-kicker">About</p>
-          <h2>我关注的不只是能运行，而是用户愿不愿意继续用。</h2>
+          <p class="section-kicker">Product Idea</p>
+          <h2>先让用户有目标，再让打卡有反馈。</h2>
         </article>
         <p>
-          这个项目从一个“打卡工具”出发，逐步设计成目标设定、计划管理、打卡反馈、
-          星光奖励、生态区成长、成就墙和云端同步的完整体验。它既展示工程能力，
-          也展示产品思考和视觉落地能力。
+          项目设计的重点不是把按钮做多，而是补齐完整体验链路：目标设定、计划生成、
+          当日行动、即时奖励、生态变化、数据复盘。用户完成的不是一次孤立打卡，
+          而是在建设自己的星球。
         </p>
       </section>
 
-      <section class="section project" id="project">
+      <section class="section project" id="features">
         <div class="section-heading">
-          <p class="section-kicker">Featured Project</p>
-          <h2>星途自律舱</h2>
-          <p>星球养成式自律打卡微信小程序。</p>
+          <p class="section-kicker">Feature System</p>
+          <h2>核心功能模块</h2>
+          <p>围绕真实自律场景，把“想做什么、今天做什么、做完有什么变化”串起来。</p>
         </div>
 
-        <div class="project-layout">
-          <div class="phone-preview">
-            <img src="site-assets/planet-empty.png" alt="荒芜星球初始状态" />
-            <div class="phone-caption">
-              <strong>从荒芜星到生态星</strong>
-              <span>用户每完成一次行动，星球就多一束光。</span>
-            </div>
-          </div>
-
-          <div class="feature-list">
-            <article>
-              <span class="feature-number">01</span>
-              <h3>目标驱动打卡</h3>
-              <p>先选择阶段目标，再生成今日计划，避免用户一进来只看到机械按钮。</p>
-            </article>
-            <article>
-              <span class="feature-number">02</span>
-              <h3>六类生态区</h3>
-              <p>运动、饮食、学习、工作、计划、睡眠分别对应建筑和生态成长。</p>
-            </article>
-            <article>
-              <span class="feature-number">03</span>
-              <h3>奖励与成就</h3>
-              <p>打卡后即时结算星光，六项完成后开启宝箱，并沉淀成就徽章。</p>
-            </article>
-            <article>
-              <span class="feature-number">04</span>
-              <h3>云开发接入</h3>
-              <p>使用微信云函数处理登录、打卡提交、统计面板、资料更新与数据导出。</p>
-            </article>
-          </div>
+        <div class="feature-list feature-list-wide">
+          <article>
+            <span class="feature-number">01</span>
+            <h3>启动与命名</h3>
+            <p>首次进入先启动星球，再给星球命名，建立用户和星球之间的拥有感。</p>
+          </article>
+          <article>
+            <span class="feature-number">02</span>
+            <h3>目标选择</h3>
+            <p>用户选择均衡自律、学习提升、健身塑形、项目冲刺等节奏，系统推荐今日行动。</p>
+          </article>
+          <article>
+            <span class="feature-number">03</span>
+            <h3>自定义计划</h3>
+            <p>用户可以添加自己的计划，选择六类维度、行动内容和提醒节奏，保存后用于日常打卡。</p>
+          </article>
+          <article>
+            <span class="feature-number">04</span>
+            <h3>六维打卡</h3>
+            <p>运动、饮食、学习、工作、计划、睡眠分别对应不同生态区和成长反馈。</p>
+          </article>
+          <article>
+            <span class="feature-number">05</span>
+            <h3>星光奖励</h3>
+            <p>打卡后立即显示星光结算和本次点亮内容，避免用户完成后没有感知。</p>
+          </article>
+          <article>
+            <span class="feature-number">06</span>
+            <h3>宝箱与成就</h3>
+            <p>每日六项完成后领取宝箱，长期行动沉淀为连续打卡、生态解锁和星光累计成就。</p>
+          </article>
         </div>
       </section>
 
-      <section class="section gallery" aria-label="项目截图">
+      <section class="section growth" id="growth">
+        <div class="growth-copy">
+          <p class="section-kicker">Growth Loop</p>
+          <h2>从荒芜星到生态星</h2>
+          <p>
+            星球不是装饰图，而是项目的反馈系统。初始状态是一颗荒芜星，
+            用户完成行动后逐步出现光点、植被、建筑和生态区入口。
+          </p>
+        </div>
+        <div class="growth-stage">
+          <figure>
+            <img src="site-assets/planet-empty.png" alt="荒芜星球初始状态" />
+            <figcaption>初始荒芜星</figcaption>
+          </figure>
+          <div class="growth-arrow">→</div>
+          <figure>
+            <img src="site-assets/planet.png" alt="完成打卡后的生态星球" />
+            <figcaption>生态成长星</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section gallery" aria-label="生态区展示">
         <figure>
           <img src="site-assets/ecology-sport.jpg" alt="运动生态区" />
           <figcaption>运动绿洲</figcaption>
@@ -119,52 +141,37 @@
         </figure>
       </section>
 
-      <section class="section skills" id="skills">
+      <section class="section tech" id="tech">
         <div class="section-heading compact">
-          <p class="section-kicker">Skills</p>
-          <h2>项目里能看到的能力</h2>
+          <p class="section-kicker">Implementation</p>
+          <h2>技术与工程设计</h2>
         </div>
-        <div class="skill-grid">
-          <span>JavaScript</span>
-          <span>微信小程序</span>
-          <span>云开发</span>
-          <span>云函数</span>
-          <span>UI/UX 设计</span>
-          <span>素材压缩</span>
-          <span>数据建模</span>
-          <span>Node Test</span>
+        <div class="tech-grid">
+          <article>
+            <h3>小程序原生开发</h3>
+            <p>使用 JavaScript、WXML、WXSS 组织页面、组件和交互逻辑。</p>
+          </article>
+          <article>
+            <h3>微信云开发</h3>
+            <p>通过云函数处理登录、打卡提交、统计读取、资料更新、数据导出和云资源链接。</p>
+          </article>
+          <article>
+            <h3>本地优先数据</h3>
+            <p>本地缓存保证基础体验，云端同步用于多次打开后的数据恢复。</p>
+          </article>
+          <article>
+            <h3>包体控制</h3>
+            <p>大视频、原图和源素材走云存储，包内只保留压缩后的必要资源。</p>
+          </article>
+          <article>
+            <h3>测试覆盖</h3>
+            <p>核心计算逻辑使用 Node.js Test Runner 覆盖日期、目标、奖励、成就和统计。</p>
+          </article>
+          <article>
+            <h3>文档整理</h3>
+            <p>保留运行说明、云开发配置和资源规范，便于后续继续迭代。</p>
+          </article>
         </div>
-      </section>
-
-      <section class="section process" id="process">
-        <p class="section-kicker">Build Process</p>
-        <h2>我在这个项目里完成了什么</h2>
-        <ol class="timeline">
-          <li>
-            <strong>需求拆解</strong>
-            <span>把“自律打卡”拆成目标、计划、行动、反馈、成长、复盘六个环节。</span>
-          </li>
-          <li>
-            <strong>体验设计</strong>
-            <span>设计星球启动、命名引导、生态区入口、宝箱奖励和成就墙。</span>
-          </li>
-          <li>
-            <strong>工程实现</strong>
-            <span>完成原生小程序页面、组件、工具函数、云函数目录和测试用例。</span>
-          </li>
-          <li>
-            <strong>性能整理</strong>
-            <span>把大图、视频和源素材分离，压缩首屏资源，避免小程序包体超限。</span>
-          </li>
-        </ol>
-      </section>
-
-      <section class="section contact" id="contact">
-        <div>
-          <p class="section-kicker">Contact</p>
-          <h2>欢迎查看我的项目迭代。</h2>
-        </div>
-        <a class="button primary" href="https://github.com/tl66666" target="_blank" rel="noreferrer">访问 GitHub</a>
       </section>
     </main>
   </body>

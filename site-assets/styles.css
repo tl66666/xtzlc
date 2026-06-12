@@ -92,6 +92,10 @@ img {
   padding: clamp(42px, 7vw, 96px) clamp(20px, 7vw, 96px) 56px;
 }
 
+.project-hero {
+  min-height: 84vh;
+}
+
 .eyebrow,
 .section-kicker {
   margin: 0 0 10px;
@@ -170,6 +174,7 @@ h3 {
   place-items: center;
 }
 
+.planet-showcase,
 .orbit-card {
   width: min(92%, 520px);
   padding: 34px;
@@ -180,6 +185,7 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.planet-showcase img,
 .orbit-card img {
   width: 100%;
   filter: drop-shadow(0 34px 42px rgba(54, 88, 90, 0.25));
@@ -285,11 +291,62 @@ h3 {
   gap: 18px;
 }
 
+.feature-list-wide {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .feature-list article {
   padding: 24px;
   border: 1px solid var(--line);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.62);
+}
+
+.growth {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 36px;
+}
+
+.growth-copy p {
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.growth-stage {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+.growth-stage figure {
+  margin: 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.growth-stage img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 24px rgba(74, 117, 103, 0.18));
+}
+
+.growth-stage figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 800;
+  text-align: center;
+}
+
+.growth-arrow {
+  color: var(--gold);
+  font-size: 32px;
+  font-weight: 900;
 }
 
 .feature-number {
@@ -325,10 +382,30 @@ h3 {
   font-weight: 800;
 }
 
-.skill-grid {
+.skill-grid,
+.tech-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tech-grid article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.tech-grid p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.75;
 }
 
 .skill-grid span {
@@ -379,15 +456,27 @@ h3 {
   .hero,
   .intro-grid,
   .project-layout,
-  .gallery {
+  .gallery,
+  .growth,
+  .tech-grid {
     grid-template-columns: 1fr;
+  }
+
+  .growth-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .growth-arrow {
+    text-align: center;
+    transform: rotate(90deg);
   }
 
   .hero-stage {
     min-height: 420px;
   }
 
-  .feature-list {
+  .feature-list,
+  .feature-list-wide {
     grid-template-columns: 1fr;
   }
 
