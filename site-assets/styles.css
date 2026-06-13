@@ -359,8 +359,8 @@ h3 {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
 .gallery figure {
@@ -373,13 +373,80 @@ h3 {
 
 .gallery img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
 }
 
 .gallery figcaption {
   padding: 14px 16px 16px;
   font-weight: 800;
+}
+
+.gallery figcaption strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.gallery figcaption small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.gallery-grid figure {
+  overflow: hidden;
+  margin: 0;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.gallery-grid figcaption {
+  padding: 14px 16px 16px;
+  font-weight: 800;
+}
+
+.gallery-grid figcaption strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.gallery-grid figcaption small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.site-footer {
+  padding: 28px clamp(20px, 7vw, 96px) 48px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.site-footer p {
+  margin: 4px 0;
+}
+
+.footer-muted {
+  font-size: 12px;
+  color: rgba(102, 112, 133, 0.6);
 }
 
 .skill-grid,

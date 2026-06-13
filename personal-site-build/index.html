@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="唐乐的软件工程个人网站，展示项目经历、技术能力与简历下载。" />
+    <title>唐乐 | 软件工程作品集</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span>TL</span>
+        <strong>唐乐</strong>
+      </a>
+      <nav aria-label="站点导航">
+        <a href="#about">关于</a>
+        <a href="#project">项目</a>
+        <a href="#skills">能力</a>
+        <a href="#resume">简历</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Software Engineering · 2027</p>
+          <h1>把日常行动，做成可以被看见的成长系统。</h1>
+          <p class="lead">
+            我是唐乐，上海应用技术大学软件工程本科在读。关注 Java / Python 后端基础、微信小程序、前端交互与云开发。
+            目前重点项目是 <strong>星途自律舱</strong>：一款星球养成式自律打卡微信小程序。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#project">查看核心项目</a>
+            <a class="button ghost" href="assets/tangle-resume.pdf" download>下载简历 PDF</a>
+          </div>
+          <dl class="hero-stats" aria-label="个人概览">
+            <div><dt>CET-6</dt><dd>英语能力</dd></div>
+            <div><dt>入党积极分子</dt><dd>思想表现</dd></div>
+            <div><dt>微信云开发</dt><dd>项目实践</dd></div>
+          </dl>
+        </div>
+
+        <aside class="hero-panel" aria-label="项目视觉预览">
+          <div class="orbit-card">
+            <img src="assets/planet.png" alt="星途自律舱成长星球预览" />
+          </div>
+          <div class="floating-note top">目标 · 打卡 · 奖励</div>
+          <div class="floating-note bottom">从荒芜到繁荣</div>
+        </aside>
+      </section>
+
+      <section class="section about" id="about">
+        <p class="section-tag">About</p>
+        <div class="section-grid">
+          <h2>我希望作品不只是“能运行”，也能说明我如何思考一个产品。</h2>
+          <p>
+            这个个人网站用于展示我的项目、技术栈和简历。相比只写课堂作业，我更想完成一个别人打开后能理解、能体验、
+            能继续迭代的项目：从需求拆解、交互设计、素材管理、数据结构、云函数到测试部署，都尽量走完整流程。
+          </p>
+        </div>
+      </section>
+
+      <section class="section project" id="project">
+        <div class="section-head">
+          <p class="section-tag">Featured Project</p>
+          <h2>星途自律舱</h2>
+          <p>
+            星球养成式自律打卡微信小程序，把运动、饮食、学习、工作、计划、睡眠六类行为转化为星球生态成长。
+          </p>
+        </div>
+
+        <div class="project-layout">
+          <div class="project-visual">
+            <img src="assets/planet.png" alt="星途自律舱主星球页面" />
+          </div>
+          <div class="project-detail">
+            <h3>项目设计重点</h3>
+            <ul>
+              <li>设计"目标设定 → 自定义计划 → 每日打卡 → 星光奖励 → 生态成长 → 数据复盘"的完整体验闭环。</li>
+              <li>8 级星球进化体系（荒芜星→光环星），每次打卡累积星光值驱动星球从荒芜到繁荣。</li>
+              <li>六大生态区独立成长：运动绿洲、饮食花园、学习天文台、工作基地、计划灯塔、月光观测站。</li>
+              <li>内置 5 种目标预设 + 自定义计划 + 12 个预热模板，降低开始门槛。</li>
+              <li>「打卡提醒舱」支持开启/关闭、自定义提醒时间和个性化提醒文案。</li>
+              <li>接入微信云开发，包含登录、打卡提交、统计读取、资料更新、数据导出和云资源链接等 6 个云函数。</li>
+              <li>7 个单元测试文件覆盖日期、目标、奖励、成就、统计、生态和动机逻辑。</li>
+            </ul>
+            <div class="tech-tags">
+              <span>微信小程序</span>
+              <span>JavaScript</span>
+              <span>微信云开发</span>
+              <span>Canvas / WXML / WXSS</span>
+              <span>Node.js Test</span>
+            </div>
+            <a class="text-link" href="https://github.com/tl66666/xtzlc" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
+          </div>
+        </div>
+
+        <div class="gallery" aria-label="生态区展示">
+          <figure>
+            <img src="assets/ecology-sport.jpg" alt="运动生态区" />
+            <figcaption>运动绿洲</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/ecology-diet.jpg" alt="饮食生态区" />
+            <figcaption>饮食花园</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/ecology-study.jpg" alt="学习生态区" />
+            <figcaption>学习天文台</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/ecology-work.jpg" alt="工作生态区" />
+            <figcaption>工作基地</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/ecology-plan.jpg" alt="计划生态区" />
+            <figcaption>计划灯塔</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/ecology-sleep.jpg" alt="睡眠生态区" />
+            <figcaption>月光观测站</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section practice">
+        <p class="section-tag">Next</p>
+        <div class="mini-grid">
+          <article class="placeholder-card">
+            <h3>下一个项目预留位</h3>
+            <p>等新项目完成后，这里可以补充项目定位、技术栈、核心职责、难点解决和最终成果，保持展示页结构完整。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section skills" id="skills">
+        <div class="section-head">
+          <p class="section-tag">Skills</p>
+          <h2>技术能力</h2>
+        </div>
+        <div class="skill-grid">
+          <span>Java</span>
+          <span>Python</span>
+          <span>C++</span>
+          <span>JavaScript</span>
+          <span>HTML / CSS</span>
+          <span>MySQL</span>
+          <span>微信小程序</span>
+          <span>微信云开发</span>
+          <span>GitHub</span>
+          <span>Node.js Test</span>
+        </div>
+      </section>
+
+      <section class="section resume" id="resume">
+        <div>
+          <p class="section-tag">Resume</p>
+          <h2>一页版简历已整理。</h2>
+          <p>重点突出星途自律舱项目、CET-6、入党积极分子和软件开发基础能力。</p>
+        </div>
+        <div class="resume-actions">
+          <a class="button primary" href="assets/tangle-resume.pdf" download>下载 PDF</a>
+          <a class="button ghost" href="assets/tangle-resume.docx" download>下载 Word</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
