@@ -236,6 +236,34 @@ body {
   max-width: 900px;
 }
 
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 1px solid hsl(var(--border));
+  background: rgba(255,255,255,0.04);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 28px;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 .hero h1 {
   font-family: "Instrument Serif", serif;
   font-size: clamp(40px, 7vw, 80px);
@@ -530,28 +558,39 @@ body {
   opacity: 1;
 }
 
-.eco-card .eco-overlay {
+/* 底部渐变遮罩 - 让文字更清晰 */
+.eco-img-fade {
   position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  z-index: 2;
-  padding: 14px 18px;
-  border-radius: 16px;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(1,8,40,0.85) 100%);
+  pointer-events: none;
 }
 
-.eco-card .eco-overlay .eco-info strong {
+.eco-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 60px 20px 20px;
+  background: linear-gradient(180deg, transparent 0%, rgba(1,8,40,0.7) 40%, rgba(1,8,40,0.95) 100%);
+}
+
+.eco-overlay .eco-info strong {
   display: block;
   font-family: "Instrument Serif", serif;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 400;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
+  color: hsl(var(--foreground));
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-.eco-card .eco-overlay .eco-info span {
+.eco-overlay .eco-info span {
   font-family: "Inter", sans-serif;
-  font-size: 12px;
-  color: hsl(var(--muted-foreground));
+  font-size: 14px;
+  color: rgba(239,244,255,0.7);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
 }
 
 /* ===== 星球成长 ===== */
@@ -768,15 +807,19 @@ body {
 }
 
 .reward-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
   color: var(--neon);
-  font-size: 18px;
   flex-shrink: 0;
+}
+
+.reward-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .reward-item strong {
@@ -812,6 +855,8 @@ body {
   overflow: hidden;
   display: grid;
   place-items: center;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid hsl(var(--border));
 }
 
 .reward-main.chest {
@@ -831,8 +876,8 @@ body {
 }
 
 .reward-main img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
   display: block;
 }
@@ -987,13 +1032,18 @@ body {
 .footer {
   position: relative;
   z-index: 2;
-  padding: 50px 60px;
+  padding: 60px;
+  overflow: hidden;
+}
+
+.footer-inner {
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid hsl(var(--border));
+  position: relative;
+  z-index: 2;
 }
 
 .footer-brand {
@@ -1098,6 +1148,12 @@ body {
     width: 150px;
     height: 150px;
   }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1121,9 +1177,6 @@ body {
   }
 
   .footer {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
     padding: 40px 20px;
   }
 
