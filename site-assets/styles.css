@@ -214,6 +214,33 @@ body {
   background: linear-gradient(180deg, rgba(1,8,40,0.55) 0%, rgba(1,8,40,0.75) 100%);
 }
 
+/* ===== 模块间渐变过渡 ===== */
+section {
+  position: relative;
+}
+
+section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, transparent 0%, rgba(1,8,40,0.6) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 首屏不需要底部渐变 */
+.hero::after {
+  display: none;
+}
+
+/* 页脚不需要底部渐变 */
+.footer::after {
+  display: none;
+}
+
 /* ===== 首屏 Hero ===== */
 .hero {
   position: relative;
@@ -318,6 +345,7 @@ body {
   padding: 120px 0;
   overflow: hidden;
   min-height: 100vh;
+  background: linear-gradient(180deg, rgba(1,8,40,0.4) 0%, transparent 25%, transparent 75%, rgba(1,8,40,0.4) 100%);
 }
 
 .concept-layout {
@@ -440,8 +468,9 @@ body {
 .features {
   position: relative;
   z-index: 2;
-  padding: 120px 0;
+  padding: 140px 0;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(1,8,40,0.3) 0%, transparent 30%, transparent 70%, rgba(1,8,40,0.3) 100%);
 }
 
 .feature-grid {
@@ -466,46 +495,28 @@ body {
   box-shadow: 0 30px 60px rgba(0,0,0,0.3);
 }
 
-.feature-img-wrap {
-  width: 100%;
-  aspect-ratio: 16/10;
-  border-radius: 16px;
-  overflow: hidden;
+.feature-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
   margin-bottom: 20px;
-  position: relative;
+  background: linear-gradient(135deg, var(--grad-from), var(--grad-to));
   border: 1px solid rgba(255,255,255,0.06);
   transition: all 0.3s;
 }
 
-.feature-card:hover .feature-img-wrap {
-  transform: scale(1.02);
-  border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-}
-
-.feature-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.feature-card:hover .feature-img {
+.feature-card:hover .feature-icon-wrap {
   transform: scale(1.08);
+  border-color: rgba(255,255,255,0.12);
 }
 
-.feature-img-shine {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.feature-card:hover .feature-img-shine {
-  opacity: 1;
+.feature-icon-wrap svg {
+  width: 32px;
+  height: 32px;
+  color: hsl(var(--foreground));
+  opacity: 0.9;
 }
 
 .feature-body h3 {
@@ -528,6 +539,7 @@ body {
   z-index: 2;
   padding: 120px 0;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(1,8,40,0.4) 0%, transparent 25%, transparent 75%, rgba(1,8,40,0.4) 100%);
 }
 
 .eco-grid {
@@ -624,6 +636,7 @@ body {
   z-index: 2;
   padding: 120px 0;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(1,8,40,0.4) 0%, transparent 25%, transparent 75%, rgba(1,8,40,0.4) 100%);
 }
 
 .growth-layout {
@@ -780,6 +793,7 @@ body {
   z-index: 2;
   padding: 120px 0;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(1,8,40,0.4) 0%, transparent 25%, transparent 75%, rgba(1,8,40,0.4) 100%);
 }
 
 .rewards-layout {
@@ -884,52 +898,62 @@ body {
   border: 1px solid hsl(var(--border));
 }
 
-.reward-main.planet-stage {
-  width: 220px;
-  height: 280px;
-  transform: translate(-30%, 10%);
-  animation: floatPlanetStage 5s ease-in-out infinite;
+/* ===== 奖励区星球对比展示 ===== */
+.reward-planet-comparison {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
   z-index: 2;
-  border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
 }
 
-.reward-main.eco-building {
-  width: 200px;
-  height: 200px;
-  transform: translate(30%, -30%);
-  animation: floatEcoBuilding 6s ease-in-out infinite;
-  z-index: 3;
-  border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+.rp-planet {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  transition: all 0.4s ease;
 }
 
-.reward-main img {
+.rp-planet:hover {
+  transform: scale(1.05);
+  border-color: rgba(111,255,0,0.3);
+}
+
+.rp-planet img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 16px;
 }
 
-/* ===== 奖励区光效 ===== */
-.reward-glow {
+.rp-label {
   position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  filter: blur(25px);
-  opacity: 0.5;
-  pointer-events: none;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+  white-space: nowrap;
 }
 
-.planet-glow {
-  background: radial-gradient(circle, rgba(111,255,0,0.2) 0%, transparent 60%);
-  animation: glowBreathe 3s ease-in-out infinite;
+.rp-arrow {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  color: var(--neon);
+  opacity: 0.7;
+  animation: glowBreathe 2s ease-in-out infinite;
 }
 
-.eco-glow {
-  background: radial-gradient(circle, rgba(232,197,71,0.2) 0%, transparent 60%);
-  animation: glowBreathe 4s ease-in-out infinite 1s;
+.rp-arrow svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* ===== 星光粒子 ===== */
@@ -964,22 +988,13 @@ body {
   50% { transform: translateY(-15px) scale(1.1); opacity: 0.8; }
 }
 
-@keyframes floatPlanetStage {
-  0%, 100% { transform: translate(-30%, 10%) rotate(-1deg); }
-  50% { transform: translate(-30%, 0%) rotate(1deg); }
-}
-
-@keyframes floatEcoBuilding {
-  0%, 100% { transform: translate(30%, -30%) rotate(2deg); }
-  50% { transform: translate(30%, -40%) rotate(-1deg); }
-}
-
 /* ===== 技术实现 ===== */
 .tech {
   position: relative;
   z-index: 2;
   padding: 120px 0;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(1,8,40,0.4) 0%, transparent 25%, transparent 75%, rgba(1,8,40,0.4) 100%);
 }
 
 .tech-grid {
@@ -1171,14 +1186,13 @@ body {
     height: 320px;
   }
 
-  .reward-main.planet-stage {
-    width: 160px;
-    height: 200px;
+  .reward-planet-comparison {
+    gap: 16px;
   }
 
-  .reward-main.eco-building {
-    width: 150px;
-    height: 150px;
+  .rp-planet {
+    width: 120px;
+    height: 120px;
   }
 
   .footer-inner {
