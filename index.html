@@ -7,24 +7,26 @@
     <title>星途自律舱 | 星球养成式自律打卡</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Condiment&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="site-assets/styles.css" />
   </head>
   <body>
     <canvas id="starfield" aria-hidden="true"></canvas>
 
+    <!-- 导航 -->
     <header class="topbar">
       <a class="brand" href="#top" aria-label="返回顶部">
         <span class="brand-icon">星</span>
         <span class="brand-text">星途自律舱</span>
       </a>
       <nav class="liquid-glass" aria-label="页面导航">
-        <a href="#concept">核心概念</a>
+        <a href="#concept" class="active">核心概念</a>
         <a href="#features">功能体系</a>
         <a href="#ecozones">生态区</a>
         <a href="#growth">星球成长</a>
         <a href="#tech">技术实现</a>
       </nav>
+      <a class="nav-cta liquid-glass" href="https://github.com/tl66666/xtzlc" target="_blank">查看源码</a>
     </header>
 
     <main id="top">
@@ -33,85 +35,40 @@
         <video class="hero-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4">
         </video>
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-          <div class="hero-badge">
-            <span class="badge-dot"></span>
-            微信小程序 · 星球养成式自律打卡
-          </div>
-          <h1>
-            <span class="line1">每一次行动</span>
-            <span class="line2">都在点亮你的星球</span>
+          <h1 class="animate-fade-rise">
+            每一次行动<br>
+            都在<em>点亮你的星球</em>
           </h1>
-          <p class="hero-desc">
+          <p class="hero-desc animate-fade-rise-delay">
             运动、饮食、学习、工作、计划、睡眠——六大维度每日打卡，将自律转化为可视化的星球生态成长。
           </p>
-          <div class="hero-actions">
-            <a class="btn-primary" href="#features">探索功能</a>
-            <a class="btn-secondary" href="https://github.com/tl66666/xtzlc" target="_blank">查看源码</a>
-          </div>
-          <div class="hero-stats">
-            <div class="stat"><strong>6</strong><span>生态维度</span></div>
-            <div class="stat"><strong>8</strong><span>星球等级</span></div>
-            <div class="stat"><strong>30+</strong><span>成就徽章</span></div>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="planet-container">
-            <div class="planet-atmosphere"></div>
-            <div class="planet-body">
-              <div class="planet-surface"></div>
-              <div class="planet-crater c1"></div>
-              <div class="planet-crater c2"></div>
-              <div class="planet-crater c3"></div>
-              <div class="planet-crater c4"></div>
-              <div class="planet-grass g1"></div>
-              <div class="planet-grass g2"></div>
-              <div class="planet-grass g3"></div>
-              <div class="planet-ice"></div>
-            </div>
-            <div class="planet-shadow"></div>
-            <div class="planet-ring" aria-hidden="true"></div>
-            <div class="planet-ring-outer" aria-hidden="true"></div>
-            <div class="planet-moons" aria-hidden="true">
-              <span class="moon m1"></span>
-              <span class="moon m2"></span>
-              <span class="moon m3"></span>
-            </div>
-          </div>
-          <div class="planet-caption liquid-glass">
-            <strong>荒芜星球 · 初始状态</strong>
-            <span>通过每日打卡，逐步解锁六大生态区</span>
-          </div>
+          <a class="hero-cta liquid-glass animate-fade-rise-delay-2" href="#concept">开始探索</a>
         </div>
       </section>
 
       <!-- 核心概念 -->
       <section class="concept" id="concept">
-        <video class="concept-video-bg" autoplay loop muted playsinline>
+        <video class="section-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
-        <div class="concept-overlay"></div>
+        <div class="section-overlay"></div>
         <div class="section-inner">
           <div class="concept-layout">
             <div class="concept-visual">
-              <div class="planet-container concept-planet-wrap">
-                <div class="planet-atmosphere lush"></div>
-                <div class="planet-body lush">
-                  <div class="planet-surface lush"></div>
-                  <div class="planet-forest f1"></div>
-                  <div class="planet-forest f2"></div>
-                  <div class="planet-forest f3"></div>
-                  <div class="planet-water"></div>
-                  <div class="planet-cloud"></div>
+              <div class="planet-showcase">
+                <div class="planet-img-wrap">
+                  <img src="site-assets/planet-empty.png" alt="荒芜星球" class="planet-img planet-barren" />
+                  <div class="planet-img-glow"></div>
                 </div>
-                <div class="planet-shadow"></div>
-                <div class="planet-ring" aria-hidden="true"></div>
+                <div class="planet-img-wrap lush">
+                  <img src="site-assets/planet.png" alt="繁荣星球" class="planet-img planet-lush" />
+                  <div class="planet-img-glow lush"></div>
+                </div>
               </div>
-              <span class="concept-accent">Star Path</span>
             </div>
             <div class="concept-text">
-              <h2>不是打卡清单<br />而是你的成长星球</h2>
+              <h2>不是打卡清单<br />而是你的<em>成长星球</em></h2>
               <p class="concept-lead">
                 传统打卡应用只是勾选一个待办事项。星途自律舱围绕「目标设定 → 计划生成 → 当日行动 → 即时奖励 → 生态变化 → 数据复盘」构建完整成长闭环。
               </p>
@@ -145,126 +102,72 @@
 
       <!-- 功能体系 -->
       <section class="features" id="features">
-        <video class="features-video-bg" autoplay loop muted playsinline>
+        <video class="section-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
-        <div class="features-overlay"></div>
+        <div class="section-overlay"></div>
         <div class="section-inner">
-          <div class="features-header">
-            <h2>功能<span class="accent">体系</span></h2>
-            <div class="see-all-btn">
-              <div class="see">查看</div>
-              <div class="all-creators">全部功能</div>
-              <div class="neon-bar"></div>
-            </div>
+          <div class="section-header">
+            <div class="section-tag">功能体系</div>
+            <h2>六大模块，完整闭环</h2>
           </div>
           <div class="feature-grid">
             <article class="feature-card liquid-glass">
-              <div class="feature-visual">
-                <div class="feature-planet">
-                  <div class="fp-body">
-                    <div class="fp-surface"></div>
-                    <div class="fp-ring"></div>
-                  </div>
-                </div>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-sport.jpg" alt="目标与计划" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
               <div class="feature-body">
-                <div class="feature-icon" style="--icon-color:#6FFF00">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                </div>
                 <h3>目标与计划</h3>
                 <p>选择成长节奏，生成六类行动计划</p>
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-visual">
-                <div class="feature-planet checkin">
-                  <div class="fp-body">
-                    <div class="fp-surface"></div>
-                    <div class="fp-checkmarks">
-                      <span></span><span></span><span></span>
-                    </div>
-                  </div>
-                </div>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-diet.jpg" alt="六维打卡" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
               <div class="feature-body">
-                <div class="feature-icon" style="--icon-color:#6FFF00">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
                 <h3>六维打卡</h3>
                 <p>每类打卡对应一个生态区</p>
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-visual">
-                <div class="feature-planet reward">
-                  <div class="fp-body">
-                    <div class="fp-surface"></div>
-                    <div class="fp-stars">
-                      <span></span><span></span><span></span><span></span>
-                    </div>
-                  </div>
-                </div>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-study.jpg" alt="即时奖励" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
               <div class="feature-body">
-                <div class="feature-icon" style="--icon-color:#6FFF00">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                </div>
                 <h3>即时奖励</h3>
                 <p>完成后即时展示星光值与宝箱</p>
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-visual">
-                <div class="feature-planet badge">
-                  <div class="fp-body">
-                    <div class="fp-surface"></div>
-                    <div class="fp-medal">★</div>
-                  </div>
-                </div>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-work.jpg" alt="宝箱与成就" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
               <div class="feature-body">
-                <div class="feature-icon" style="--icon-color:#6FFF00">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-                </div>
                 <h3>宝箱与成就</h3>
                 <p>连续打卡沉淀为成就徽章墙</p>
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-visual">
-                <div class="feature-planet ecology">
-                  <div class="fp-body">
-                    <div class="fp-surface"></div>
-                    <div class="fp-trees">
-                      <span></span><span></span><span></span>
-                    </div>
-                  </div>
-                </div>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-plan.jpg" alt="星球生态" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
               <div class="feature-body">
-                <div class="feature-icon" style="--icon-color:#6FFF00">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg>
-                </div>
                 <h3>星球生态</h3>
                 <p>点击进入六个生态区查看成长</p>
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-visual">
-                <div class="feature-planet data">
-                  <div class="fp-body">
-                    <div class="fp-surface"></div>
-                    <div class="fp-chart">
-                      <span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                  </div>
-                </div>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-sleep.jpg" alt="数据复盘" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
               <div class="feature-body">
-                <div class="feature-icon" style="--icon-color:#6FFF00">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                </div>
                 <h3>数据复盘</h3>
                 <p>热力图、趋势曲线、连续天数统计</p>
               </div>
@@ -275,10 +178,10 @@
 
       <!-- 生态区 -->
       <section class="ecozones" id="ecozones">
-        <video class="ecozones-video-bg" autoplay loop muted playsinline>
+        <video class="section-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
-        <div class="ecozones-overlay"></div>
+        <div class="section-overlay"></div>
         <div class="section-inner">
           <div class="section-header">
             <div class="section-tag">六大生态区</div>
@@ -296,9 +199,6 @@
                   <strong>运动绿洲</strong>
                   <span>跑道、球场和健身花园</span>
                 </div>
-                <div class="eco-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
@@ -310,9 +210,6 @@
                 <div class="eco-info">
                   <strong>饮食花园</strong>
                   <span>果园、小屋和健康餐桌</span>
-                </div>
-                <div class="eco-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
               </div>
             </figure>
@@ -326,9 +223,6 @@
                   <strong>学习天文台</strong>
                   <span>图书馆与知识观测穹顶</span>
                 </div>
-                <div class="eco-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
@@ -340,9 +234,6 @@
                 <div class="eco-info">
                   <strong>工作基地</strong>
                   <span>办公楼、实验室和信号塔</span>
-                </div>
-                <div class="eco-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
               </div>
             </figure>
@@ -356,9 +247,6 @@
                   <strong>计划灯塔</strong>
                   <span>航线牌与任务广场</span>
                 </div>
-                <div class="eco-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
@@ -371,9 +259,6 @@
                   <strong>月光观测站</strong>
                   <span>望远镜与月光花园</span>
                 </div>
-                <div class="eco-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
               </div>
             </figure>
           </div>
@@ -382,118 +267,104 @@
 
       <!-- 星球成长 -->
       <section class="growth" id="growth">
-        <video class="growth-video-bg" autoplay loop muted playsinline>
+        <video class="section-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
-        <div class="growth-overlay"></div>
+        <div class="section-overlay"></div>
         <div class="section-inner">
-          <div class="growth-visual" aria-hidden="true">
-            <div class="growth-stages">
-              <div class="stage-wrap">
-                <div class="stage-planet stage-1">
-                  <div class="sp-body">
-                    <div class="sp-surface"></div>
-                    <div class="sp-crater sc1"></div>
-                    <div class="sp-crater sc2"></div>
+          <div class="growth-layout">
+            <div class="growth-visual">
+              <div class="growth-stages">
+                <div class="stage-item">
+                  <div class="stage-img-wrap">
+                    <img src="site-assets/ignite-01.jpg" alt="荒芜" class="stage-img" />
+                    <div class="stage-img-glow"></div>
                   </div>
+                  <span class="stage-label">荒芜</span>
                 </div>
-                <div class="stage-glow"></div>
-              </div>
-              <div class="stage-wrap">
-                <div class="stage-planet stage-2">
-                  <div class="sp-body">
-                    <div class="sp-surface"></div>
-                    <div class="sp-moss"></div>
+                <div class="stage-item">
+                  <div class="stage-img-wrap">
+                    <img src="site-assets/ignite-10.jpg" alt="萌芽" class="stage-img" />
+                    <div class="stage-img-glow"></div>
                   </div>
+                  <span class="stage-label">萌芽</span>
                 </div>
-                <div class="stage-glow"></div>
-              </div>
-              <div class="stage-wrap">
-                <div class="stage-planet stage-3">
-                  <div class="sp-body">
-                    <div class="sp-surface"></div>
-                    <div class="sp-river"></div>
-                    <div class="sp-tree"></div>
+                <div class="stage-item">
+                  <div class="stage-img-wrap">
+                    <img src="site-assets/ignite-20.jpg" alt="成长" class="stage-img" />
+                    <div class="stage-img-glow"></div>
                   </div>
+                  <span class="stage-label">成长</span>
                 </div>
-                <div class="stage-glow"></div>
-              </div>
-              <div class="stage-wrap">
-                <div class="stage-planet stage-4">
-                  <div class="sp-body">
-                    <div class="sp-surface"></div>
-                    <div class="sp-city"></div>
-                    <div class="sp-glow"></div>
+                <div class="stage-item active">
+                  <div class="stage-img-wrap">
+                    <img src="site-assets/ignite-30.jpg" alt="繁荣" class="stage-img" />
+                    <div class="stage-img-glow"></div>
                   </div>
+                  <span class="stage-label">繁荣</span>
                 </div>
-                <div class="stage-glow"></div>
               </div>
             </div>
-            <div class="growth-orbits">
-              <span class="orbit o1"></span>
-              <span class="orbit o2"></span>
-              <span class="orbit o3"></span>
-            </div>
-          </div>
-          <div class="growth-content">
-            <div class="section-tag">星球成长</div>
-            <h2>从荒芜到繁荣<br />八个阶段见证蜕变</h2>
-            <p class="growth-desc">累计星光值推动星球进化，每个阶段都有独特的视觉表现和生态解锁。</p>
-            <div class="growth-timeline">
-              <div class="level active">
-                <span class="level-dot"></span>
-                <div class="level-info">
-                  <strong>荒芜星球</strong>
-                  <span>0 星光值 · 起点</span>
+            <div class="growth-content">
+              <div class="section-tag">星球成长</div>
+              <h2>从荒芜到繁荣<br />八个阶段见证蜕变</h2>
+              <p class="growth-desc">累计星光值推动星球进化，每个阶段都有独特的视觉表现和生态解锁。</p>
+              <div class="growth-timeline">
+                <div class="level active">
+                  <span class="level-dot"></span>
+                  <div class="level-info">
+                    <strong>荒芜星球</strong>
+                    <span>0 星光值 · 起点</span>
+                  </div>
                 </div>
-              </div>
-              <div class="level">
-                <span class="level-dot"></span>
-                <div class="level-info">
-                  <strong>微光初现</strong>
-                  <span>100 星光值</span>
+                <div class="level">
+                  <span class="level-dot"></span>
+                  <div class="level-info">
+                    <strong>微光初现</strong>
+                    <span>100 星光值</span>
+                  </div>
                 </div>
-              </div>
-              <div class="level">
-                <span class="level-dot"></span>
-                <div class="level-info">
-                  <strong>苔藓覆盖</strong>
-                  <span>300 星光值</span>
+                <div class="level">
+                  <span class="level-dot"></span>
+                  <div class="level-info">
+                    <strong>苔藓覆盖</strong>
+                    <span>300 星光值</span>
+                  </div>
                 </div>
-              </div>
-              <div class="level">
-                <span class="level-dot"></span>
-                <div class="level-info">
-                  <strong>溪流形成</strong>
-                  <span>600 星光值</span>
+                <div class="level">
+                  <span class="level-dot"></span>
+                  <div class="level-info">
+                    <strong>溪流形成</strong>
+                    <span>600 星光值</span>
+                  </div>
                 </div>
-              </div>
-              <div class="level">
-                <span class="level-dot"></span>
-                <div class="level-info">
-                  <strong>森林繁茂</strong>
-                  <span>1000 星光值</span>
+                <div class="level">
+                  <span class="level-dot"></span>
+                  <div class="level-info">
+                    <strong>森林繁茂</strong>
+                    <span>1000 星光值</span>
+                  </div>
                 </div>
-              </div>
-              <div class="level">
-                <span class="level-dot"></span>
-                <div class="level-info">
-                  <strong>城市崛起</strong>
-                  <span>1500 星光值</span>
+                <div class="level">
+                  <span class="level-dot"></span>
+                  <div class="level-info">
+                    <strong>城市崛起</strong>
+                    <span>1500 星光值</span>
+                  </div>
                 </div>
-              </div>
-              <div class="level">
-                <span class="level-dot"></span>
-                <div class="level-info">
-                  <strong>科技之光</strong>
-                  <span>2200 星光值</span>
+                <div class="level">
+                  <span class="level-dot"></span>
+                  <div class="level-info">
+                    <strong>科技之光</strong>
+                    <span>2200 星光值</span>
+                  </div>
                 </div>
-              </div>
-              <div class="level">
-                <span class="level-dot"></span>
-                <div class="level-info">
-                  <strong>星际文明</strong>
-                  <span>3000 星光值</span>
+                <div class="level">
+                  <span class="level-dot"></span>
+                  <div class="level-info">
+                    <strong>星际文明</strong>
+                    <span>3000 星光值</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -503,66 +374,57 @@
 
       <!-- 奖励机制 -->
       <section class="rewards">
-        <video class="rewards-video-bg" autoplay loop muted playsinline>
+        <video class="section-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
-        <div class="rewards-overlay"></div>
+        <div class="section-overlay"></div>
         <div class="section-inner">
-          <div class="rewards-content">
-            <span class="rewards-accent">Go beyond</span>
-            <h2>
-              <span class="join">完成行动.</span>
-              立刻看见回报.<br>
-              解锁隐藏生态.<br>
-              跟随星光信号.
-            </h2>
-            <p class="rewards-desc">打卡反馈采用「星光结算 + 生态变化 + 宝箱进度 + 成就提示」组合。</p>
-            <div class="rewards-list">
-              <div class="reward-item liquid-glass">
-                <span class="reward-icon" style="--r-color:#6FFF00">&#9733;</span>
-                <div>
-                  <strong>星光值</strong>
-                  <span>每完成一项打卡获得 10-50 星光</span>
+          <div class="rewards-layout">
+            <div class="rewards-content">
+              <h2>
+                <em>完成行动.</em><br>
+                立刻看见回报.<br>
+                解锁隐藏生态.<br>
+                跟随星光信号.
+              </h2>
+              <p class="rewards-desc">打卡反馈采用「星光结算 + 生态变化 + 宝箱进度 + 成就提示」组合。</p>
+              <div class="rewards-list">
+                <div class="reward-item liquid-glass">
+                  <span class="reward-icon">&#9733;</span>
+                  <div>
+                    <strong>星光值</strong>
+                    <span>每完成一项打卡获得 10-50 星光</span>
+                  </div>
                 </div>
-              </div>
-              <div class="reward-item liquid-glass">
-                <span class="reward-icon" style="--r-color:#6FFF00">&#10003;</span>
-                <div>
-                  <strong>生态点亮</strong>
-                  <span>对应生态区出现新建筑或装饰</span>
+                <div class="reward-item liquid-glass">
+                  <span class="reward-icon">&#10003;</span>
+                  <div>
+                    <strong>生态点亮</strong>
+                    <span>对应生态区出现新建筑或装饰</span>
+                  </div>
                 </div>
-              </div>
-              <div class="reward-item liquid-glass">
-                <span class="reward-icon" style="--r-color:#6FFF00">&#9829;</span>
-                <div>
-                  <strong>宝箱进度</strong>
-                  <span>六项全部完成解锁每日宝箱</span>
+                <div class="reward-item liquid-glass">
+                  <span class="reward-icon">&#9829;</span>
+                  <div>
+                    <strong>宝箱进度</strong>
+                    <span>六项全部完成解锁每日宝箱</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="rewards-visual">
-            <div class="chest-wrap">
-              <div class="chest-3d">
-                <div class="chest-box"></div>
-                <div class="chest-lid"></div>
-                <div class="chest-glow-inner"></div>
+            <div class="rewards-visual">
+              <div class="reward-img-wrap chest">
+                <img src="site-assets/reward-chest.png" alt="每日宝箱" class="reward-img" />
+                <div class="reward-img-glow"></div>
               </div>
-              <div class="chest-glow"></div>
-            </div>
-            <div class="badge-wrap">
-              <div class="badge-3d">
-                <div class="badge-ring"></div>
-                <div class="badge-star">★</div>
+              <div class="reward-img-wrap badge">
+                <img src="site-assets/unlock-badge.png" alt="成就徽章" class="reward-img" />
+                <div class="reward-img-glow"></div>
               </div>
-              <div class="badge-glow"></div>
-            </div>
-            <div class="star-particles">
-              <span class="sp1"></span>
-              <span class="sp2"></span>
-              <span class="sp3"></span>
-              <span class="sp4"></span>
-              <span class="sp5"></span>
+              <div class="reward-stars">
+                <img src="site-assets/starlight-01.png" alt="" class="r-star s1" />
+                <img src="site-assets/starlight-04.png" alt="" class="r-star s2" />
+              </div>
             </div>
           </div>
         </div>
@@ -570,10 +432,10 @@
 
       <!-- 技术实现 -->
       <section class="tech" id="tech">
-        <video class="tech-video-bg" autoplay loop muted playsinline>
+        <video class="section-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
-        <div class="tech-overlay"></div>
+        <div class="section-overlay"></div>
         <div class="section-inner">
           <div class="section-header">
             <div class="section-tag">技术实现</div>
