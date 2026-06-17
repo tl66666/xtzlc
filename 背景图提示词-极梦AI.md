@@ -1,115 +1,160 @@
 # 星途自律舱 - 展示页背景图生成提示词（极梦AI）
 
-> 统一风格：深邃宇宙深蓝色（#010828）+ 霓虹绿（#6FFF00）+ 金色（#e8c547）点缀
-> 画面质感：电影级光影、微距景深、体积光、粒子漂浮、科技感与神秘感并存
-> 生成设置：横版 16:9 比例（1920x1080 或类似），高清画质
+> **核心风格锚定**：首页视频风格 = 浅天蓝（#87CEEB）到奶白渐变天空 + 微缩星球（黏土/C4D质感）+ 柔和体积光 + 漂浮金色粒子 + 治愈梦幻感
+>
+> **切换策略**：每个板块背景在保持「浅蓝天空 + 微缩星球宇宙」统一世界观的前提下，通过星球状态、生态元素、光线氛围的变化来区分模块，确保滚动时自然过渡不突兀
+>
+> **生成设置**：横版 16:9 比例，高清画质，黏土质感 / C4D渲染 / 微缩景观风格
 
 ---
 
-## 1. 核心概念区背景图（Concept Section）
+## 板块1：核心概念区（Concept Section）
 
-**提示词（中文）：**
+**用途**：接在首屏视频下方，延续星球主题，展示"荒芜与繁荣并存"的核心概念
 
-```
-深邃宇宙深空场景，中央一颗发光的微型星球正在缓慢自转，星球表面有微弱的绿色荧光苔藓和金色光点，周围环绕着稀疏的星尘粒子和几缕绿色极光，背景是极深的藏蓝色（#010828）到黑色的渐变，画面边缘有微妙的暗角效果，体积光从星球后方透射，电影级光影，8K画质，超写实，神秘而宁静的氛围
-```
+**画面构图**：
+- 背景：浅天蓝色（#87CEEB）到淡奶白色渐变天空，与首屏视频天空完全一致
+- 中央：一颗微缩星球，左半边是灰色岩石荒地（参考 ignite-01.jpg），右半边是绿色草地溪流（参考 planet.png），形成鲜明对比
+- 星球表面有一条蜿蜒的蓝色河流从左下流向右上，河岸边点缀粉色小花
+- 星球周围漂浮着 3-5 颗小型发光金色粒子（参考首屏视频的粒子效果）
+- 柔和的阳光从画面左上方照射，在星球边缘形成明亮的体积光轮廓
+- 远景有淡淡的白色云层，增加空间深度
 
-**提示词（英文 - 如支持）：**
-
-```
-Deep cosmic space scene, a glowing miniature planet slowly rotating at center, surface with faint green fluorescent moss and golden light spots, surrounded by sparse stardust particles and a few green aurora streams, background gradient from deep navy blue (#010828) to pure black, subtle vignette at edges, volumetric light rays emanating from behind the planet, cinematic lighting, 8K quality, hyper-realistic, mysterious and serene atmosphere
-```
-
----
-
-## 2. 功能体系区背景图（Features Section）
-
-**提示词（中文）：**
+**完整提示词**：
 
 ```
-抽象科技数据流背景，深邃藏蓝色（#010828）底色，无数细小的霓虹绿色（#6FFF00）数据线和光点在虚空中交织成六边形网格，网格节点有金色（#e8c547）微光闪烁，画面有轻微的景深模糊效果，前景清晰后景朦胧，几条主光线呈对角线划过画面，科技感、未来感、数字化氛围，电影级调色，8K超清
-```
-
-**提示词（英文）：**
-
-```
-Abstract technology data stream background, deep navy blue (#010828) base, countless tiny neon green (#6FFF00) data lines and light dots weaving into hexagonal grids in void, grid nodes with golden (#e8c547) micro-light flickering, slight depth of field blur effect, sharp foreground and hazy background, several main light beams diagonally crossing the frame, tech futuristic digital atmosphere, cinematic color grading, 8K ultra HD
+黏土质感C4D微缩景观，浅天蓝色到奶白色渐变天空背景，中央一颗圆形微缩星球悬浮在空中，星球左半边是灰色岩石荒地有陨石坑，右半边是 lush 绿色草地和蜿蜒的蓝色河流，河流两岸点缀粉色和黄色小花，星球表面有几处发出温暖金色光芒的光点，星球周围漂浮着几颗金色发光粒子和细小星尘，柔和的阳光从左上方照射在星球边缘形成明亮的体积光轮廓，远景有淡淡的白色云层，画面整体色调清新治愈，梦幻而充满希望的氛围，8K超高清，电影级光影，黏土材质细腻质感
 ```
 
 ---
 
-## 3. 生态区背景图（Eco-zones Section）
+## 板块2：功能体系区（Features Section）
 
-**提示词（中文）：**
+**用途**：展示六大打卡模块，背景需要体现"多生态并存"的概念
 
-```
-微观生态世界，从高空俯瞰一片发光的生态系统，深邃藏蓝色（#010828）背景上漂浮着六个小型发光岛屿，每个岛屿有不同的生态特征（森林、海洋、沙漠、冰川、火山、城市），岛屿之间有霓虹绿色（#6FFF00）的能量光线连接，岛屿周围有金色（#e8c547）的光晕和漂浮的粒子，整体像是一个微缩的宇宙生态模型，景深效果，电影级光影，梦幻而神秘
-```
+**画面构图**：
+- 背景：统一的浅天蓝色（#87CEEB）渐变天空，比首屏稍深一点点以区分层次
+- 中央偏下：一片漂浮在空中的圆形生态平台（类似月球表面质感）
+- 平台上分布着六个不同主题的微缩场景区域：
+  - 运动区：红色跑道和足球场（参考 hub-sport.jpg）
+  - 饮食区：小餐桌和健康食物
+  - 学习区：小书桌和书本
+  - 工作区：小办公桌和电脑
+  - 计划区：日历和清单
+  - 睡眠区：小床和月亮
+- 六个区域之间有绿色草地小径连接
+- 平台边缘有白色小栅栏，点缀几棵小树和粉色花丛
+- 平台周围漂浮着金色光点和柔和的白色光晕
+- 整体光线温暖柔和，营造有序而充满活力的氛围
 
-**提示词（英文）：**
-
-```
-Microscopic ecological world, aerial view of a glowing ecosystem, six small luminous floating islands on deep navy blue (#010828) background, each island with different ecological features (forest, ocean, desert, glacier, volcano, city), islands connected by neon green (#6FFF00) energy light beams, golden (#e8c547) halos and floating particles around islands, overall like a miniature cosmic ecological model, depth of field effect, cinematic lighting, dreamy and mysterious
-```
-
----
-
-## 4. 星球成长区背景图（Growth Section）
-
-**提示词（中文）：**
-
-```
-星球进化时间轴视觉化，深邃藏蓝色（#010828）宇宙背景，画面中央是一颗正在蜕变中的星球，从左侧的荒芜岩石表面渐变过渡到右侧的繁荣绿色星球，过渡区域有金色（#e8c547）和霓虹绿色（#6FFF00）的能量波纹扩散，星球周围有八个不同亮度的光点排列成弧形轨迹，代表成长阶段，背景有淡淡的星云和星尘，时间流逝感，史诗级画面，8K画质
-```
-
-**提示词（英文）：**
+**完整提示词**：
 
 ```
-Planet evolution timeline visualization, deep navy blue (#010828) cosmic background, a transforming planet at center transitioning from barren rocky surface on left to flourishing green planet on right, transition area with golden (#e8c547) and neon green (#6FFF00) energy ripples spreading, eight light dots of varying brightness arranged in arc trajectory around planet representing growth stages, faint nebula and stardust in background, sense of time passing, epic cinematic shot, 8K quality
+黏土质感C4D微缩景观，浅天蓝色渐变天空背景，中央一片漂浮的圆形月球表面平台，平台上分布着六个不同主题的微缩场景：红色跑道足球场、小餐桌与健康食物、小书桌与书本、小办公桌与电脑、日历清单、小床与月亮，六个区域之间有绿色草地小径连接，平台边缘有白色小栅栏和几棵小树粉色花丛，平台周围漂浮着金色发光粒子和柔和的白色光晕，柔和阳光从上方照射，整体色调清新温暖，有序而充满活力的氛围，8K超高清，电影级光影，黏土材质细腻质感
 ```
 
 ---
 
-## 5. 奖励区 + 技术区 + 页脚 共用背景图（Rewards / Tech / Footer）
+## 板块3：生态区（Eco-zones Section）
 
-**提示词（中文）：**
+**用途**：展示六大生态区的详细场景，背景需要突出生态多样性
+
+**画面构图**：
+- 背景：浅天蓝色（#87CEEB）到淡紫色的柔和渐变天空，略带黄昏感
+- 远景：几座漂浮的小型岛屿，每个岛屿有不同的生态特征
+- 中景：主星球的部分表面，展示丰富的生态细节——森林、河流、草地、小花
+- 近景：几棵较大的树木和灌木丛的剪影，形成画框效果
+- 画面中有几只小鸟或蝴蝶的剪影飞过
+- 金色和绿色的光点在植被间闪烁，像萤火虫
+- 整体氛围：生机勃勃、自然和谐、充满生命力
+- 光线：黄昏时分的暖金色侧光，给植被镶上金边
+
+**完整提示词**：
 
 ```
-深邃宇宙深空，画面中有几颗漂浮的发光宝石和星形光点，霓虹绿色（#6FFF00）和金色（#e8c547）的光芒在藏蓝色（#010828）背景上闪烁，光线呈放射状从画面深处向外扩散，有微妙的镜头光晕效果，画面整体偏暗但光点明亮对比强烈，粒子缓慢漂浮，神秘宝藏感与科技感并存，电影级光影，适合作为文字内容背景，8K超清
-```
-
-**提示词（英文）：**
-
-```
-Deep cosmic space, several floating luminous gems and star-shaped light dots in frame, neon green (#6FFF00) and golden (#e8c547) lights flickering on navy blue (#010828) background, light rays radiating outward from deep within the frame, subtle lens flare effects, overall dark image but bright light dots creating strong contrast, particles slowly floating, mysterious treasure and tech atmosphere coexisting, cinematic lighting, suitable as text content background, 8K ultra HD
+黏土质感C4D微缩景观，浅天蓝色到淡紫色柔和渐变天空略带黄昏感，远景有几座漂浮的小型岛屿每个岛屿有不同生态特征森林海洋沙漠冰川火山城市，中景展示主星球表面丰富的生态细节 lush 森林蜿蜒河流绿色草地彩色小花，近景有几棵较大树木和灌木丛的剪影形成画框效果，画面中有小鸟蝴蝶剪影飞过，金色和绿色光点在植被间闪烁像萤火虫，黄昏时分暖金色侧光给植被镶上金边，整体色调温暖丰富，生机勃勃自然和谐的氛围，8K超高清，电影级光影，黏土材质细腻质感
 ```
 
 ---
 
-## 使用建议
+## 板块4：星球成长区（Growth Section）
 
-1. **生成比例**：选择 16:9 横版比例
-2. **风格参考**：可以上传首页背景图作为风格参考（如果极梦AI支持图生图）
-3. **色调统一**：所有提示词都包含相同的色彩代码，确保视觉一致性
-4. **后期处理**：生成后如需调整，可以用 PS 或其他工具微调明暗对比度
-5. **压缩优化**：网页使用时建议压缩到 500KB 以内，格式用 WebP 或 JPG
+**用途**：展示星球从荒芜到繁荣的八个成长阶段
 
-## 替换方式
+**画面构图**：
+- 背景：浅天蓝色（#87CEEB）渐变天空，比前面板块更深邃一些
+- 中央：一颗正在"蜕变"中的微缩星球，从左到右展示进化过程
+- 左侧：灰色荒芜岩石表面，只有零星苔藓（参考 ignite-01.jpg）
+- 中间：开始出现绿色草地、小溪流、几棵小树（参考 ignite-10.jpg / ignite-20.jpg）
+- 右侧：完全繁荣的绿色星球，有房屋、灯光、茂密植被（参考 ignite-30.jpg）
+- 星球周围有 8 个不同大小的金色光点，排列成弧形轨迹，象征成长阶段
+- 光点之间有淡淡的绿色光线连接，像星座连线
+- 星球底部有淡淡的金色光晕反射
+- 整体氛围：史诗感、成长感、时间流逝的壮丽
 
-生成图片后，将展示页中对应 `<section>` 里的 `<video>` 标签替换为：
+**完整提示词**：
 
-```html
-<div class="section-img-bg" style="background-image: url('生成的图片路径')"></div>
+```
+黏土质感C4D微缩景观，浅天蓝色渐变天空背景深邃感，中央一颗正在蜕变中的微缩星球从左到右展示进化过程，左侧灰色荒芜岩石表面只有零星绿色苔藓，中间开始出现 lush 绿色草地小溪流几棵小树，右侧完全繁荣的绿色星球有温馨小房屋温暖灯光茂密植被，星球周围有八个不同大小的金色光点排列成弧形轨迹象征成长阶段，光点之间有淡淡绿色光线连接像星座连线，星球底部有淡淡金色光晕反射，柔和阳光从右上方照射，整体色调从冷灰渐变到暖绿，史诗感成长感时间流逝的壮丽氛围，8K超高清，电影级光影，黏土材质细腻质感
 ```
 
-并在 CSS 中添加：
+---
 
-```css
-.section-img-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-}
+## 板块5：奖励区 + 技术区 + 页脚 共用背景（Rewards / Tech / Footer）
+
+**用途**：奖励机制展示、技术架构说明、页脚收尾，需要神秘感和科技感并存
+
+**画面构图**：
+- 背景：浅天蓝色（#87CEEB）到深空蓝的渐变，比前面板块更暗，营造神秘感
+- 中央：一颗发光的微缩星球，星球表面有宝箱、徽章、星星等奖励元素的微缩景观
+- 星球周围漂浮着几个发光的金色宝箱、星形徽章、和闪烁的星光粒子
+- 有几条霓虹绿色（#6FFF00）和金色（#e8c547）的光线在星球周围环绕
+- 远景有淡淡的星云和更多漂浮的小星球
+- 画面整体比前面板块更暗，光点更亮，形成强烈的明暗对比
+- 氛围：神秘宝藏感、科技未来感、探索未知的兴奋
+
+**完整提示词**：
+
 ```
+黏土质感C4D微缩景观，浅天蓝色到深空蓝渐变背景比前面板块更暗营造神秘感，中央一颗发光的微缩星球表面有宝箱徽章星星等奖励元素微缩景观，星球周围漂浮着几个发光的金色宝箱星形徽章和闪烁的星光粒子，有几条霓虹绿色和金色光线在星球周围环绕，远景有淡淡星云和更多漂浮小星球，画面整体明暗对比强烈光点明亮，柔和体积光从中央向外扩散，神秘宝藏感与科技未来感并存探索未知的兴奋氛围，8K超高清，电影级光影，黏土材质细腻质感
+```
+
+---
+
+## 风格统一性检查清单
+
+| 要素 | 统一标准 |
+|------|----------|
+| **天空色调** | 全部使用浅天蓝 #87CEEB 为基底，根据板块深浅微调 |
+| **星球质感** | 全部使用黏土/C4D微缩质感，与现有项目图片一致 |
+| **光线风格** | 柔和体积光，明亮但不刺眼，治愈感 |
+| **粒子效果** | 金色发光粒子，与首屏视频一致 |
+| **色彩过渡** | 从浅蓝（概念/功能）→ 暖金（生态）→ 深绿（成长）→ 深空（奖励），自然渐变 |
+| **氛围情绪** | 清新 → 有序 → 生机 → 史诗 → 神秘，层层递进 |
+
+---
+
+## 生成后文件存放位置
+
+生成完5张背景图后，请按以下命名保存到项目文件夹：
+
+```
+c:\Users\唐乐\Desktop\项目1\site-assets\
+  ├── bg-concept.jpg      # 核心概念区背景
+  ├── bg-features.jpg     # 功能体系区背景
+  ├── bg-ecozones.jpg     # 生态区背景
+  ├── bg-growth.jpg       # 星球成长区背景
+  └── bg-rewards.jpg      # 奖励/技术/页脚共用背景
+```
+
+保存后告诉我，我会自动替换展示页中的视频背景为这5张图片，并调整CSS确保过渡自然。
+
+---
+
+## 极梦AI生成建议
+
+1. **风格参考**：上传 `planet-overview.jpg` 或 `app-bg.jpg` 作为风格参考图
+2. **比例选择**：16:9 横版
+3. **画质**：高清或超清
+4. **如果中文提示词效果不佳**，可尝试英文版本（已提供）
+5. **批量生成**：5张图可以一次提交，保持风格一致性
