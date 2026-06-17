@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="星途自律舱是一款星球养成式自律打卡微信小程序，把运动、饮食、学习、工作、计划、睡眠转化为可见的星球生态成长。"
+      content="星途自律舱是一款星球养成式自律打卡微信小程序，把运动、饮食、学习、工作、计划、睡眠转化为星球生态成长、星光奖励和成就反馈。"
     />
     <title>星途自律舱 | 星球养成式自律打卡小程序</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Condiment&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Condiment&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="site-assets/styles.css" />
   </head>
   <body>
@@ -27,45 +24,41 @@
       <nav class="nav" aria-label="项目导航">
         <a href="#concept">理念</a>
         <a href="#features">功能</a>
-        <a href="#ecozones">生态区</a>
+        <a href="#ecozones">生态</a>
         <a href="#tech">技术</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero">
-        <div class="orbital orbital-one" aria-hidden="true"></div>
-        <div class="orbital orbital-two" aria-hidden="true"></div>
+        <div class="hero-sky" aria-hidden="true"></div>
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
 
         <div class="hero-copy">
-          <p class="eyebrow">WeChat Mini Program</p>
-          <h1>
-            把每日行动
-            <span>养成一颗星球</span>
-          </h1>
-          <p class="script-accent">Starlight discipline</p>
+          <p class="eyebrow">Starlight Cabin</p>
+          <h1>把每天行动<br /><span>养成一颗星球</span></h1>
+          <p class="script-accent">Grow by discipline</p>
           <p class="hero-lead">
-            星途自律舱不是普通打卡清单。它把运动、饮食、学习、工作、计划、睡眠六类日常行动，
-            转化为星光、宝箱、成就徽章和生态区成长，让自律从“点一下完成”变成能被看见的持续建设。
+            星途自律舱把运动、饮食、学习、工作、计划、睡眠六类日常行动，转化为星光值、宝箱、成就徽章和生态区成长。
+            用户完成的不是一条孤立任务，而是在亲手修复自己的星球。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#features">查看功能设计</a>
-            <a class="button ghost" href="https://github.com/tl66666/xtzlc" target="_blank" rel="noreferrer">
-              查看源码
-            </a>
+            <a class="button primary" href="#features">查看项目设计</a>
+            <a class="button ghost" href="https://github.com/tl66666/xtzlc" target="_blank" rel="noreferrer">查看源码</a>
           </div>
         </div>
 
-        <div class="planet-panel liquid-glass" aria-label="星球成长预览">
-          <div class="planet-aura"></div>
+        <div class="planet-stage" aria-label="星球成长预览">
+          <div class="planet-glow" aria-hidden="true"></div>
           <img src="site-assets/planet.png" alt="星途自律舱成长星球" />
-          <div class="planet-chip chip-left">
+          <div class="planet-stat stat-left liquid-glass">
             <strong>6</strong>
-            <span>行动维度</span>
+            <span>行动生态</span>
           </div>
-          <div class="planet-chip chip-right">
-            <strong>8级</strong>
-            <span>星球进化</span>
+          <div class="planet-stat stat-right liquid-glass">
+            <strong>8</strong>
+            <span>成长阶段</span>
           </div>
         </div>
       </section>
@@ -75,12 +68,15 @@
           <p class="section-kicker">Product Idea</p>
           <h2>先建立目标，再让每次打卡都有反馈。</h2>
         </div>
-        <div class="copy-card liquid-glass">
+        <article class="copy-card liquid-glass">
           <p>
-            项目围绕“目标设定 → 计划生成 → 当日行动 → 即时奖励 → 生态变化 → 数据复盘”构建闭环。
-            用户完成的不再是一条孤立任务，而是在亲手修复自己的星球：荒芜表面会逐渐出现河流、花园、建筑和光点。
+            项目围绕「目标设定 → 计划生成 → 当日行动 → 即时奖励 → 生态变化 → 数据复盘」构建闭环。
+            初始星球是荒芜状态，用户每完成一次打卡都会获得星光；星光累积后，星球表面会逐步出现河流、草地、花园、建筑和光点。
           </p>
-        </div>
+          <p>
+            这种设计避免打卡只是“点一下完成”，而是让用户明确知道：今天做了什么、获得了什么、点亮了哪里、下一步可以解锁什么。
+          </p>
+        </article>
       </section>
 
       <section class="section" id="features">
@@ -99,7 +95,7 @@
           <article class="liquid-glass">
             <span>02</span>
             <h3>目标与计划</h3>
-            <p>提供均衡自律、学习提升、健身塑形、项目冲刺等目标，也支持用户自定义六类打卡计划。</p>
+            <p>支持均衡自律、学习提升、健身塑形、项目冲刺等目标，也允许用户自定义六类打卡计划。</p>
           </article>
           <article class="liquid-glass">
             <span>03</span>
@@ -109,17 +105,17 @@
           <article class="liquid-glass">
             <span>04</span>
             <h3>奖励结算</h3>
-            <p>完成后弹出星光结算，告诉用户获得了什么、点亮了哪里、距离宝箱还有多远。</p>
+            <p>完成后弹出星光结算，告知获得奖励、点亮区域、宝箱进度和下一步建议。</p>
           </article>
           <article class="liquid-glass">
             <span>05</span>
             <h3>宝箱与成就</h3>
-            <p>每日六项完成后可领取宝箱；连续打卡、首次点亮、完美一天等行为会沉淀为徽章墙。</p>
+            <p>每日六项完成后可领取宝箱；连续打卡、首次点亮、完美一天等行为沉淀为徽章墙。</p>
           </article>
           <article class="liquid-glass">
             <span>06</span>
             <h3>数据复盘</h3>
-            <p>热力图、趋势线、连续天数、星光值和完成率帮助用户看到自己的节奏，而不是只看当天。</p>
+            <p>热力图、趋势线、连续天数、星光值和完成率帮助用户看到自己的节奏。</p>
           </article>
         </div>
       </section>
@@ -127,10 +123,10 @@
       <section class="section growth">
         <div class="growth-copy">
           <p class="section-kicker">Growth Loop</p>
-          <h2>从荒芜星到生态星，打卡驱动 8 级进化。</h2>
+          <h2>从荒芜星到生态星，打卡驱动星球进化。</h2>
           <p>
-            星球不是装饰图，而是项目的核心反馈系统。初始状态是一颗荒芜星球，用户每完成一次行动都会获得星光。
-            星光累计后，星球从萌芽星、绿洲星、山河星逐步进化到文明星、星辉星、卫星星和光环星。
+            星球不是装饰图，而是项目的核心反馈系统。用户完成行动后获得星光，星光推动星球从荒芜星、萌芽星、
+            绿洲星逐步进化到文明星、星辉星和光环星。每一次打卡都会在视觉上留下痕迹。
           </p>
         </div>
         <div class="growth-stage">
@@ -203,12 +199,12 @@
             <p>大视频和原图走云存储，本地包保留压缩后的必要资源，降低小程序包体压力。</p>
           </article>
           <article class="liquid-glass">
-            <h3>测试覆盖</h3>
+            <h3>逻辑测试</h3>
             <p>使用 Node.js Test Runner 覆盖奖励计算、成就解锁、目标推荐和统计聚合等核心逻辑。</p>
           </article>
           <article class="liquid-glass">
-            <h3>可展示性</h3>
-            <p>项目同时整理 README、云开发说明和素材说明，便于作为求职作品展示。</p>
+            <h3>展示规范</h3>
+            <p>整理 README、云开发说明和素材说明，便于作为项目作品展示和后续维护。</p>
           </article>
         </div>
       </section>
