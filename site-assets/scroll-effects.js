@@ -5,6 +5,32 @@
 (function () {
   'use strict';
 
+  /* ===== 0. Hero 视频无缝循环 ===== */
+  (function setupHeroLoop() {
+    var heroVideo = document.querySelector('.hero-video-bg');
+    if (!heroVideo) return;
+
+    var fadeDuration = 500; // ms，与 CSS transition 一致
+    var fadeThreshold = 0.5; // 距离结尾多少秒开始淡出
+    var isFading = false;
+
+    heroVideo.addEventListener('timeupdate', function () {
+      if (isFading || !heroVideo.duration || !isFinite(heroVideo.duration)) return;
+
+      var remaining = heroVideo.duration - heroVideo.currentTime;
+      if (remaining <= fadeThreshold) {
+        isFading = true;
+        heroVideo.classList.add('loop-fade');
+
+        setTimeout(function () {
+          heroVideo.currentTime = 0;
+          heroVideo.classList.remove('loop-fade');
+          isFading = false;
+        }, fadeDuration);
+      }
+    });
+  })();
+
   /* ===== 1. 视差背景滚动 ===== */
   const bgLayers = document.querySelectorAll('.section-img-bg');
   let ticking = false;
