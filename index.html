@@ -418,17 +418,37 @@
             </div>
             <div class="rewards-visual">
               <div class="reward-showcase">
+                <!-- CSS绘制宝箱 -->
                 <div class="reward-main chest">
-                  <img src="site-assets/reward-chest.png" alt="每日宝箱" />
+                  <div class="chest-body">
+                    <div class="chest-lid"></div>
+                    <div class="chest-box">
+                      <div class="chest-band"></div>
+                      <div class="chest-lock"></div>
+                    </div>
+                  </div>
                   <div class="reward-glow chest-glow"></div>
                 </div>
+                <!-- CSS绘制徽章 -->
                 <div class="reward-main badge">
-                  <img src="site-assets/unlock-badge.png" alt="成就徽章" />
+                  <div class="badge-body">
+                    <div class="badge-outer"></div>
+                    <div class="badge-inner"></div>
+                    <div class="badge-star">★</div>
+                    <div class="badge-ribbon left"></div>
+                    <div class="badge-ribbon right"></div>
+                  </div>
                   <div class="reward-glow badge-glow"></div>
                 </div>
+                <!-- CSS绘制星光粒子 -->
                 <div class="reward-stars">
-                  <img src="site-assets/starlight-01.png" alt="" class="r-star s1" />
-                  <img src="site-assets/starlight-04.png" alt="" class="r-star s2" />
+                  <div class="r-star s1">
+                    <svg viewBox="0 0 100 100" fill="none"><path d="M50 0L61 39H100L68 61L79 100L50 75L21 100L32 61L0 39H39L50 0Z" fill="url(#starGrad)"/></svg>
+                  </div>
+                  <div class="r-star s2">
+                    <svg viewBox="0 0 100 100" fill="none"><path d="M50 0L61 39H100L68 61L79 100L50 75L21 100L32 61L0 39H39L50 0Z" fill="url(#starGrad)"/></svg>
+                  </div>
+                  <svg width="0" height="0"><defs><linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6FFF00"/><stop offset="100%" stop-color="#e8c547"/></linearGradient></defs></svg>
                 </div>
               </div>
             </div>
