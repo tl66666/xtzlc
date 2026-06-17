@@ -31,7 +31,7 @@
       <!-- 首屏 Hero -->
       <section class="hero">
         <video class="hero-video-bg" autoplay loop muted playsinline>
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -43,7 +43,6 @@
             <span class="line1">每一次行动</span>
             <span class="line2">都在点亮你的星球</span>
           </h1>
-          <span class="hero-accent">Star Path</span>
           <p class="hero-desc">
             运动、饮食、学习、工作、计划、睡眠——六大维度每日打卡，将自律转化为可视化的星球生态成长。
           </p>
@@ -59,8 +58,19 @@
         </div>
         <div class="hero-visual">
           <div class="planet-container">
-            <div class="planet-glow"></div>
-            <img src="site-assets/planet-empty.jpg" alt="荒芜星球" class="planet-main" />
+            <div class="planet-atmosphere"></div>
+            <div class="planet-body">
+              <div class="planet-surface"></div>
+              <div class="planet-crater c1"></div>
+              <div class="planet-crater c2"></div>
+              <div class="planet-crater c3"></div>
+              <div class="planet-crater c4"></div>
+              <div class="planet-grass g1"></div>
+              <div class="planet-grass g2"></div>
+              <div class="planet-grass g3"></div>
+              <div class="planet-ice"></div>
+            </div>
+            <div class="planet-shadow"></div>
             <div class="planet-ring" aria-hidden="true"></div>
             <div class="planet-ring-outer" aria-hidden="true"></div>
             <div class="planet-moons" aria-hidden="true">
@@ -78,22 +88,27 @@
 
       <!-- 核心概念 -->
       <section class="concept" id="concept">
-        <div class="concept-bg-gradients">
-          <div class="concept-glow-1"></div>
-          <div class="concept-glow-2"></div>
-        </div>
+        <video class="concept-video-bg" autoplay loop muted playsinline>
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
+        </video>
+        <div class="concept-overlay"></div>
         <div class="section-inner">
           <div class="concept-layout">
             <div class="concept-visual">
-              <div class="concept-img-frame">
-                <div class="concept-img-glow"></div>
-                <img src="site-assets/planet-overview.jpg" alt="繁荣星球" class="concept-planet" />
-                <div class="concept-img-reflection"></div>
+              <div class="planet-container concept-planet-wrap">
+                <div class="planet-atmosphere lush"></div>
+                <div class="planet-body lush">
+                  <div class="planet-surface lush"></div>
+                  <div class="planet-forest f1"></div>
+                  <div class="planet-forest f2"></div>
+                  <div class="planet-forest f3"></div>
+                  <div class="planet-water"></div>
+                  <div class="planet-cloud"></div>
+                </div>
+                <div class="planet-shadow"></div>
+                <div class="planet-ring" aria-hidden="true"></div>
               </div>
-              <span class="concept-accent">星途</span>
-              <div class="concept-floating-dots">
-                <span></span><span></span><span></span><span></span>
-              </div>
+              <span class="concept-accent">Star Path</span>
             </div>
             <div class="concept-text">
               <h2>不是打卡清单<br />而是你的成长星球</h2>
@@ -130,7 +145,10 @@
 
       <!-- 功能体系 -->
       <section class="features" id="features">
-        <div class="features-bg-glow"></div>
+        <video class="features-video-bg" autoplay loop muted playsinline>
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
+        </video>
+        <div class="features-overlay"></div>
         <div class="section-inner">
           <div class="features-header">
             <h2>功能<span class="accent">体系</span></h2>
@@ -142,9 +160,13 @@
           </div>
           <div class="feature-grid">
             <article class="feature-card liquid-glass">
-              <div class="feature-img-wrap">
-                <img src="site-assets/hub-sport.jpg" alt="目标与计划" class="feature-img" />
-                <div class="feature-img-overlay"></div>
+              <div class="feature-visual">
+                <div class="feature-planet">
+                  <div class="fp-body">
+                    <div class="fp-surface"></div>
+                    <div class="fp-ring"></div>
+                  </div>
+                </div>
               </div>
               <div class="feature-body">
                 <div class="feature-icon" style="--icon-color:#6FFF00">
@@ -155,9 +177,15 @@
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-img-wrap">
-                <img src="site-assets/hub-diet.jpg" alt="六维打卡" class="feature-img" />
-                <div class="feature-img-overlay"></div>
+              <div class="feature-visual">
+                <div class="feature-planet checkin">
+                  <div class="fp-body">
+                    <div class="fp-surface"></div>
+                    <div class="fp-checkmarks">
+                      <span></span><span></span><span></span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="feature-body">
                 <div class="feature-icon" style="--icon-color:#6FFF00">
@@ -168,9 +196,15 @@
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-img-wrap">
-                <img src="site-assets/hub-study.jpg" alt="即时奖励" class="feature-img" />
-                <div class="feature-img-overlay"></div>
+              <div class="feature-visual">
+                <div class="feature-planet reward">
+                  <div class="fp-body">
+                    <div class="fp-surface"></div>
+                    <div class="fp-stars">
+                      <span></span><span></span><span></span><span></span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="feature-body">
                 <div class="feature-icon" style="--icon-color:#6FFF00">
@@ -181,9 +215,13 @@
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-img-wrap">
-                <img src="site-assets/hub-work.jpg" alt="宝箱与成就" class="feature-img" />
-                <div class="feature-img-overlay"></div>
+              <div class="feature-visual">
+                <div class="feature-planet badge">
+                  <div class="fp-body">
+                    <div class="fp-surface"></div>
+                    <div class="fp-medal">★</div>
+                  </div>
+                </div>
               </div>
               <div class="feature-body">
                 <div class="feature-icon" style="--icon-color:#6FFF00">
@@ -194,9 +232,15 @@
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-img-wrap">
-                <img src="site-assets/hub-plan.jpg" alt="星球生态" class="feature-img" />
-                <div class="feature-img-overlay"></div>
+              <div class="feature-visual">
+                <div class="feature-planet ecology">
+                  <div class="fp-body">
+                    <div class="fp-surface"></div>
+                    <div class="fp-trees">
+                      <span></span><span></span><span></span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="feature-body">
                 <div class="feature-icon" style="--icon-color:#6FFF00">
@@ -207,9 +251,15 @@
               </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-img-wrap">
-                <img src="site-assets/hub-sleep.jpg" alt="数据复盘" class="feature-img" />
-                <div class="feature-img-overlay"></div>
+              <div class="feature-visual">
+                <div class="feature-planet data">
+                  <div class="fp-body">
+                    <div class="fp-surface"></div>
+                    <div class="fp-chart">
+                      <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="feature-body">
                 <div class="feature-icon" style="--icon-color:#6FFF00">
@@ -225,7 +275,10 @@
 
       <!-- 生态区 -->
       <section class="ecozones" id="ecozones">
-        <div class="ecozones-bg-glow"></div>
+        <video class="ecozones-video-bg" autoplay loop muted playsinline>
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
+        </video>
+        <div class="ecozones-overlay"></div>
         <div class="section-inner">
           <div class="section-header">
             <div class="section-tag">六大生态区</div>
@@ -329,24 +382,50 @@
 
       <!-- 星球成长 -->
       <section class="growth" id="growth">
-        <div class="growth-bg-glow"></div>
+        <video class="growth-video-bg" autoplay loop muted playsinline>
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
+        </video>
+        <div class="growth-overlay"></div>
         <div class="section-inner">
           <div class="growth-visual" aria-hidden="true">
             <div class="growth-stages">
               <div class="stage-wrap">
-                <img src="site-assets/ignite-01.jpg" alt="荒芜" class="stage-img s1" />
+                <div class="stage-planet stage-1">
+                  <div class="sp-body">
+                    <div class="sp-surface"></div>
+                    <div class="sp-crater sc1"></div>
+                    <div class="sp-crater sc2"></div>
+                  </div>
+                </div>
                 <div class="stage-glow"></div>
               </div>
               <div class="stage-wrap">
-                <img src="site-assets/ignite-10.jpg" alt="萌芽" class="stage-img s2" />
+                <div class="stage-planet stage-2">
+                  <div class="sp-body">
+                    <div class="sp-surface"></div>
+                    <div class="sp-moss"></div>
+                  </div>
+                </div>
                 <div class="stage-glow"></div>
               </div>
               <div class="stage-wrap">
-                <img src="site-assets/ignite-20.jpg" alt="成长" class="stage-img s3" />
+                <div class="stage-planet stage-3">
+                  <div class="sp-body">
+                    <div class="sp-surface"></div>
+                    <div class="sp-river"></div>
+                    <div class="sp-tree"></div>
+                  </div>
+                </div>
                 <div class="stage-glow"></div>
               </div>
               <div class="stage-wrap">
-                <img src="site-assets/ignite-30.jpg" alt="繁荣" class="stage-img s4 active" />
+                <div class="stage-planet stage-4">
+                  <div class="sp-body">
+                    <div class="sp-surface"></div>
+                    <div class="sp-city"></div>
+                    <div class="sp-glow"></div>
+                  </div>
+                </div>
                 <div class="stage-glow"></div>
               </div>
             </div>
@@ -425,7 +504,7 @@
       <!-- 奖励机制 -->
       <section class="rewards">
         <video class="rewards-video-bg" autoplay loop muted playsinline>
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4">
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
         <div class="rewards-overlay"></div>
         <div class="section-inner">
@@ -464,23 +543,37 @@
           </div>
           <div class="rewards-visual">
             <div class="chest-wrap">
-              <img src="site-assets/reward-chest.png" alt="每日宝箱" class="chest-img" />
+              <div class="chest-3d">
+                <div class="chest-box"></div>
+                <div class="chest-lid"></div>
+                <div class="chest-glow-inner"></div>
+              </div>
               <div class="chest-glow"></div>
             </div>
             <div class="badge-wrap">
-              <img src="site-assets/unlock-badge.png" alt="成就徽章" class="badge-img" />
+              <div class="badge-3d">
+                <div class="badge-ring"></div>
+                <div class="badge-star">★</div>
+              </div>
               <div class="badge-glow"></div>
             </div>
-            <img src="site-assets/starlight-01.png" alt="星光" class="starlight sl1" />
-            <img src="site-assets/starlight-04.png" alt="星光" class="starlight sl2" />
-            <img src="site-assets/starlight-02.png" alt="星光" class="starlight sl3" />
+            <div class="star-particles">
+              <span class="sp1"></span>
+              <span class="sp2"></span>
+              <span class="sp3"></span>
+              <span class="sp4"></span>
+              <span class="sp5"></span>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- 技术实现 -->
       <section class="tech" id="tech">
-        <div class="tech-bg-glow"></div>
+        <video class="tech-video-bg" autoplay loop muted playsinline>
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
+        </video>
+        <div class="tech-overlay"></div>
         <div class="section-inner">
           <div class="section-header">
             <div class="section-tag">技术实现</div>
