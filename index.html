@@ -3,174 +3,401 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="星途自律舱是一款星球养成式自律打卡微信小程序，把每日行动转化为星球生态成长、星光奖励、宝箱与成就反馈。"
-    />
+    <meta name="description" content="星途自律舱是一款星球养成式自律打卡微信小程序，把每日行动转化为星球生态成长、星光奖励、宝箱与成就反馈。" />
     <title>星途自律舱 | 星球养成式自律打卡小程序</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Condiment&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="site-assets/styles.css" />
   </head>
   <body>
-    <div class="grain" aria-hidden="true"></div>
-    <header class="topbar liquid-glass">
-      <a class="brand" href="#top" aria-label="返回顶部"><span>星</span>星途自律舱</a>
+    <canvas id="starfield" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <span class="brand-icon">星</span>
+        <span class="brand-text">星途自律舱</span>
+      </a>
       <nav aria-label="页面导航">
-        <a href="#concept">Concept</a>
-        <a href="#features">System</a>
-        <a href="#ecozones">Zones</a>
-        <a href="#tech">Tech</a>
+        <a href="#concept">核心概念</a>
+        <a href="#features">功能体系</a>
+        <a href="#ecozones">生态区</a>
+        <a href="#growth">星球成长</a>
+        <a href="#tech">技术实现</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero section-frame">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="hero-copy">
-          <p class="script">Starlight discipline</p>
-          <h1>BEYOND CHECK-IN<br />BUILD YOUR PLANET</h1>
-          <p class="cn-title">把每天行动，养成一颗会生长的星球。</p>
-          <p class="lead">
-            星途自律舱把运动、饮食、学习、工作、计划、睡眠六类日常行动，转化为星光值、宝箱奖励、成就徽章和生态区成长。
+      <!-- 首屏 -->
+      <section class="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            微信小程序 · 星球养成式自律打卡
+          </div>
+          <h1>
+            <span class="line1">每一次行动</span>
+            <span class="line2">都在点亮你的星球</span>
+          </h1>
+          <p class="hero-desc">
+            运动、饮食、学习、工作、计划、睡眠——六大维度每日打卡，将自律转化为可视化的星球生态成长。完成行动，收获星光，解锁生态，见证从荒芜到繁荣的蜕变。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#features">查看功能设计</a>
-            <a class="button ghost" href="https://github.com/tl66666/xtzlc" target="_blank" rel="noreferrer">查看源码</a>
+            <a class="btn-primary" href="#features">探索功能</a>
+            <a class="btn-secondary" href="https://github.com/tl66666/xtzlc" target="_blank" rel="noreferrer">查看源码</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><strong>6</strong><span>生态维度</span></div>
+            <div class="stat"><strong>8</strong><span>星球等级</span></div>
+            <div class="stat"><strong>30+</strong><span>成就徽章</span></div>
           </div>
         </div>
-
-        <figure class="hero-planet">
-          <img src="site-assets/planet.png" alt="星途自律舱成长星球" />
-          <figcaption class="liquid-glass">
-            <strong>6 Zones</strong>
-            <span>运动 / 饮食 / 学习 / 工作 / 计划 / 睡眠</span>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="intro section-frame" id="concept">
-        <div class="intro-visual">
-          <img src="site-assets/planet-empty.png" alt="荒芜星球初始状态" />
-        </div>
-        <div class="intro-copy">
-          <p class="script">Hello! I'm your planet</p>
-          <h2>从荒芜到繁荣，由每次行动点亮。</h2>
-          <p>
-            项目不是单纯的打卡清单，而是围绕「目标设定、计划生成、当日行动、即时奖励、生态变化、数据复盘」构建的成长闭环。
-            用户完成一次行动，就会获得明确反馈：获得多少星光、点亮哪个区域、距离宝箱还有多远、下一步该做什么。
-          </p>
-        </div>
-      </section>
-
-      <section class="feature-scene section-frame" id="features">
-        <div class="section-head">
-          <p class="script">Feature system</p>
-          <h2>不是点一下完成，而是一次完整的成长反馈。</h2>
-        </div>
-        <div class="feature-grid">
-          <article class="liquid-glass">
-            <span>01</span>
-            <h3>目标与计划</h3>
-            <p>先选择成长节奏，再生成六类行动计划；也支持用户自己添加运动、饮食、学习等日常安排。</p>
-          </article>
-          <article class="liquid-glass">
-            <span>02</span>
-            <h3>六维打卡</h3>
-            <p>每类打卡对应一个生态区，不同习惯会推动不同建筑、装饰和光效出现。</p>
-          </article>
-          <article class="liquid-glass">
-            <span>03</span>
-            <h3>奖励弹窗</h3>
-            <p>完成后即时展示星光、宝箱进度和解锁变化，让用户不需要滑回顶部寻找反馈。</p>
-          </article>
-          <article class="liquid-glass">
-            <span>04</span>
-            <h3>宝箱与成就</h3>
-            <p>六项完成领取宝箱；连续打卡、首次点亮、完美一天会沉淀为成就徽章墙。</p>
-          </article>
-          <article class="liquid-glass">
-            <span>05</span>
-            <h3>星球生态</h3>
-            <p>首页是总览星球，点击进入六个生态区，查看建筑群、任务状态和成长记录。</p>
-          </article>
-          <article class="liquid-glass">
-            <span>06</span>
-            <h3>数据复盘</h3>
-            <p>通过热力图、趋势、连续天数和星光值，让自律不只停留在当天完成。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="collection section-frame" id="ecozones">
-        <div class="collection-head">
-          <div>
-            <p class="script">Collection of</p>
-            <h2>Space habits</h2>
+        <div class="hero-visual">
+          <div class="planet-container">
+            <img src="site-assets/planet.png" alt="星途自律舱成长星球" class="planet-main" />
+            <div class="planet-ring" aria-hidden="true"></div>
+            <div class="planet-moons" aria-hidden="true">
+              <span class="moon m1"></span>
+              <span class="moon m2"></span>
+              <span class="moon m3"></span>
+            </div>
           </div>
-          <a class="see-all" href="#tech">SEE<br /><span>ALL SYSTEMS</span></a>
-        </div>
-        <div class="eco-grid">
-          <figure>
-            <img src="site-assets/ecology-sport.jpg" alt="运动绿洲" />
-            <figcaption><strong>运动绿洲</strong><span>跑道、球场和花园</span></figcaption>
-          </figure>
-          <figure>
-            <img src="site-assets/ecology-diet.jpg" alt="饮食花园" />
-            <figcaption><strong>饮食花园</strong><span>果园、小屋和餐桌</span></figcaption>
-          </figure>
-          <figure>
-            <img src="site-assets/ecology-study.jpg" alt="学习天文台" />
-            <figcaption><strong>学习天文台</strong><span>图书馆与观测穹顶</span></figcaption>
-          </figure>
-          <figure>
-            <img src="site-assets/ecology-work.jpg" alt="工作基地" />
-            <figcaption><strong>工作基地</strong><span>办公楼、实验室和信号塔</span></figcaption>
-          </figure>
-          <figure>
-            <img src="site-assets/ecology-plan.jpg" alt="计划灯塔" />
-            <figcaption><strong>计划灯塔</strong><span>航线牌与任务广场</span></figcaption>
-          </figure>
-          <figure>
-            <img src="site-assets/ecology-sleep.jpg" alt="月光观测站" />
-            <figcaption><strong>月光观测站</strong><span>望远镜与月光花园</span></figcaption>
-          </figure>
+          <div class="planet-caption liquid-glass">
+            <strong>荒芜星球 · 初始状态</strong>
+            <span>通过每日打卡，逐步解锁六大生态区</span>
+          </div>
         </div>
       </section>
 
-      <section class="reward section-frame">
-        <div class="reward-copy">
-          <p class="script">Go beyond</p>
-          <h2>完成行动后，立刻看见奖励。</h2>
-          <p>
-            打卡反馈采用「星光结算 + 生态变化 + 宝箱进度 + 成就提示」组合，让用户知道自己不是只点了一个按钮，
-            而是真的推动星球向下一阶段生长。
-          </p>
-        </div>
-        <div class="reward-art">
-          <img class="chest" src="site-assets/reward-chest.png" alt="每日宝箱奖励" />
-          <img class="badge" src="site-assets/unlock-badge.png" alt="成就徽章" />
+      <!-- 核心概念 -->
+      <section class="concept" id="concept">
+        <div class="section-inner">
+          <div class="section-tag">核心概念</div>
+          <div class="concept-layout">
+            <div class="concept-visual">
+              <img src="site-assets/planet-empty.png" alt="荒芜星球初始状态" class="concept-planet" />
+              <div class="concept-orbit" aria-hidden="true"></div>
+            </div>
+            <div class="concept-text">
+              <h2>不是打卡清单<br />而是你的成长星球</h2>
+              <p class="concept-lead">
+                传统打卡应用只是勾选一个待办事项。星途自律舱围绕「目标设定 → 计划生成 → 当日行动 → 即时奖励 → 生态变化 → 数据复盘」构建完整成长闭环。
+              </p>
+              <div class="concept-steps">
+                <div class="step">
+                  <span class="step-num">01</span>
+                  <div class="step-body">
+                    <strong>设定目标</strong>
+                    <span>选择成长节奏，生成六类行动计划</span>
+                  </div>
+                </div>
+                <div class="step">
+                  <span class="step-num">02</span>
+                  <div class="step-body">
+                    <strong>完成打卡</strong>
+                    <span>每项行动即时获得星光值与生态反馈</span>
+                  </div>
+                </div>
+                <div class="step">
+                  <span class="step-num">03</span>
+                  <div class="step-body">
+                    <strong>见证成长</strong>
+                    <span>星球从荒芜逐步进化为繁荣生态</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="tech section-frame" id="tech">
-        <div class="section-head">
-          <p class="script">Implementation</p>
-          <h2>微信小程序 + 云开发 + 本地优先数据流。</h2>
+      <!-- 功能体系 -->
+      <section class="features" id="features">
+        <div class="section-inner">
+          <div class="section-header">
+            <div class="section-tag">功能体系</div>
+            <h2>完整的自律反馈系统</h2>
+            <p>每一次行动都有明确反馈，让用户知道自己不是只点了一个按钮，而是真的在推动星球生长。</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="feature-icon" style="--icon-color:#4ade80">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+              </div>
+              <h3>目标与计划</h3>
+              <p>先选择成长节奏，再生成六类行动计划；支持自定义添加运动、饮食、学习等日常安排。</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" style="--icon-color:#60a5fa">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h3>六维打卡</h3>
+              <p>每类打卡对应一个生态区，不同习惯会推动不同建筑、装饰和光效在星球上出现。</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" style="--icon-color:#fbbf24">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <h3>即时奖励</h3>
+              <p>完成后即时展示星光值、宝箱进度和解锁变化，反馈就在当前页面，无需寻找。</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" style="--icon-color:#f87171">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              </div>
+              <h3>宝箱与成就</h3>
+              <p>六项完成领取宝箱；连续打卡、首次点亮、完美一天会沉淀为成就徽章墙。</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" style="--icon-color:#a78bfa">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg>
+              </div>
+              <h3>星球生态</h3>
+              <p>首页是总览星球，点击进入六个生态区，查看建筑群、任务状态和成长记录。</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" style="--icon-color:#34d399">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </div>
+              <h3>数据复盘</h3>
+              <p>通过热力图、趋势曲线、连续天数和星光值统计，让自律不只停留在当天完成。</p>
+            </article>
+            <article class="feature-card wide">
+              <div class="feature-icon" style="--icon-color:#fb923c">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+              </div>
+              <h3>打卡提醒舱</h3>
+              <p>为每个生态区独立设置提醒时间，微信订阅消息准时推送，不再错过任何一次成长机会。支持自定义提醒文案和重复周期。</p>
+            </article>
+            <article class="feature-card wide">
+              <div class="feature-icon" style="--icon-color:#e879f9">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              </div>
+              <h3>心情日志</h3>
+              <p>每次打卡可记录当下心情与备注，长期追踪情绪与自律的关联，发现最适合自己的成长节奏。</p>
+            </article>
+          </div>
         </div>
-        <div class="tech-list">
-          <article><strong>原生小程序</strong><span>JavaScript / WXML / WXSS 构建核心页面和交互。</span></article>
-          <article><strong>微信云开发</strong><span>云函数处理登录、打卡提交、统计读取、资料更新和数据导出。</span></article>
-          <article><strong>本地优先</strong><span>本地 Storage 保证即时反馈，云端同步用于备份和恢复。</span></article>
-          <article><strong>资源分层</strong><span>大图和视频走云存储，主包保留压缩后的必要资源。</span></article>
+      </section>
+
+      <!-- 生态区展示 -->
+      <section class="ecozones" id="ecozones">
+        <div class="section-inner">
+          <div class="section-header">
+            <div class="section-tag">六大生态区</div>
+            <h2>每个习惯都有专属领地</h2>
+            <p>六类日常行动对应六个独特生态区，打卡越多，生态越繁荣。</p>
+          </div>
+          <div class="eco-grid">
+            <figure class="eco-card">
+              <img src="site-assets/ecology-sport.jpg" alt="运动绿洲" />
+              <figcaption>
+                <strong>运动绿洲</strong>
+                <span>跑道、球场和健身花园</span>
+              </figcaption>
+            </figure>
+            <figure class="eco-card">
+              <img src="site-assets/ecology-diet.jpg" alt="饮食花园" />
+              <figcaption>
+                <strong>饮食花园</strong>
+                <span>果园、小屋和健康餐桌</span>
+              </figcaption>
+            </figure>
+            <figure class="eco-card">
+              <img src="site-assets/ecology-study.jpg" alt="学习天文台" />
+              <figcaption>
+                <strong>学习天文台</strong>
+                <span>图书馆与知识观测穹顶</span>
+              </figcaption>
+            </figure>
+            <figure class="eco-card">
+              <img src="site-assets/ecology-work.jpg" alt="工作基地" />
+              <figcaption>
+                <strong>工作基地</strong>
+                <span>办公楼、实验室和信号塔</span>
+              </figcaption>
+            </figure>
+            <figure class="eco-card">
+              <img src="site-assets/ecology-plan.jpg" alt="计划灯塔" />
+              <figcaption>
+                <strong>计划灯塔</strong>
+                <span>航线牌与任务广场</span>
+              </figcaption>
+            </figure>
+            <figure class="eco-card">
+              <img src="site-assets/ecology-sleep.jpg" alt="月光观测站" />
+              <figcaption>
+                <strong>月光观测站</strong>
+                <span>望远镜与月光花园</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 星球成长 -->
+      <section class="growth" id="growth">
+        <div class="section-inner">
+          <div class="growth-visual" aria-hidden="true">
+            <div class="growth-glow"></div>
+          </div>
+          <div class="growth-content">
+            <div class="section-tag">星球成长</div>
+            <h2>从荒芜到繁荣<br />八个阶段见证蜕变</h2>
+            <p class="growth-desc">累计星光值推动星球进化，每个阶段都有独特的视觉表现和生态解锁。</p>
+            <div class="growth-timeline">
+              <div class="level active">
+                <span class="level-dot"></span>
+                <div class="level-info">
+                  <strong>荒芜星球</strong>
+                  <span>0 星光值 · 起点</span>
+                </div>
+              </div>
+              <div class="level">
+                <span class="level-dot"></span>
+                <div class="level-info">
+                  <strong>微光初现</strong>
+                  <span>100 星光值 · 第一缕光</span>
+                </div>
+              </div>
+              <div class="level">
+                <span class="level-dot"></span>
+                <div class="level-info">
+                  <strong>苔藓覆盖</strong>
+                  <span>300 星光值 · 生命萌芽</span>
+                </div>
+              </div>
+              <div class="level">
+                <span class="level-dot"></span>
+                <div class="level-info">
+                  <strong>溪流形成</strong>
+                  <span>600 星光值 · 水源涌现</span>
+                </div>
+              </div>
+              <div class="level">
+                <span class="level-dot"></span>
+                <div class="level-info">
+                  <strong>森林繁茂</strong>
+                  <span>1000 星光值 · 绿意盎然</span>
+                </div>
+              </div>
+              <div class="level">
+                <span class="level-dot"></span>
+                <div class="level-info">
+                  <strong>城市崛起</strong>
+                  <span>1500 星光值 · 文明建立</span>
+                </div>
+              </div>
+              <div class="level">
+                <span class="level-dot"></span>
+                <div class="level-info">
+                  <strong>科技之光</strong>
+                  <span>2200 星光值 · 未来降临</span>
+                </div>
+              </div>
+              <div class="level">
+                <span class="level-dot"></span>
+                <div class="level-info">
+                  <strong>星际文明</strong>
+                  <span>3000 星光值 · 终极形态</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 奖励展示 -->
+      <section class="rewards">
+        <div class="section-inner">
+          <div class="rewards-content">
+            <div class="section-tag">奖励机制</div>
+            <h2>完成行动<br />立刻看见回报</h2>
+            <p class="rewards-desc">打卡反馈采用「星光结算 + 生态变化 + 宝箱进度 + 成就提示」组合，让每一次自律都有仪式感。</p>
+            <div class="rewards-list">
+              <div class="reward-item">
+                <span class="reward-icon" style="--r-color:#fbbf24">&#9733;</span>
+                <div>
+                  <strong>星光值</strong>
+                  <span>每完成一项打卡获得 10-50 星光</span>
+                </div>
+              </div>
+              <div class="reward-item">
+                <span class="reward-icon" style="--r-color:#f87171">&#10003;</span>
+                <div>
+                  <strong>生态点亮</strong>
+                  <span>对应生态区出现新建筑或装饰</span>
+                </div>
+              </div>
+              <div class="reward-item">
+                <span class="reward-icon" style="--r-color:#a78bfa">&#9829;</span>
+                <div>
+                  <strong>宝箱进度</strong>
+                  <span>六项全部完成解锁每日宝箱</span>
+                </div>
+              </div>
+              <div class="reward-item">
+                <span class="reward-icon" style="--r-color:#4ade80">&#9733;</span>
+                <div>
+                  <strong>成就徽章</strong>
+                  <span>连续打卡、完美一天等获得徽章</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rewards-visual">
+            <img src="site-assets/reward-chest.png" alt="每日宝箱奖励" class="chest-img" />
+            <img src="site-assets/unlock-badge.png" alt="成就徽章" class="badge-img" />
+          </div>
+        </div>
+      </section>
+
+      <!-- 技术实现 -->
+      <section class="tech" id="tech">
+        <div class="section-inner">
+          <div class="section-header">
+            <div class="section-tag">技术实现</div>
+            <h2>微信小程序 + 云开发</h2>
+            <p>零服务器成本，完整前后端架构，本地优先的数据流设计。</p>
+          </div>
+          <div class="tech-grid">
+            <article class="tech-card">
+              <strong>原生小程序</strong>
+              <span>JavaScript / WXML / WXSS 构建核心页面与交互动画，Canvas 绘制星球与星空背景。</span>
+            </article>
+            <article class="tech-card">
+              <strong>微信云开发</strong>
+              <span>云函数处理登录、打卡提交、统计读取、资料更新和数据导出，零服务器运维成本。</span>
+            </article>
+            <article class="tech-card">
+              <strong>本地优先</strong>
+              <span>本地 Storage 保证即时反馈，云端同步用于备份和恢复，弱网环境下仍可正常使用。</span>
+            </article>
+            <article class="tech-card">
+              <strong>资源分层</strong>
+              <span>大图和视频走云存储，主包保留压缩后的必要资源，控制小程序体积在 2MB 以内。</span>
+            </article>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>星途自律舱</span>
-      <p>把每日行动，养成一颗会生长的星球。</p>
+      <div class="footer-main">
+        <div class="footer-brand">
+          <span class="brand-icon">星</span>
+          <strong>星途自律舱</strong>
+        </div>
+        <p>把每日行动，养成一颗会生长的星球。</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/tl66666/xtzlc" target="_blank" rel="noreferrer">GitHub 仓库</a>
+        <a href="#top">返回顶部</a>
+      </div>
     </footer>
+
+    <script src="site-assets/stars.js"></script>
   </body>
 </html>
