@@ -12,7 +12,6 @@
   </head>
   <body>
     <canvas id="starfield" aria-hidden="true"></canvas>
-    <div class="texture-overlay" aria-hidden="true"></div>
 
     <header class="topbar">
       <a class="brand" href="#top" aria-label="返回顶部">
@@ -28,25 +27,13 @@
       </nav>
     </header>
 
-    <!-- 社交图标 -->
-    <div class="social-icons">
-      <a href="mailto:" class="social-icon liquid-glass" aria-label="邮件">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      </a>
-      <a href="#" class="social-icon liquid-glass" aria-label="Twitter">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-      </a>
-      <a href="https://github.com/tl66666/xtzlc" target="_blank" class="social-icon liquid-glass" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-      </a>
-    </div>
-
     <main id="top">
       <!-- 首屏 Hero -->
       <section class="hero">
         <video class="hero-video-bg" autoplay loop muted playsinline poster="site-assets/hero-poster.jpg">
-          <source src="site-assets/hero-bg.mp4" type="video/mp4">
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
           <div class="hero-badge">
             <span class="badge-dot"></span>
@@ -56,7 +43,7 @@
             <span class="line1">每一次行动</span>
             <span class="line2">都在点亮你的星球</span>
           </h1>
-          <span class="hero-accent">Nft collection</span>
+          <span class="hero-accent">Star Path</span>
           <p class="hero-desc">
             运动、饮食、学习、工作、计划、睡眠——六大维度每日打卡，将自律转化为可视化的星球生态成长。
           </p>
@@ -72,6 +59,7 @@
         </div>
         <div class="hero-visual">
           <div class="planet-container">
+            <img src="星途自律舱/assets/images/planet-empty.jpg" alt="荒芜星球" class="planet-main" />
             <div class="planet-ring" aria-hidden="true"></div>
             <div class="planet-moons" aria-hidden="true">
               <span class="moon m1"></span>
@@ -89,11 +77,13 @@
       <!-- 核心概念 -->
       <section class="concept" id="concept">
         <video class="concept-video-bg" autoplay loop muted playsinline poster="site-assets/concept-poster.jpg">
-          <source src="site-assets/concept-bg.mp4" type="video/mp4">
+          <source src="https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8" type="application/x-mpegURL">
         </video>
+        <div class="concept-overlay"></div>
         <div class="section-inner">
           <div class="concept-layout">
             <div class="concept-visual">
+              <img src="星途自律舱/assets/images/planet-overview.jpg" alt="繁荣星球" class="concept-planet" />
               <span class="concept-accent">星途</span>
             </div>
             <div class="concept-text">
@@ -197,9 +187,7 @@
           </div>
           <div class="eco-grid">
             <figure class="eco-card liquid-glass">
-              <video class="eco-video" autoplay loop muted playsinline poster="site-assets/eco-sport-poster.jpg">
-                <source src="site-assets/eco-sport.mp4" type="video/mp4">
-              </video>
+              <img src="星途自律舱/assets/images/hub-sport.jpg" alt="运动绿洲" class="eco-img" />
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>运动绿洲</strong>
@@ -211,9 +199,7 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <video class="eco-video" autoplay loop muted playsinline poster="site-assets/eco-diet-poster.jpg">
-                <source src="site-assets/eco-diet.mp4" type="video/mp4">
-              </video>
+              <img src="site-assets/ecology-diet.jpg" alt="饮食花园" class="eco-img" />
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>饮食花园</strong>
@@ -225,9 +211,7 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <video class="eco-video" autoplay loop muted playsinline poster="site-assets/eco-study-poster.jpg">
-                <source src="site-assets/eco-study.mp4" type="video/mp4">
-              </video>
+              <img src="site-assets/ecology-study.jpg" alt="学习天文台" class="eco-img" />
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>学习天文台</strong>
@@ -239,9 +223,7 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <video class="eco-video" autoplay loop muted playsinline poster="site-assets/eco-work-poster.jpg">
-                <source src="site-assets/eco-work.mp4" type="video/mp4">
-              </video>
+              <img src="site-assets/ecology-work.jpg" alt="工作基地" class="eco-img" />
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>工作基地</strong>
@@ -253,9 +235,7 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <video class="eco-video" autoplay loop muted playsinline poster="site-assets/eco-plan-poster.jpg">
-                <source src="site-assets/eco-plan.mp4" type="video/mp4">
-              </video>
+              <img src="site-assets/ecology-plan.jpg" alt="计划灯塔" class="eco-img" />
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>计划灯塔</strong>
@@ -267,9 +247,7 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <video class="eco-video" autoplay loop muted playsinline poster="site-assets/eco-sleep-poster.jpg">
-                <source src="site-assets/eco-sleep.mp4" type="video/mp4">
-              </video>
+              <img src="site-assets/ecology-sleep.jpg" alt="月光观测站" class="eco-img" />
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>月光观测站</strong>
@@ -289,10 +267,10 @@
         <div class="section-inner">
           <div class="growth-visual" aria-hidden="true">
             <div class="growth-stages">
-              <div class="stage-img s1"></div>
-              <div class="stage-img s2"></div>
-              <div class="stage-img s3"></div>
-              <div class="stage-img s4"></div>
+              <img src="星途自律舱/assets/fx/onboarding/ignite-01.jpg" alt="荒芜" class="stage-img s1" />
+              <img src="星途自律舱/assets/fx/onboarding/ignite-10.jpg" alt="萌芽" class="stage-img s2" />
+              <img src="星途自律舱/assets/fx/onboarding/ignite-20.jpg" alt="成长" class="stage-img s3" />
+              <img src="星途自律舱/assets/fx/onboarding/ignite-30.jpg" alt="繁荣" class="stage-img s4 active" />
             </div>
             <div class="growth-glow"></div>
           </div>
@@ -365,8 +343,9 @@
       <!-- 奖励机制 -->
       <section class="rewards">
         <video class="rewards-video-bg" autoplay loop muted playsinline poster="site-assets/rewards-poster.jpg">
-          <source src="site-assets/rewards-bg.mp4" type="video/mp4">
+          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4">
         </video>
+        <div class="rewards-overlay"></div>
         <div class="section-inner">
           <div class="rewards-content">
             <span class="rewards-accent">Go beyond</span>
@@ -402,7 +381,10 @@
             </div>
           </div>
           <div class="rewards-visual">
-            <!-- 奖励视觉区域 - 由CSS动画填充 -->
+            <img src="星途自律舱/assets/images/reward-chest.png" alt="每日宝箱" class="chest-img" />
+            <img src="星途自律舱/assets/images/unlock-badge.png" alt="成就徽章" class="badge-img" />
+            <img src="星途自律舱/assets/fx/starlight-01.png" alt="星光" class="starlight sl1" />
+            <img src="星途自律舱/assets/fx/starlight-04.png" alt="星光" class="starlight sl2" />
           </div>
         </div>
       </section>
