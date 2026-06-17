@@ -30,7 +30,7 @@
     <main id="top">
       <!-- 首屏 Hero -->
       <section class="hero">
-        <video class="hero-video-bg" autoplay loop muted playsinline poster="site-assets/hero-poster.jpg">
+        <video class="hero-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260514_102933_4e8f73b5-775a-4179-b2fb-472f59063dcd.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -59,8 +59,10 @@
         </div>
         <div class="hero-visual">
           <div class="planet-container">
-            <img src="星途自律舱/assets/images/planet-empty.jpg" alt="荒芜星球" class="planet-main" />
+            <div class="planet-glow"></div>
+            <img src="site-assets/planet-empty.jpg" alt="荒芜星球" class="planet-main" />
             <div class="planet-ring" aria-hidden="true"></div>
+            <div class="planet-ring-outer" aria-hidden="true"></div>
             <div class="planet-moons" aria-hidden="true">
               <span class="moon m1"></span>
               <span class="moon m2"></span>
@@ -76,15 +78,22 @@
 
       <!-- 核心概念 -->
       <section class="concept" id="concept">
-        <video class="concept-video-bg" autoplay loop muted playsinline poster="site-assets/concept-poster.jpg">
-          <source src="https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8" type="application/x-mpegURL">
-        </video>
-        <div class="concept-overlay"></div>
+        <div class="concept-bg-gradients">
+          <div class="concept-glow-1"></div>
+          <div class="concept-glow-2"></div>
+        </div>
         <div class="section-inner">
           <div class="concept-layout">
             <div class="concept-visual">
-              <img src="星途自律舱/assets/images/planet-overview.jpg" alt="繁荣星球" class="concept-planet" />
+              <div class="concept-img-frame">
+                <div class="concept-img-glow"></div>
+                <img src="site-assets/planet-overview.jpg" alt="繁荣星球" class="concept-planet" />
+                <div class="concept-img-reflection"></div>
+              </div>
               <span class="concept-accent">星途</span>
+              <div class="concept-floating-dots">
+                <span></span><span></span><span></span><span></span>
+              </div>
             </div>
             <div class="concept-text">
               <h2>不是打卡清单<br />而是你的成长星球</h2>
@@ -121,6 +130,7 @@
 
       <!-- 功能体系 -->
       <section class="features" id="features">
+        <div class="features-bg-glow"></div>
         <div class="section-inner">
           <div class="features-header">
             <h2>功能<span class="accent">体系</span></h2>
@@ -132,46 +142,82 @@
           </div>
           <div class="feature-grid">
             <article class="feature-card liquid-glass">
-              <div class="feature-icon" style="--icon-color:#6FFF00">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-sport.jpg" alt="目标与计划" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
-              <h3>目标与计划</h3>
-              <p>选择成长节奏，生成六类行动计划</p>
+              <div class="feature-body">
+                <div class="feature-icon" style="--icon-color:#6FFF00">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                </div>
+                <h3>目标与计划</h3>
+                <p>选择成长节奏，生成六类行动计划</p>
+              </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-icon" style="--icon-color:#6FFF00">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-diet.jpg" alt="六维打卡" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
-              <h3>六维打卡</h3>
-              <p>每类打卡对应一个生态区</p>
+              <div class="feature-body">
+                <div class="feature-icon" style="--icon-color:#6FFF00">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3>六维打卡</h3>
+                <p>每类打卡对应一个生态区</p>
+              </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-icon" style="--icon-color:#6FFF00">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-study.jpg" alt="即时奖励" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
-              <h3>即时奖励</h3>
-              <p>完成后即时展示星光值与宝箱</p>
+              <div class="feature-body">
+                <div class="feature-icon" style="--icon-color:#6FFF00">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3>即时奖励</h3>
+                <p>完成后即时展示星光值与宝箱</p>
+              </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-icon" style="--icon-color:#6FFF00">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-work.jpg" alt="宝箱与成就" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
-              <h3>宝箱与成就</h3>
-              <p>连续打卡沉淀为成就徽章墙</p>
+              <div class="feature-body">
+                <div class="feature-icon" style="--icon-color:#6FFF00">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                </div>
+                <h3>宝箱与成就</h3>
+                <p>连续打卡沉淀为成就徽章墙</p>
+              </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-icon" style="--icon-color:#6FFF00">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-plan.jpg" alt="星球生态" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
-              <h3>星球生态</h3>
-              <p>点击进入六个生态区查看成长</p>
+              <div class="feature-body">
+                <div class="feature-icon" style="--icon-color:#6FFF00">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg>
+                </div>
+                <h3>星球生态</h3>
+                <p>点击进入六个生态区查看成长</p>
+              </div>
             </article>
             <article class="feature-card liquid-glass">
-              <div class="feature-icon" style="--icon-color:#6FFF00">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              <div class="feature-img-wrap">
+                <img src="site-assets/hub-sleep.jpg" alt="数据复盘" class="feature-img" />
+                <div class="feature-img-overlay"></div>
               </div>
-              <h3>数据复盘</h3>
-              <p>热力图、趋势曲线、连续天数统计</p>
+              <div class="feature-body">
+                <div class="feature-icon" style="--icon-color:#6FFF00">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <h3>数据复盘</h3>
+                <p>热力图、趋势曲线、连续天数统计</p>
+              </div>
             </article>
           </div>
         </div>
@@ -179,6 +225,7 @@
 
       <!-- 生态区 -->
       <section class="ecozones" id="ecozones">
+        <div class="ecozones-bg-glow"></div>
         <div class="section-inner">
           <div class="section-header">
             <div class="section-tag">六大生态区</div>
@@ -187,7 +234,10 @@
           </div>
           <div class="eco-grid">
             <figure class="eco-card liquid-glass">
-              <img src="星途自律舱/assets/images/hub-sport.jpg" alt="运动绿洲" class="eco-img" />
+              <div class="eco-img-wrap">
+                <img src="site-assets/ecology-sport.jpg" alt="运动绿洲" class="eco-img" />
+                <div class="eco-img-shine"></div>
+              </div>
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>运动绿洲</strong>
@@ -199,7 +249,10 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <img src="site-assets/ecology-diet.jpg" alt="饮食花园" class="eco-img" />
+              <div class="eco-img-wrap">
+                <img src="site-assets/ecology-diet.jpg" alt="饮食花园" class="eco-img" />
+                <div class="eco-img-shine"></div>
+              </div>
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>饮食花园</strong>
@@ -211,7 +264,10 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <img src="site-assets/ecology-study.jpg" alt="学习天文台" class="eco-img" />
+              <div class="eco-img-wrap">
+                <img src="site-assets/ecology-study.jpg" alt="学习天文台" class="eco-img" />
+                <div class="eco-img-shine"></div>
+              </div>
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>学习天文台</strong>
@@ -223,7 +279,10 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <img src="site-assets/ecology-work.jpg" alt="工作基地" class="eco-img" />
+              <div class="eco-img-wrap">
+                <img src="site-assets/ecology-work.jpg" alt="工作基地" class="eco-img" />
+                <div class="eco-img-shine"></div>
+              </div>
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>工作基地</strong>
@@ -235,7 +294,10 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <img src="site-assets/ecology-plan.jpg" alt="计划灯塔" class="eco-img" />
+              <div class="eco-img-wrap">
+                <img src="site-assets/ecology-plan.jpg" alt="计划灯塔" class="eco-img" />
+                <div class="eco-img-shine"></div>
+              </div>
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>计划灯塔</strong>
@@ -247,7 +309,10 @@
               </div>
             </figure>
             <figure class="eco-card liquid-glass">
-              <img src="site-assets/ecology-sleep.jpg" alt="月光观测站" class="eco-img" />
+              <div class="eco-img-wrap">
+                <img src="site-assets/ecology-sleep.jpg" alt="月光观测站" class="eco-img" />
+                <div class="eco-img-shine"></div>
+              </div>
               <div class="eco-overlay liquid-glass">
                 <div class="eco-info">
                   <strong>月光观测站</strong>
@@ -264,15 +329,32 @@
 
       <!-- 星球成长 -->
       <section class="growth" id="growth">
+        <div class="growth-bg-glow"></div>
         <div class="section-inner">
           <div class="growth-visual" aria-hidden="true">
             <div class="growth-stages">
-              <img src="星途自律舱/assets/fx/onboarding/ignite-01.jpg" alt="荒芜" class="stage-img s1" />
-              <img src="星途自律舱/assets/fx/onboarding/ignite-10.jpg" alt="萌芽" class="stage-img s2" />
-              <img src="星途自律舱/assets/fx/onboarding/ignite-20.jpg" alt="成长" class="stage-img s3" />
-              <img src="星途自律舱/assets/fx/onboarding/ignite-30.jpg" alt="繁荣" class="stage-img s4 active" />
+              <div class="stage-wrap">
+                <img src="site-assets/ignite-01.jpg" alt="荒芜" class="stage-img s1" />
+                <div class="stage-glow"></div>
+              </div>
+              <div class="stage-wrap">
+                <img src="site-assets/ignite-10.jpg" alt="萌芽" class="stage-img s2" />
+                <div class="stage-glow"></div>
+              </div>
+              <div class="stage-wrap">
+                <img src="site-assets/ignite-20.jpg" alt="成长" class="stage-img s3" />
+                <div class="stage-glow"></div>
+              </div>
+              <div class="stage-wrap">
+                <img src="site-assets/ignite-30.jpg" alt="繁荣" class="stage-img s4 active" />
+                <div class="stage-glow"></div>
+              </div>
             </div>
-            <div class="growth-glow"></div>
+            <div class="growth-orbits">
+              <span class="orbit o1"></span>
+              <span class="orbit o2"></span>
+              <span class="orbit o3"></span>
+            </div>
           </div>
           <div class="growth-content">
             <div class="section-tag">星球成长</div>
@@ -342,7 +424,7 @@
 
       <!-- 奖励机制 -->
       <section class="rewards">
-        <video class="rewards-video-bg" autoplay loop muted playsinline poster="site-assets/rewards-poster.jpg">
+        <video class="rewards-video-bg" autoplay loop muted playsinline>
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4">
         </video>
         <div class="rewards-overlay"></div>
@@ -381,16 +463,24 @@
             </div>
           </div>
           <div class="rewards-visual">
-            <img src="星途自律舱/assets/images/reward-chest.png" alt="每日宝箱" class="chest-img" />
-            <img src="星途自律舱/assets/images/unlock-badge.png" alt="成就徽章" class="badge-img" />
-            <img src="星途自律舱/assets/fx/starlight-01.png" alt="星光" class="starlight sl1" />
-            <img src="星途自律舱/assets/fx/starlight-04.png" alt="星光" class="starlight sl2" />
+            <div class="chest-wrap">
+              <img src="site-assets/reward-chest.png" alt="每日宝箱" class="chest-img" />
+              <div class="chest-glow"></div>
+            </div>
+            <div class="badge-wrap">
+              <img src="site-assets/unlock-badge.png" alt="成就徽章" class="badge-img" />
+              <div class="badge-glow"></div>
+            </div>
+            <img src="site-assets/starlight-01.png" alt="星光" class="starlight sl1" />
+            <img src="site-assets/starlight-04.png" alt="星光" class="starlight sl2" />
+            <img src="site-assets/starlight-02.png" alt="星光" class="starlight sl3" />
           </div>
         </div>
       </section>
 
       <!-- 技术实现 -->
       <section class="tech" id="tech">
+        <div class="tech-bg-glow"></div>
         <div class="section-inner">
           <div class="section-header">
             <div class="section-tag">技术实现</div>
@@ -399,20 +489,36 @@
           </div>
           <div class="tech-grid">
             <article class="tech-card liquid-glass">
+              <div class="tech-visual">
+                <div class="tech-orb"></div>
+                <span class="tech-label">JS</span>
+              </div>
               <strong>原生小程序</strong>
               <span>JavaScript / WXML / WXSS 构建核心页面与交互动画</span>
             </article>
             <article class="tech-card liquid-glass">
+              <div class="tech-visual">
+                <div class="tech-orb cloud"></div>
+                <span class="tech-label">云</span>
+              </div>
               <strong>微信云开发</strong>
               <span>云函数处理登录、打卡提交、统计读取</span>
             </article>
             <article class="tech-card liquid-glass">
+              <div class="tech-visual">
+                <div class="tech-orb storage"></div>
+                <span class="tech-label">DB</span>
+              </div>
               <strong>本地优先</strong>
               <span>本地 Storage 保证即时反馈，云端同步备份</span>
             </article>
             <article class="tech-card liquid-glass">
-              <strong>资源分层</strong>
-              <span>控制小程序体积在 2MB 以内</span>
+              <div class="tech-visual">
+                <div class="tech-orb canvas"></div>
+                <span class="tech-label">2D</span>
+              </div>
+              <strong>Canvas 渲染</strong>
+              <span>星球纹理与生态区采用 Canvas 2D 绘制</span>
             </article>
           </div>
         </div>
