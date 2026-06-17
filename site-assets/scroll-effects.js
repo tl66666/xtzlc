@@ -10,17 +10,19 @@
   let ticking = false;
 
   function updateParallax() {
-    const scrollY = window.pageYOffset;
+    var scrollY = window.pageYOffset;
+
     bgLayers.forEach(function (layer) {
-      const speed = 0.15;
-      const y = scrollY * speed;
-      layer.style.transform = 'translateY(' + y + 'px)';
+      // 使用 background-position-y 移动背景图内部，而非 transform 移动整个元素
+      // 避免 div 移位露出边缘空白
+      var speed = 0.08;
+      layer.style.backgroundPositionY = (scrollY * speed) + 'px';
     });
 
     // Hero video 微视差
-    const heroVideo = document.querySelector('.hero-video-bg');
+    var heroVideo = document.querySelector('.hero-video-bg');
     if (heroVideo) {
-      heroVideo.style.transform = 'translateY(' + (scrollY * 0.08) + 'px)';
+      heroVideo.style.transform = 'translateY(' + (scrollY * 0.05) + 'px) scale(1.05)';
     }
     ticking = false;
   }

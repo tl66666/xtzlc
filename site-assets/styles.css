@@ -142,7 +142,10 @@ section::before {
 
 /* ===== 背景图视差容器 ===== */
 .section-img-bg {
-  will-change: transform;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  will-change: background-position-y;
   transition: none;
 }
 

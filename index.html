@@ -318,20 +318,20 @@
           <div class="section-header" data-reveal>
             <div class="section-tag">技术实现</div>
             <h2>微信小程序 + 云开发</h2>
-            <p>零服务器成本，完整前后端架构，本地优先的数据流设计。</p>
+            <p>原生框架 + 微信云函数 + 云数据库 + 云存储，零服务器成本，完整前后端架构。</p>
           </div>
           <div class="tech-grid">
             <article class="tech-card liquid-glass" data-reveal data-delay="100">
-              <div class="tech-visual"><div class="tech-orb"></div><span class="tech-label">JS</span></div><strong>原生小程序</strong><span>JavaScript / WXML / WXSS 构建核心页面与交互动画</span>
+              <div class="tech-visual"><div class="tech-orb"></div><span class="tech-label">JS</span></div><strong>原生小程序框架</strong><span>WXML + WXSS + JS 构建7个页面，3个自定义组件（planet-canvas / checkin-card / progress-ring），模块化工具层（日期/存储/生态系统/奖励系统等）</span>
             </article>
             <article class="tech-card liquid-glass" data-reveal data-delay="180">
-              <div class="tech-visual"><div class="tech-orb cloud"></div><span class="tech-label">云</span></div><strong>微信云开发</strong><span>云函数处理登录、打卡提交、统计读取</span>
+              <div class="tech-visual"><div class="tech-orb cloud"></div><span class="tech-label">云</span></div><strong>微信云函数</strong><span>6个云函数：login登录、submitCheckin打卡提交、getDashboard数据看板、exportData导出、updateProfile资料更新、getAssetUrl资源获取</span>
             </article>
             <article class="tech-card liquid-glass" data-reveal data-delay="260">
-              <div class="tech-visual"><div class="tech-orb storage"></div><span class="tech-label">DB</span></div><strong>本地优先</strong><span>本地 Storage 保证即时反馈，云端同步备份</span>
+              <div class="tech-visual"><div class="tech-orb storage"></div><span class="tech-label">DB</span></div><strong>云数据库 + 本地优先</strong><span>本地 Storage 即时读写反馈，云端 MongoDB 异步同步；网络失败时自动降级为纯本地模式，数据不丢失</span>
             </article>
             <article class="tech-card liquid-glass" data-reveal data-delay="340">
-              <div class="tech-visual"><div class="tech-orb canvas"></div><span class="tech-label">2D</span></div><strong>Canvas 渲染</strong><span>星球纹理与生态区采用 Canvas 2D 绘制</span>
+              <div class="tech-visual"><div class="tech-orb canvas"></div><span class="tech-label">2D</span></div><strong>Canvas + 云存储 + 音频</strong><span>Canvas 2D 绘制星球纹理与生态指示器；星球贴图、生态图、引导图等静态资源托管于云存储 CDN；打卡成功/宝箱解锁触发音效反馈</span>
             </article>
           </div>
         </div>
