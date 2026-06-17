@@ -149,6 +149,26 @@ section::before {
   transition: none;
 }
 
+/* PC 端：保持原有高清 PNG 效果 */
+.concept .section-img-bg { background-image: url('bg-concept.png'); }
+.features .section-img-bg { background-image: url('bg-features.png'); }
+.ecozones .section-img-bg { background-image: url('bg-ecozones.png'); }
+.growth .section-img-bg { background-image: url('bg-growth.png'); }
+.rewards .section-img-bg,
+.tech .section-img-bg,
+.footer .section-img-bg { background-image: url('bg-rewards.png'); }
+
+/* 移动端：自动切换为压缩后的 JPG，加快加载 */
+@media (max-width: 768px) {
+  .concept .section-img-bg { background-image: url('bg-concept.jpg'); }
+  .features .section-img-bg { background-image: url('bg-features.jpg'); }
+  .ecozones .section-img-bg { background-image: url('bg-ecozones.jpg'); }
+  .growth .section-img-bg { background-image: url('bg-growth.jpg'); }
+  .rewards .section-img-bg,
+  .tech .section-img-bg,
+  .footer .section-img-bg { background-image: url('bg-rewards.jpg'); }
+}
+
 /* ===== 滚动进度条 ===== */
 .scroll-progress {
   position: fixed;
