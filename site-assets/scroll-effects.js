@@ -10,16 +10,13 @@
     var heroVideo = document.querySelector('.hero-video-bg');
     if (!heroVideo) return;
 
-    var fadeDuration = 180; // ms，与 CSS transition 一致
-    var fadeThreshold = 0.22; // 距离结尾多少秒开始淡出
-    var isFading = false;
     var isWeixin = /MicroMessenger/i.test(navigator.userAgent);
 
-    // 微信内置浏览器：切换为低码率 mobile 版，更容易加载和自动播放
+    // 微信内置浏览器：切换为低码率 loop mobile 版，更容易加载和自动播放
     if (isWeixin) {
       var source = heroVideo.querySelector('source');
-      if (source && source.src.indexOf('hero-bg-mobile.mp4') === -1) {
-        source.src = source.src.replace('hero-bg.mp4', 'hero-bg-mobile.mp4');
+      if (source && source.src.indexOf('hero-bg-loop-mobile.mp4') === -1) {
+        source.src = source.src.replace('hero-bg-loop.mp4', 'hero-bg-loop-mobile.mp4');
         heroVideo.load();
       }
     }
@@ -48,22 +45,7 @@
     heroVideo.addEventListener('loadedmetadata', tryPlay);
     heroVideo.addEventListener('canplay', tryPlay);
 
-    // 循环淡入淡出，消除首尾闪烁
-    heroVideo.addEventListener('timeupdate', function () {
-      if (isFading || !heroVideo.duration || !isFinite(heroVideo.duration)) return;
-
-      var remaining = heroVideo.duration - heroVideo.currentTime;
-      if (remaining <= fadeThreshold) {
-        isFading = true;
-        heroVideo.classList.add('loop-fade');
-
-        setTimeout(function () {
-          heroVideo.currentTime = 0;
-          heroVideo.classList.remove('loop-fade');
-          isFading = false;
-        }, fadeDuration);
-      }
-    });
+    // 视频已用 OpenCV 做首尾 crossfade 处理成无缝循环，无需 JS 过渡
   })();
 
   /* ===== 1. 视差背景滚动 ===== */
