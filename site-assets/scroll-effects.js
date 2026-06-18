@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  /* ===== 0. Hero 视频无缝循环 ===== */
+  /* ===== 0. Hero 视频无缝循环 + 微信兼容 ===== */
   (function setupHeroLoop() {
     var heroVideo = document.querySelector('.hero-video-bg');
     if (!heroVideo) return;
@@ -13,7 +13,42 @@
     var fadeDuration = 500; // ms，与 CSS transition 一致
     var fadeThreshold = 0.5; // 距离结尾多少秒开始淡出
     var isFading = false;
+    var isWeixin = /MicroMessenger/i.test(navigator.userAgent);
 
+    // 微信内置浏览器：切换为低码率 mobile 版，更容易加载和自动播放
+    if (isWeixin) {
+      var source = heroVideo.querySelector('source');
+      if (source && source.src.indexOf('hero-bg-mobile.mp4') === -1) {
+        source.src = source.src.replace('hero-bg.mp4', 'hero-bg-mobile.mp4');
+        heroVideo.load();
+      }
+    }
+
+    function tryPlay() {
+      var playPromise = heroVideo.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {
+          // 自动播放被阻止时，等待微信桥接 ready 再试
+        });
+      }
+    }
+
+    // 微信 JSBridge ready 后尝试播放
+    if (isWeixin && typeof window.WeixinJSBridge !== 'undefined') {
+      window.WeixinJSBridge.invoke('getNetworkType', {}, tryPlay);
+    } else if (document.addEventListener) {
+      document.addEventListener('WeixinJSBridgeReady', function () {
+        if (isWeixin && window.WeixinJSBridge) {
+          window.WeixinJSBridge.invoke('getNetworkType', {}, tryPlay);
+        }
+      }, false);
+    }
+
+    // 常规浏览器：loadedmetadata 后尝试播放
+    heroVideo.addEventListener('loadedmetadata', tryPlay);
+    heroVideo.addEventListener('canplay', tryPlay);
+
+    // 循环淡入淡出，消除首尾闪烁
     heroVideo.addEventListener('timeupdate', function () {
       if (isFading || !heroVideo.duration || !isFinite(heroVideo.duration)) return;
 
