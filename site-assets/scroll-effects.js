@@ -10,8 +10,8 @@
     var heroVideo = document.querySelector('.hero-video-bg');
     if (!heroVideo) return;
 
-    var fadeDuration = 500; // ms，与 CSS transition 一致
-    var fadeThreshold = 0.5; // 距离结尾多少秒开始淡出
+    var fadeDuration = 180; // ms，与 CSS transition 一致
+    var fadeThreshold = 0.22; // 距离结尾多少秒开始淡出
     var isFading = false;
     var isWeixin = /MicroMessenger/i.test(navigator.userAgent);
 

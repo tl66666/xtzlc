@@ -384,7 +384,7 @@ section::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.18s ease-out;
 }
 
 .hero-video-bg.loop-fade {
