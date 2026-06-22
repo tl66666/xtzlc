@@ -156,6 +156,7 @@ section::before {
 .growth .section-img-bg { background-image: url('bg-growth.png'); }
 .rewards .section-img-bg,
 .tech .section-img-bg,
+.try-miniapp .section-img-bg,
 .footer .section-img-bg { background-image: url('bg-rewards.png'); }
 
 /* 移动端：自动切换为压缩后的 JPG，加快加载 */
@@ -166,6 +167,7 @@ section::before {
   .growth .section-img-bg { background-image: url('bg-growth.jpg'); }
   .rewards .section-img-bg,
   .tech .section-img-bg,
+  .try-miniapp .section-img-bg,
   .footer .section-img-bg { background-image: url('bg-rewards.jpg'); }
 }
 
@@ -1197,6 +1199,155 @@ section::after {
   line-height: 1.6;
 }
 
+/* ===== 小程序体验入口 ===== */
+.try-miniapp {
+  position: relative;
+  z-index: 2;
+  padding: 120px 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(1,8,40,0.4) 0%, transparent 25%, transparent 75%, rgba(1,8,40,0.4) 100%);
+}
+
+.try-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) 380px;
+  gap: 70px;
+  align-items: center;
+}
+
+.try-copy h2 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 400;
+  line-height: 1.05;
+  margin-bottom: 18px;
+  max-width: 720px;
+}
+
+.try-copy p {
+  color: hsl(var(--muted-foreground));
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 620px;
+}
+
+.try-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.try-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  border: 1px solid hsl(var(--border));
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.try-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(111,255,0,0.3);
+}
+
+.miniapp-card {
+  position: relative;
+  min-height: 460px;
+  padding: 34px;
+  border-radius: 34px;
+  border: 1px solid hsl(var(--border));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(111,255,0,0.12), transparent 42%),
+    rgba(255,255,255,0.035);
+}
+
+.miniapp-card::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 28px;
+  border: 1px solid rgba(111,255,0,0.12);
+  pointer-events: none;
+}
+
+.miniapp-orbit {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(111,255,0,0.18);
+  transform: rotate(-18deg);
+  pointer-events: none;
+}
+
+.miniapp-orbit::before,
+.miniapp-orbit::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 14px var(--neon);
+}
+
+.miniapp-orbit::before {
+  top: 34px;
+  right: 54px;
+}
+
+.miniapp-orbit::after {
+  left: 42px;
+  bottom: 48px;
+  background: var(--accent-gold);
+  box-shadow: 0 0 14px var(--accent-gold);
+}
+
+.miniapp-card img {
+  position: relative;
+  z-index: 2;
+  width: min(258px, 78vw);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 24px;
+  padding: 12px;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.36);
+}
+
+.miniapp-card strong {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-top: 24px;
+  font-family: "Instrument Serif", serif;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.miniapp-card span {
+  position: relative;
+  z-index: 2;
+  margin-top: 6px;
+  color: hsl(var(--muted-foreground));
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+}
+
 /* ===== 页脚 ===== */
 .footer {
   position: relative;
@@ -1261,7 +1412,8 @@ section::after {
 @media (max-width: 1024px) {
   .concept-layout,
   .growth-layout,
-  .rewards-layout {
+  .rewards-layout,
+  .try-layout {
     grid-template-columns: 1fr;
     gap: 50px;
   }
@@ -1306,6 +1458,11 @@ section::after {
   .reward-showcase {
     width: 320px;
     height: 320px;
+  }
+
+  .miniapp-card {
+    max-width: 420px;
+    margin: 0 auto;
   }
 
   .reward-planet-comparison {
