@@ -1,4 +1,4 @@
-const { DIMENSION_MAP } = require('../../utils/constants');
+const { DIMENSIONS, DIMENSION_MAP } = require('../../utils/constants');
 const { formatDate } = require('../../utils/date');
 const { submitCheckin, getProfile } = require('../../utils/storage');
 const { getAssetBundle } = require('../../utils/assets');
@@ -186,17 +186,23 @@ Page({
     });
     const unlock = result.ecosystemUnlocks[0] || null;
     const achievement = result.unlocked[0] || null;
+    const completedCount = result.stats.today.completedCount || 0;
+    const nextDimension = DIMENSIONS.find((item) => !(result.stats.today.completedDimensions || []).includes(item.id));
     this.setData({
       running: false,
       payload,
       result: {
+        actionName: payload.customAction || payload.primary || this.data.actionTitle,
         starlight: result.record.starlight,
         totalStarlight: result.profile.totalStarlight,
         starCoins: result.profile.starCoins,
         unlockName: unlock ? unlock.name : '',
         unlockDesc: unlock ? unlock.desc : '本次行动已被记录，生态区进度已经推进。',
         achievementName: achievement ? achievement.name : '',
-        completedCount: result.stats.today.completedCount
+        completedCount,
+        chestProgress: Math.min(100, Math.round((completedCount / 6) * 100)),
+        chestLabel: completedCount >= 6 ? '今日宝箱已开启' : `今日已点亮 ${completedCount}/6`,
+        nextDimensionName: nextDimension ? nextDimension.name : ''
       },
       profile: result.profile
     });

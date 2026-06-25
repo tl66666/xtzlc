@@ -277,6 +277,37 @@
   font-weight: 900;
 }
 
+.result-progress {
+  position: relative;
+  margin-top: 18rpx;
+  padding: 16rpx;
+  border-radius: 18rpx;
+  background: rgba(244,240,231,0.68);
+}
+
+.result-progress-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12rpx;
+  color: rgba(23,32,51,0.62);
+  font-size: 20rpx;
+  font-weight: 900;
+}
+
+.result-track {
+  margin-top: 12rpx;
+  height: 8rpx;
+  overflow: hidden;
+  border-radius: 999rpx;
+  background: rgba(23,32,51,0.1);
+}
+
+.result-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f5c842, #8fd68f);
+}
+
 .result-unlock {
   position: relative;
   margin-top: 20rpx;

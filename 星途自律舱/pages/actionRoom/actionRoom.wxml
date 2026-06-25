@@ -63,8 +63,17 @@
     <view class="result-card">
       <view class="result-glow" style="background: {{dimension.color}};"></view>
       <view class="scan-label">星光结算</view>
-      <view class="result-title">{{room.roomName}}已记录</view>
+      <view class="result-title">{{result.actionName}}已记录</view>
       <view class="result-copy">+{{result.starlight}} 星光 · 今日已点亮 {{result.completedCount}}/6</view>
+      <view class="result-progress">
+        <view class="result-progress-head">
+          <text>{{result.chestLabel}}</text>
+          <text wx:if="{{result.nextDimensionName}}">下一个：{{result.nextDimensionName}}</text>
+        </view>
+        <view class="result-track">
+          <view class="result-fill" style="width: {{result.chestProgress}}%;"></view>
+        </view>
+      </view>
       <view class="result-unlock">
         <image wx:if="{{assets.unlockBadge}}" src="{{assets.unlockBadge}}" mode="aspectFit"></image>
         <view>

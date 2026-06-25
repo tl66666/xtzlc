@@ -106,7 +106,6 @@ Page({
     quickActions: [],
     customPlans: [],
     activePlans: [],
-    planInputVisible: false,
     rewardModal: null,
     dailyChest: { ready: false, claimed: false, label: '完成六类后开启', progress: 0 },
     rewardFrames: getAssetBundle().starlightFrames,
@@ -153,10 +152,12 @@ Page({
 
   buildDailyChest(stats) {
     const count = stats.today.completedCount || 0;
+    const remain = Math.max(0, 6 - count);
     return {
       ready: count >= 6,
       claimed: count >= 6,
-      label: count >= 6 ? '完美宝箱已开启' : `还差 ${6 - count} 类`,
+      label: count >= 6 ? '完美宝箱已开启' : `还差 ${remain} 类`,
+      remain,
       progress: Math.min(100, Math.round((count / 6) * 100))
     };
   },
@@ -271,10 +272,6 @@ Page({
     });
   },
 
-  togglePlanInput() {
-    this.setData({ planInputVisible: !this.data.planInputVisible });
-  },
-
   saveCurrentPlan() {
     if (!this.data.active) return;
     const title = (this.data.form.customAction || `${this.data.active.name}行动`).trim();
@@ -330,14 +327,21 @@ Page({
     const ecosystemUnlock = result.ecosystemUnlocks[0] || null;
     const achievement = result.unlocked[0] || null;
     const isPerfect = (result.stats.today.completedCount || 0) >= 6;
+    const completedCount = result.stats.today.completedCount || 0;
+    const nextDimension = DIMENSIONS.find((item) => !(result.stats.today.completedDimensions || []).includes(item.id));
     const rewardModal = {
       dimensionId: dimension.id,
       dimensionName: dimension.name,
       sceneName: dimension.sceneName,
       color: dimension.color,
+      actionName: payload.customAction || payload.primary || `${dimension.name}行动`,
       starlight: result.record.starlight,
       totalStarlight: result.profile.totalStarlight,
       starCoins: result.profile.starCoins,
+      completedCount,
+      chestProgress: Math.min(100, Math.round((completedCount / 6) * 100)),
+      chestLabel: isPerfect ? '今日宝箱已开启' : `今日已点亮 ${completedCount}/6`,
+      nextDimensionName: nextDimension ? nextDimension.name : '',
       ecosystemUnlockName: ecosystemUnlock ? ecosystemUnlock.name : '',
       ecosystemUnlockType: ecosystemUnlock ? ecosystemUnlock.type : '',
       ecosystemUnlockDesc: ecosystemUnlock ? ecosystemUnlock.desc : '这次行动已经化成星光，继续积累会让生态区出现更多建筑、道路、花园和灯光。',
