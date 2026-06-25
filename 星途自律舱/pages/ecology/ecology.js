@@ -101,6 +101,28 @@ Page({
     });
   },
 
+  goActionRoom(event) {
+    const templateId = event && event.currentTarget ? event.currentTarget.dataset.template : '';
+    const dimension = this.data.dimension || DIMENSION_MAP.sport;
+    const template = (this.data.templates || []).find((item) => item.id === templateId) || (this.data.templates || [])[0];
+    try {
+      wx.setStorageSync('star_cabin_pending_action', {
+        dimension: dimension.id,
+        payload: template ? {
+          ...(template.payload || {}),
+          customAction: template.title,
+          note: template.subtitle
+        } : {},
+        createdAt: Date.now()
+      });
+    } catch (error) {
+      console.warn('save pending action failed', error);
+    }
+    wx.navigateTo({
+      url: `/pages/actionRoom/actionRoom?dimension=${dimension.id}`
+    });
+  },
+
   onSceneImageLoad() {
     this.setData({
       hasSceneImage: true

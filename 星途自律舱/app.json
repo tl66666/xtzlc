@@ -3,6 +3,7 @@
     "pages/planet/planet",
     "pages/ecologyHub/ecologyHub",
     "pages/ecology/ecology",
+    "pages/actionRoom/actionRoom",
     "pages/checkin/checkin",
     "pages/stats/stats",
     "pages/profile/profile",

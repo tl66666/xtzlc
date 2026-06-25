@@ -1,0 +1,82 @@
+<view class="page action-room-page">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+
+  <view class="room-hero">
+    <image class="room-scene" src="{{sceneImage}}" mode="aspectFill"></image>
+    <view class="room-shade"></view>
+    <view class="room-topline">
+      <view>
+        <view class="scan-label">沉浸行动</view>
+        <view class="room-title">{{room.roomName}}</view>
+        <view class="room-guide">{{room.guide}}</view>
+      </view>
+      <view class="room-badge" style="color: {{dimension.color}};">{{dimension.name}}</view>
+    </view>
+  </view>
+
+  <view class="timer-panel cabin-panel">
+    <view class="timer-ring" style="border-color: {{dimension.color}};">
+      <view class="timer-text">{{timerText}}</view>
+      <view class="timer-sub">{{running ? '专注进行中' : '等待启动'}}</view>
+    </view>
+    <view class="timer-copy">
+      <view class="action-name">{{actionTitle}}</view>
+      <view class="muted action-desc">先进入场景完成真实行动，结束后再把成果结算成星光。</view>
+      <view class="timer-actions">
+        <view wx:if="{{!running}}" class="primary-control" bindtap="startFocus">{{elapsedSeconds ? '继续' : room.actionVerb}}</view>
+        <view wx:else class="primary-control pause" bindtap="pauseFocus">暂停</view>
+        <view class="minor-control" bindtap="resetFocus">重置</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="focus-panel cabin-panel">
+    <view class="scan-label">行动内容</view>
+    <view class="focus-title">你现在具体在做什么？</view>
+    <view class="label-row">
+      <view
+        wx:for="{{room.focusLabels}}"
+        wx:key="*this"
+        class="label-chip {{actionTitle === item ? 'active' : ''}}"
+        data-value="{{item}}"
+        bindtap="chooseFocusLabel"
+      >{{item}}</view>
+    </view>
+    <textarea
+      class="outcome-input"
+      value="{{outcome}}"
+      placeholder="完成后写一句结果，例如：刷完两道算法题 / 写完登录页 / 跑步 3 公里"
+      bindinput="inputOutcome"
+    ></textarea>
+    <view class="finish-button" style="background: {{dimension.color}};" bindtap="finishAction">{{room.finishVerb}}</view>
+  </view>
+
+  <view class="tip-panel">
+    <view class="tip-dot" style="background: {{dimension.color}};"></view>
+    <view>
+      <view class="tip-title">为什么要先进场景？</view>
+      <view class="muted tip-copy">真实使用时，打卡不是最后一步，而是行动结束后的结算。这样用户会更清楚自己完成了什么，也能让星球成长更有依据。</view>
+    </view>
+  </view>
+
+  <view wx:if="{{result}}" class="result-mask" catchtouchmove="noop">
+    <view class="result-card">
+      <view class="result-glow" style="background: {{dimension.color}};"></view>
+      <view class="scan-label">星光结算</view>
+      <view class="result-title">{{room.roomName}}已记录</view>
+      <view class="result-copy">+{{result.starlight}} 星光 · 今日已点亮 {{result.completedCount}}/6</view>
+      <view class="result-unlock">
+        <image wx:if="{{assets.unlockBadge}}" src="{{assets.unlockBadge}}" mode="aspectFit"></image>
+        <view>
+          <view class="unlock-name">{{result.unlockName || dimension.sceneName}}</view>
+          <view class="muted unlock-desc">{{result.unlockDesc}}</view>
+        </view>
+      </view>
+      <view wx:if="{{result.achievementName}}" class="achievement-pill">新成就：{{result.achievementName}}</view>
+      <view class="result-actions">
+        <view class="result-ghost" bindtap="goCheckin">继续行动</view>
+        <view class="result-primary" bindtap="goEcology">查看生态变化</view>
+      </view>
+    </view>
+  </view>
+</view>

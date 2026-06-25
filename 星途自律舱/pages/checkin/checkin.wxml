@@ -172,7 +172,8 @@
 
     <view class="action-buttons">
       <view class="save-button" bindtap="saveCurrentPlan">保存为我的计划</view>
-      <view class="primary-button submit-button" bindtap="submitActive">完成打卡</view>
+      <view class="room-button" bindtap="enterActionRoom">进入行动舱</view>
+      <view class="primary-button submit-button" bindtap="submitActive">快速完成</view>
     </view>
   </view>
 

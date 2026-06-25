@@ -301,6 +301,12 @@
   gap: 18rpx;
 }
 
+.panel-actions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 10rpx;
+}
+
 .panel-title {
   margin-top: 8rpx;
   font-size: 30rpx;
@@ -315,6 +321,11 @@
   background: #d9972f;
   font-size: 24rpx;
   font-weight: 900;
+}
+
+.panel-button.ghost {
+  color: #8f5b18;
+  background: rgba(245,200,66,0.16);
 }
 
 .template-list,

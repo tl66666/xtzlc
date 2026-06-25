@@ -292,6 +292,28 @@ Page({
     wx.showToast({ title: '已保存到我的计划', icon: 'none' });
   },
 
+  enterActionRoom() {
+    if (!this.data.active) return;
+    const customAction = (this.data.form.customAction || '').trim();
+    const payload = {
+      ...this.data.form,
+      customAction: customAction || `${this.data.form.primary} ${this.data.form.metric}`
+    };
+    try {
+      wx.setStorageSync('star_cabin_pending_action', {
+        dimension: this.data.active.id,
+        payload,
+        createdAt: Date.now()
+      });
+    } catch (error) {
+      console.warn('save pending action failed', error);
+    }
+    playTapFeedback();
+    wx.navigateTo({
+      url: `/pages/actionRoom/actionRoom?dimension=${this.data.active.id}`
+    });
+  },
+
   submitActive() {
     if (!this.data.active) return;
     const customAction = (this.data.form.customAction || '').trim();

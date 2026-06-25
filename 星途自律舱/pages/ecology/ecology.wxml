@@ -79,10 +79,13 @@
         <view class="scan-label">推荐行动</view>
         <view class="panel-title">用一次小行动升级这里</view>
       </view>
-      <view class="panel-button" bindtap="goCheckin">去打卡</view>
+      <view class="panel-actions">
+        <view class="panel-button ghost" bindtap="goCheckin">去打卡</view>
+        <view class="panel-button" bindtap="goActionRoom">进入场景</view>
+      </view>
     </view>
     <view class="template-list">
-      <view wx:for="{{templates}}" wx:key="id" class="template-card" bindtap="goCheckin">
+      <view wx:for="{{templates}}" wx:key="id" class="template-card" data-template="{{item.id}}" bindtap="goActionRoom">
         <view class="template-dot" style="background: {{dimension.color}};"></view>
         <view>
           <view class="template-title">{{item.title}}</view>
