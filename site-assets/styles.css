@@ -1665,9 +1665,10 @@ body {
   max-width: 400px;
   color: rgba(246, 250, 255, 0.8);
   font-size: 15px;
-  line-height: 1.7;
-  margin: 0 0 28px;
+  line-height: 1.8;
+  margin: 0 0 24px;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.5px;
 }
 
 .hero-badge {
@@ -1681,6 +1682,46 @@ body {
   margin-bottom: 22px;
 }
 
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 28px;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-stat .stat-num {
+  font-family: "Noto Serif SC", serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: #ffe27a;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(255, 226, 122, 0.2);
+}
+
+.hero-stat .stat-label {
+  font-size: 11px;
+  color: rgba(246, 250, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .hero-cta {
   min-width: auto;
   padding: 13px 28px;
@@ -1688,6 +1729,18 @@ body {
   color: #161103;
   background: #f4cf49;
   border-radius: 50px;
+}
+
+.hero-cta-ghost {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: rgba(246, 250, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.hero-cta-ghost:hover {
+  color: #ffe27a;
 }
 
 .section-img-bg {
@@ -1944,8 +1997,34 @@ body {
     text-align: center;
   }
 
+  .hero-stats {
+    justify-content: center;
+    gap: 14px;
+    margin: 0 0 24px;
+  }
+
+  .hero-stat .stat-num {
+    font-size: 22px;
+  }
+
+  .hero-stat .stat-label {
+    font-size: 10px;
+  }
+
+  .hero-stat-divider {
+    height: 26px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
   .hero-cta {
     padding: 12px 28px;
+    font-size: 13px;
+  }
+
+  .hero-cta-ghost {
     font-size: 13px;
   }
 
