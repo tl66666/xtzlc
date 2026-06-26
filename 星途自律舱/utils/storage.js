@@ -175,6 +175,15 @@ function saveGoal(goalId) {
   return goal;
 }
 
+function clearGoal() {
+  try {
+    wx.removeStorageSync(GOAL_KEY);
+  } catch (error) {
+    console.warn('remove goal failed', error);
+  }
+  return null;
+}
+
 function getOnboardingSeen() {
   return safeGet(ONBOARDING_KEY, false);
 }
@@ -198,6 +207,7 @@ function resetLocalData() {
     ONBOARDING_KEY,
     REMINDER_KEY,
     CUSTOM_PLANS_KEY,
+    PLAN_LOGS_KEY,
     PENDING_ACTION_KEY,
     'star_cabin_cloud_sync',
     'star_cabin_cloud_last_sync'
@@ -317,6 +327,7 @@ module.exports = {
   saveAchievements,
   getGoal,
   saveGoal,
+  clearGoal,
   getOnboardingSeen,
   saveOnboardingSeen,
   getReminder,

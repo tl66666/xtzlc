@@ -96,9 +96,12 @@
   <view class="cockpit-head" style="{{homeHeadStyle}}">
     <view class="user-line">
       <view class="avatar-small">星</view>
-      <view>
+      <view class="planet-title-block" bindtap="renamePlanet">
         <view class="scan-label">成长星球</view>
-        <view class="section-title">{{profile.planetName || '星途自律舱'}}</view>
+        <view class="planet-title-row">
+          <view class="section-title">{{profile.planetName || '星途自律舱'}}</view>
+          <view class="rename-chip">改名</view>
+        </view>
         <view class="muted subtitle">{{levelInfo.name || '荒芜星'}} · 你的自律正在让星球复苏</view>
       </view>
     </view>
@@ -190,6 +193,7 @@
           <view class="goal-select-dot"></view>
         </view>
       </view>
+      <view class="goal-clear-button" bindtap="clearCurrentGoal">暂时不设目标</view>
     </view>
   </view>
 

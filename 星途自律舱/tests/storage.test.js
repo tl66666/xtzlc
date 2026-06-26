@@ -125,3 +125,22 @@ test('resetLocalData removes profile, checkins, plans, plan logs, onboarding, an
   assert.equal(cache.has('star_cabin_future_cache'), false);
   assert.equal(cache.has('other_app_cache'), true);
 });
+
+test('profile planet name and current goal can be edited and cleared', () => {
+  const { storage } = loadStorageWithMockWx();
+
+  storage.saveProfile({
+    ...storage.getProfile(),
+    planetName: '晨光自律星'
+  });
+  assert.equal(storage.getProfile().planetName, '晨光自律星');
+
+  storage.saveGoal('balanced_life');
+  assert.equal(storage.getGoal().id, 'balanced_life');
+
+  storage.saveGoal('exam_boost');
+  assert.equal(storage.getGoal().id, 'exam_boost');
+
+  storage.clearGoal();
+  assert.equal(storage.getGoal(), null);
+});

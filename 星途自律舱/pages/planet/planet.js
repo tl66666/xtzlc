@@ -1,5 +1,5 @@
 const { DIMENSIONS, GOAL_PRESETS } = require('../../utils/constants');
-const { getProfile, saveProfile, listCheckins, getGoal, saveGoal, getOnboardingSeen, saveOnboardingSeen } = require('../../utils/storage');
+const { getProfile, saveProfile, listCheckins, getGoal, saveGoal, clearGoal: clearSavedGoal, getOnboardingSeen, saveOnboardingSeen } = require('../../utils/storage');
 const { formatDisplayDate } = require('../../utils/date');
 const { buildDashboardStats } = require('../../utils/stats');
 const { getGoalPreset, buildGoalProgress, getRecommendedTemplates } = require('../../utils/goals');
@@ -244,9 +244,31 @@ Page({
 
   renamePlanet() {
     wx.showModal({
-      title: '星球命名',
-      content: '第一版先使用默认星球名。后面接入弹窗输入后，可以在这里改名。',
-      showCancel: false
+      title: '给星球改名',
+      editable: true,
+      placeholderText: '例如：晨光自律星',
+      content: this.data.profile.planetName || '',
+      confirmText: '保存',
+      success: (res) => {
+        if (!res.confirm) return;
+        const planetName = (res.content || '').trim();
+        if (!planetName) {
+          wx.showToast({
+            title: '先写一个星球名',
+            icon: 'none'
+          });
+          return;
+        }
+        saveProfile({
+          ...getProfile(),
+          planetName
+        });
+        this.refresh();
+        wx.showToast({
+          title: '星球名已更新',
+          icon: 'none'
+        });
+      }
     });
   },
 
@@ -262,6 +284,18 @@ Page({
     });
     wx.showToast({
       title: '目标已设定',
+      icon: 'none'
+    });
+  },
+
+  clearCurrentGoal() {
+    clearSavedGoal();
+    this.refresh();
+    this.setData({
+      showGoalEditor: false
+    });
+    wx.showToast({
+      title: '目标已清除',
       icon: 'none'
     });
   },
