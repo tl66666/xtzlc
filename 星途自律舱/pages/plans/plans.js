@@ -308,6 +308,7 @@ Page({
         playTapFeedback();
         this.setData({ mode: 'list', result: null });
         this.refresh();
+        wx.showToast({ title: '计划已删除', icon: 'none' });
       }
     });
   },

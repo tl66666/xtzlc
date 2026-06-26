@@ -305,6 +305,7 @@ Page({
         deleteCustomPlan(id);
         this.setData({ planEditorVisible: false });
         this.refresh(true);
+        wx.showToast({ title: '计划已删除', icon: 'none' });
       }
     });
   },

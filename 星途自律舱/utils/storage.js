@@ -13,6 +13,7 @@ const ONBOARDING_KEY = 'star_cabin_onboarding';
 const REMINDER_KEY = 'star_cabin_reminder';
 const CUSTOM_PLANS_KEY = 'star_cabin_custom_plans';
 const PLAN_LOGS_KEY = 'star_cabin_plan_logs';
+const PENDING_ACTION_KEY = 'star_cabin_pending_action';
 
 function safeGet(key, fallback) {
   try {
@@ -189,7 +190,7 @@ function resetOnboardingSeen() {
 }
 
 function resetLocalData() {
-  [
+  const knownKeys = [
     PROFILE_KEY,
     CHECKINS_KEY,
     ACHIEVEMENTS_KEY,
@@ -197,8 +198,21 @@ function resetLocalData() {
     ONBOARDING_KEY,
     REMINDER_KEY,
     CUSTOM_PLANS_KEY,
-    PLAN_LOGS_KEY
-  ].forEach((key) => {
+    PENDING_ACTION_KEY,
+    'star_cabin_cloud_sync',
+    'star_cabin_cloud_last_sync'
+  ];
+  let keys = knownKeys;
+  try {
+    if (typeof wx.getStorageInfoSync === 'function') {
+      const info = wx.getStorageInfoSync();
+      const dynamicKeys = (info.keys || []).filter((key) => String(key).startsWith('star_cabin_'));
+      keys = Array.from(new Set([...knownKeys, ...dynamicKeys]));
+    }
+  } catch (error) {
+    console.warn('get storage info failed', error);
+  }
+  keys.forEach((key) => {
     try {
       wx.removeStorageSync(key);
     } catch (error) {
