@@ -1,4 +1,4 @@
-const { getProfile, saveProfile, listCheckins, listAchievements, getReminder, saveReminder, resetOnboardingSeen } = require('../../utils/storage');
+const { getProfile, saveProfile, listCheckins, listAchievements, getReminder, saveReminder, resetOnboardingSeen, resetLocalData } = require('../../utils/storage');
 const { getAssetBundle } = require('../../utils/assets');
 const { getCloudStatus, syncDashboardFromCloud, exportCloudData } = require('../../utils/cloudSync');
 
@@ -107,6 +107,28 @@ Page({
     resetOnboardingSeen();
     wx.switchTab({
       url: '/pages/planet/planet'
+    });
+  },
+
+  clearLocalData() {
+    wx.showModal({
+      title: '清除本地数据',
+      content: '会清空本机的星球、打卡、计划、成就、提醒和新手状态，不会删除云数据库。确定继续吗？',
+      confirmText: '清除',
+      confirmColor: '#b46d54',
+      success: (res) => {
+        if (!res.confirm) return;
+        resetLocalData();
+        wx.showToast({
+          title: '已清除本地数据',
+          icon: 'none'
+        });
+        setTimeout(() => {
+          wx.reLaunch({
+            url: '/pages/planet/planet'
+          });
+        }, 650);
+      }
     });
   },
 

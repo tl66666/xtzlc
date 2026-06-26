@@ -188,6 +188,26 @@ function resetOnboardingSeen() {
   return false;
 }
 
+function resetLocalData() {
+  [
+    PROFILE_KEY,
+    CHECKINS_KEY,
+    ACHIEVEMENTS_KEY,
+    GOAL_KEY,
+    ONBOARDING_KEY,
+    REMINDER_KEY,
+    CUSTOM_PLANS_KEY,
+    PLAN_LOGS_KEY
+  ].forEach((key) => {
+    try {
+      wx.removeStorageSync(key);
+    } catch (error) {
+      console.warn('remove storage failed', key, error);
+    }
+  });
+  return true;
+}
+
 function saveAchievements(items) {
   safeSet(ACHIEVEMENTS_KEY, items);
   return items;
@@ -293,5 +313,6 @@ module.exports = {
   listPlanLogs,
   markPlanCompletion,
   getPlanLogMap,
-  resetOnboardingSeen
+  resetOnboardingSeen,
+  resetLocalData
 };

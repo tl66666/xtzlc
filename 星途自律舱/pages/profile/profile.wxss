@@ -163,6 +163,14 @@
   border-bottom: 0;
 }
 
+.menu-row.danger .menu-title {
+  color: #b46d54;
+}
+
+.menu-row.danger .muted {
+  color: rgba(180,109,84,0.72);
+}
+
 .menu-title {
   margin-bottom: 8rpx;
   font-size: 28rpx;

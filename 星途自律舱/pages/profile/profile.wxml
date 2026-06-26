@@ -85,6 +85,13 @@
       </view>
       <view class="chevron">›</view>
     </view>
+    <view class="menu-row danger" bindtap="clearLocalData">
+      <view>
+        <view class="menu-title">清除本地数据</view>
+        <view class="muted">重置本机星球、计划、打卡、成就和新手状态</view>
+      </view>
+      <view class="chevron">›</view>
+    </view>
     <view class="menu-row" bindtap="exportCloud">
       <view>
         <view class="menu-title">导出云端数据</view>
