@@ -99,7 +99,7 @@
       </view>
     </view>
     <view class="portal-actions">
-      <view class="portal-primary" bindtap="createPlan">新建计划</view>
+      <view class="portal-primary" bindtap="startNextPlanFromPortal">{{planSummary.next ? '执行下一项' : '新建计划'}}</view>
       <view class="portal-secondary" bindtap="goPlanCenter">查看计划中心</view>
     </view>
   </view>

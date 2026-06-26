@@ -100,6 +100,7 @@ Page({
     payload: {},
     actionTitle: '',
     sceneImage: '',
+    sourceLabel: '自由行动',
     assets: getAssetBundle(),
     timerText: '00:00',
     elapsedSeconds: 0,
@@ -135,6 +136,7 @@ Page({
       payload,
       actionTitle,
       targetMinutes,
+      sourceLabel: payload.planId ? '来自计划' : '自由行动',
       outcome: payload.note || '',
       sceneImage: dimension.sceneImage,
       profile: getProfile()
@@ -253,6 +255,11 @@ Page({
         title: payload.customAction || payload.primary
       });
     }
+    try {
+      wx.removeStorageSync('star_cabin_pending_action');
+    } catch (error) {
+      console.warn('clear pending action failed', error);
+    }
     const unlock = result.ecosystemUnlocks[0] || null;
     const achievement = result.unlocked[0] || null;
     const completedCount = result.stats.today.completedCount || 0;
@@ -264,6 +271,7 @@ Page({
       payload,
       result: {
         actionName: payload.customAction || payload.primary || this.data.actionTitle,
+        sourceLabel: this.data.sourceLabel,
         spentTime: metric,
         startTimeText: this.data.startTimeText,
         outcome: payload.note,

@@ -335,6 +335,32 @@ Page({
     wx.navigateTo({ url: `/pages/plans/plans?mode=new&dimension=${this.data.activeId || 'study'}` });
   },
 
+  startNextPlanFromPortal() {
+    const next = this.data.planSummary.next;
+    if (!next) {
+      this.createPlan();
+      return;
+    }
+    const plan = listCustomPlans().find((item) => item.id === next.id) || next;
+    try {
+      wx.setStorageSync('star_cabin_pending_action', {
+        dimension: plan.dimension,
+        payload: {
+          ...(plan.payload || {}),
+          planId: plan.id,
+          customAction: plan.title || (plan.payload && plan.payload.customAction)
+        },
+        createdAt: Date.now()
+      });
+    } catch (error) {
+      console.warn('save pending plan action failed', error);
+    }
+    playTapFeedback();
+    wx.navigateTo({
+      url: `/pages/actionRoom/actionRoom?dimension=${plan.dimension}`
+    });
+  },
+
   enterActionRoom() {
     if (!this.data.active) return;
     const customAction = (this.data.form.customAction || '').trim();

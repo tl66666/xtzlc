@@ -19,6 +19,7 @@
       <view>
         <view class="scan-label">当前任务</view>
         <view class="action-name">{{actionTitle}}</view>
+        <view class="source-line">{{sourceLabel}} · {{dimension.sceneName}}</view>
       </view>
       <view class="phase-pill" style="color: {{dimension.color}};">{{phaseText}}</view>
     </view>
@@ -90,7 +91,7 @@
       <cover-image wx:if="{{assets.rewardChest}}" class="result-chest" src="{{assets.rewardChest}}"></cover-image>
       <cover-view class="scan-label">星光结算</cover-view>
       <cover-view class="result-title">{{result.actionName}} 已完成</cover-view>
-      <cover-view class="result-copy">从 {{result.startTimeText}} 开始，累计 {{result.spentTime}}</cover-view>
+      <cover-view class="result-copy">{{result.sourceLabel}} · 从 {{result.startTimeText}} 开始，累计 {{result.spentTime}}</cover-view>
       <cover-view class="result-outcome">{{result.outcome}}</cover-view>
 
       <cover-view class="result-numbers">

@@ -113,8 +113,10 @@ function saveCustomPlan(plan) {
 
 function deleteCustomPlan(id) {
   const nextPlans = listCustomPlans().filter((item) => item.id !== id);
+  const nextLogs = listPlanLogs().filter((item) => item.planId !== id);
   safeSet(CUSTOM_PLANS_KEY, nextPlans);
-  updateProfileToCloud({ customPlans: nextPlans });
+  safeSet(PLAN_LOGS_KEY, nextLogs);
+  updateProfileToCloud({ customPlans: nextPlans, planLogs: nextLogs.slice(0, 60) });
   return nextPlans;
 }
 

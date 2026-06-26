@@ -87,6 +87,13 @@
   font-weight: 900;
 }
 
+.source-line {
+  margin-top: 8rpx;
+  color: rgba(23,32,51,0.52);
+  font-size: 21rpx;
+  font-weight: 800;
+}
+
 .phase-pill {
   flex: 0 0 auto;
   padding: 12rpx 15rpx;
