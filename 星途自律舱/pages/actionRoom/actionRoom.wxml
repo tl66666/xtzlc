@@ -6,7 +6,7 @@
     <view class="room-shade"></view>
     <view class="room-topline">
       <view>
-        <view class="scan-label">沉浸行动</view>
+        <view class="scan-label light">沉浸行动</view>
         <view class="room-title">{{room.roomName}}</view>
         <view class="room-guide">{{room.guide}}</view>
       </view>
@@ -14,19 +14,43 @@
     </view>
   </view>
 
-  <view class="timer-panel cabin-panel">
-    <view class="timer-ring" style="border-color: {{dimension.color}};">
-      <view class="timer-text">{{timerText}}</view>
-      <view class="timer-sub">{{running ? '专注进行中' : '等待启动'}}</view>
-    </view>
-    <view class="timer-copy">
-      <view class="action-name">{{actionTitle}}</view>
-      <view class="muted action-desc">先进入场景完成真实行动，结束后再把成果结算成星光。</view>
-      <view class="timer-actions">
-        <view wx:if="{{!running}}" class="primary-control" bindtap="startFocus">{{elapsedSeconds ? '继续' : room.actionVerb}}</view>
-        <view wx:else class="primary-control pause" bindtap="pauseFocus">暂停</view>
-        <view class="minor-control" bindtap="resetFocus">重置</view>
+  <view class="cockpit cabin-panel">
+    <view class="cockpit-head">
+      <view>
+        <view class="scan-label">当前任务</view>
+        <view class="action-name">{{actionTitle}}</view>
       </view>
+      <view class="phase-pill" style="color: {{dimension.color}};">{{phaseText}}</view>
+    </view>
+
+    <view class="timer-core">
+      <view class="timer-orbit" style="border-color: {{dimension.color}};">
+        <view class="timer-text">{{timerText}}</view>
+        <view class="timer-sub">已投入时间</view>
+      </view>
+      <view class="timer-side">
+        <view class="time-row">
+          <view>
+            <view class="time-label">开始</view>
+            <view class="time-value">{{startTimeText}}</view>
+          </view>
+          <view>
+            <view class="time-label">目标</view>
+            <view class="time-value">{{targetMinutes}} 分钟</view>
+          </view>
+        </view>
+        <view class="status-copy">{{statusText}}</view>
+        <view class="target-track">
+          <view class="target-fill" style="width: {{targetProgress}}%; background: {{dimension.color}};"></view>
+        </view>
+        <view class="target-text">目标进度 {{targetProgress}}%</view>
+      </view>
+    </view>
+
+    <view class="control-row">
+      <view wx:if="{{!running}}" class="main-control" bindtap="startFocus">{{hasStarted ? '继续行动' : room.actionVerb}}</view>
+      <view wx:else class="main-control pause" bindtap="pauseFocus">暂停一下</view>
+      <view class="minor-control" bindtap="resetFocus">重置</view>
     </view>
   </view>
 
@@ -38,6 +62,7 @@
         wx:for="{{room.focusLabels}}"
         wx:key="*this"
         class="label-chip {{actionTitle === item ? 'active' : ''}}"
+        style="{{actionTitle === item ? 'background: ' + dimension.color : ''}}"
         data-value="{{item}}"
         bindtap="chooseFocusLabel"
       >{{item}}</view>
@@ -48,44 +73,65 @@
       placeholder="完成后写一句结果，例如：刷完两道算法题 / 写完登录页 / 跑步 3 公里"
       bindinput="inputOutcome"
     ></textarea>
-    <view class="finish-button" style="background: {{dimension.color}};" bindtap="finishAction">{{room.finishVerb}}</view>
   </view>
 
-  <view class="tip-panel">
-    <view class="tip-dot" style="background: {{dimension.color}};"></view>
-    <view>
-      <view class="tip-title">为什么要先进场景？</view>
-      <view class="muted tip-copy">真实使用时，打卡不是最后一步，而是行动结束后的结算。这样用户会更清楚自己完成了什么，也能让星球成长更有依据。</view>
+  <view class="room-spacer"></view>
+  <view class="finish-dock">
+    <view class="dock-info">
+      <view>{{timerText}}</view>
+      <text>{{hasStarted ? statusText : '开始后才会累计时间'}}</text>
     </view>
+    <view class="finish-button {{hasStarted ? '' : 'disabled'}}" style="background: {{hasStarted ? dimension.color : '#d7ccba'}};" bindtap="finishAction">{{room.finishVerb}}</view>
   </view>
 
-  <view wx:if="{{result}}" class="result-mask" catchtouchmove="noop">
-    <view class="result-card">
-      <view class="result-glow" style="background: {{dimension.color}};"></view>
-      <view class="scan-label">星光结算</view>
-      <view class="result-title">{{result.actionName}}已记录</view>
-      <view class="result-copy">+{{result.starlight}} 星光 · 今日已点亮 {{result.completedCount}}/6</view>
-      <view class="result-progress">
-        <view class="result-progress-head">
-          <text>{{result.chestLabel}}</text>
-          <text wx:if="{{result.nextDimensionName}}">下一个：{{result.nextDimensionName}}</text>
-        </view>
-        <view class="result-track">
-          <view class="result-fill" style="width: {{result.chestProgress}}%;"></view>
-        </view>
-      </view>
-      <view class="result-unlock">
-        <image wx:if="{{assets.unlockBadge}}" src="{{assets.unlockBadge}}" mode="aspectFit"></image>
-        <view>
-          <view class="unlock-name">{{result.unlockName || dimension.sceneName}}</view>
-          <view class="muted unlock-desc">{{result.unlockDesc}}</view>
-        </view>
-      </view>
-      <view wx:if="{{result.achievementName}}" class="achievement-pill">新成就：{{result.achievementName}}</view>
-      <view class="result-actions">
-        <view class="result-ghost" bindtap="goCheckin">继续行动</view>
-        <view class="result-primary" bindtap="goEcology">查看生态变化</view>
-      </view>
-    </view>
-  </view>
+  <cover-view wx:if="{{result}}" class="result-mask" catchtouchmove="noop">
+    <cover-view class="result-card">
+      <cover-view class="result-glow" style="background: {{dimension.color}};"></cover-view>
+      <cover-image wx:if="{{assets.rewardChest}}" class="result-chest" src="{{assets.rewardChest}}"></cover-image>
+      <cover-view class="scan-label">星光结算</cover-view>
+      <cover-view class="result-title">{{result.actionName}} 已完成</cover-view>
+      <cover-view class="result-copy">从 {{result.startTimeText}} 开始，累计 {{result.spentTime}}</cover-view>
+      <cover-view class="result-outcome">{{result.outcome}}</cover-view>
+
+      <cover-view class="result-numbers">
+        <cover-view>
+          <cover-view class="result-num">+{{result.starlight}}</cover-view>
+          <cover-view class="result-label">本次星光</cover-view>
+        </cover-view>
+        <cover-view>
+          <cover-view class="result-num">{{result.completedCount}}/6</cover-view>
+          <cover-view class="result-label">今日点亮</cover-view>
+        </cover-view>
+        <cover-view>
+          <cover-view class="result-num">{{result.starCoins}}</cover-view>
+          <cover-view class="result-label">星光币</cover-view>
+        </cover-view>
+      </cover-view>
+
+      <cover-view class="result-progress">
+        <cover-view class="result-progress-head">
+          <cover-view>{{result.chestLabel}}</cover-view>
+          <cover-view wx:if="{{result.nextDimensionName}}">下一类：{{result.nextDimensionName}}</cover-view>
+        </cover-view>
+        <cover-view class="result-track">
+          <cover-view class="result-fill" style="width: {{result.chestProgress}}%;"></cover-view>
+        </cover-view>
+      </cover-view>
+
+      <cover-view class="result-unlock">
+        <cover-image wx:if="{{assets.unlockBadge}}" src="{{assets.unlockBadge}}" class="unlock-icon"></cover-image>
+        <cover-view>
+          <cover-view class="unlock-name">{{result.unlockName || dimension.sceneName}}</cover-view>
+          <cover-view class="unlock-desc">{{result.unlockDesc}}</cover-view>
+        </cover-view>
+      </cover-view>
+
+      <cover-view wx:if="{{result.achievementName}}" class="achievement-pill">新成就：{{result.achievementName}}</cover-view>
+
+      <cover-view class="result-actions">
+        <cover-view class="result-ghost" bindtap="goCheckin">继续打卡</cover-view>
+        <cover-view class="result-primary" bindtap="goEcology">查看生态变化</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
 </view>
