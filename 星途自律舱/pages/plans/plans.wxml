@@ -1,0 +1,155 @@
+<view class="page plans-page">
+  <image class="page-bg" src="{{assets.appBg}}" mode="aspectFill"></image>
+
+  <cover-view wx:if="{{result}}" class="plan-result-layer" catchtouchmove="noop">
+    <cover-view class="plan-result-card">
+      <cover-image wx:if="{{assets.rewardChest}}" class="result-chest" src="{{assets.rewardChest}}"></cover-image>
+      <cover-view class="scan-label">今日计划完成</cover-view>
+      <cover-view class="result-title">{{result.title}}</cover-view>
+      <cover-view class="result-copy">{{result.subtitle}}</cover-view>
+      <cover-view class="result-stats">
+        <cover-view>
+          <cover-view class="result-num">+{{result.starlight}}</cover-view>
+          <cover-view class="result-label">星光</cover-view>
+        </cover-view>
+        <cover-view>
+          <cover-view class="result-num">{{result.completedCount}}/6</cover-view>
+          <cover-view class="result-label">今日点亮</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view wx:if="{{result.achievementName}}" class="result-badge">新成就：{{result.achievementName}}</cover-view>
+      <cover-view class="result-actions">
+        <cover-view class="result-ghost" bindtap="closeResult">继续计划</cover-view>
+        <cover-view class="result-solid" bindtap="goCheckin">回到打卡</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+
+  <view wx:if="{{mode === 'list'}}">
+    <view class="plans-head">
+      <view>
+        <view class="scan-label">计划中心</view>
+        <view class="section-title">把想做的事，安排成今天能开始的一步</view>
+        <view class="muted head-subtitle">{{dateDisplay.fullText}}</view>
+      </view>
+      <view class="new-plan-pill" bindtap="createPlan">新建</view>
+    </view>
+
+    <view class="plans-summary cabin-panel">
+      <view>
+        <view class="scan-label">今日执行</view>
+        <view class="summary-title">{{summary.done}}/{{summary.total}} 个计划完成</view>
+        <view class="muted summary-copy">{{summary.nextSubtitle}}</view>
+      </view>
+      <view class="summary-orb">
+        <view>{{summary.total ? summary.done : 0}}</view>
+        <text>完成</text>
+      </view>
+    </view>
+
+    <view class="next-card cabin-panel" wx:if="{{summary.total}}">
+      <view>
+        <view class="scan-label">下一步推荐</view>
+        <view class="next-title">{{summary.nextTitle}}</view>
+      </view>
+      <view class="next-button" bindtap="createPlan">加一个</view>
+    </view>
+
+    <view wx:if="{{!plans.length}}" class="empty-state cabin-panel">
+      <view class="empty-title">还没有计划</view>
+      <view class="muted empty-copy">先写一个今天会真正执行的行动，比如“19:30 刷算法题 45 分钟”。之后可以直接进入行动舱计时。</view>
+      <view class="primary-button empty-button" bindtap="createPlan">创建第一个计划</view>
+    </view>
+
+    <view class="plan-list">
+      <view wx:for="{{plans}}" wx:key="id" class="plan-item cabin-panel {{item.doneToday ? 'done' : ''}}">
+        <view class="plan-item-top">
+          <view class="dimension-tag" style="background: {{item.color}};">
+            <image src="{{item.icon}}" mode="aspectFit"></image>
+          </view>
+          <view class="plan-copy">
+            <view class="plan-title">{{item.title}}</view>
+            <view class="muted plan-desc">{{item.summary}}</view>
+            <view class="plan-meta">{{item.reminderText}} · {{item.dimensionName}}</view>
+          </view>
+          <view class="plan-status {{item.doneToday ? 'is-done' : ''}}">{{item.doneToday ? '已完成' : '待执行'}}</view>
+        </view>
+        <view class="plan-actions">
+          <view class="plan-action primary" data-id="{{item.id}}" bindtap="startActionRoom">进入行动舱</view>
+          <view class="plan-action" data-id="{{item.id}}" bindtap="completeToday">{{item.doneToday ? '已记录' : '今日完成'}}</view>
+          <view class="plan-action ghost" data-id="{{item.id}}" bindtap="openEditor">编辑</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="editor-page">
+    <view class="editor-head">
+      <view class="back-pill" bindtap="backToList">返回</view>
+      <view>
+        <view class="scan-label">计划编辑</view>
+        <view class="section-title">{{draft.id ? '调整这个计划' : '新建一个可执行计划'}}</view>
+      </view>
+    </view>
+
+    <view class="editor-card cabin-panel">
+      <view class="field-block">
+        <view class="field-label">计划名称</view>
+        <input class="editor-input" value="{{draft.title}}" placeholder="例如：晚饭后背 30 个单词" bindinput="inputTitle" />
+      </view>
+
+      <view class="field-block">
+        <view class="field-label">归属生态区</view>
+        <view class="dimension-grid">
+          <view
+            wx:for="{{dimensions}}"
+            wx:key="id"
+            class="dimension-choice {{draft.dimension === item.id ? 'active' : ''}}"
+            style="border-color: {{draft.dimension === item.id ? item.color : 'rgba(23,32,51,0.08)'}};"
+            data-id="{{item.id}}"
+            bindtap="selectDimension"
+          >
+            <image src="{{item.icon}}" mode="aspectFit"></image>
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="field-block">
+        <view class="field-label">今天要完成什么</view>
+        <input class="editor-input" value="{{draft.action}}" placeholder="写成具体动作，不要只写“学习”" bindinput="inputAction" />
+      </view>
+
+      <view class="field-block two-cols">
+        <view>
+          <view class="field-label">完成量</view>
+          <input class="editor-input" value="{{draft.metric}}" placeholder="45 分钟 / 3 页 / 1 轮" bindinput="inputMetric" />
+        </view>
+        <view>
+          <view class="field-label">提醒时间</view>
+          <picker mode="time" value="{{draft.reminderTime}}" bindchange="changeTime">
+            <view class="time-input">{{draft.reminderTime}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="reminder-row">
+        <view>
+          <view class="field-label">每日提醒</view>
+          <view class="muted">保存后会在计划卡片展示，方便按时间执行。</view>
+        </view>
+        <switch checked="{{draft.reminderEnabled}}" color="#F5C842" bindchange="toggleReminder" />
+      </view>
+
+      <view class="field-block">
+        <view class="field-label">备注</view>
+        <textarea class="editor-textarea" value="{{draft.note}}" placeholder="可写执行要求、地点、材料或验收标准" bindinput="inputNote"></textarea>
+      </view>
+
+      <view class="editor-actions">
+        <view wx:if="{{draft.id}}" class="delete-button" data-id="{{draft.id}}" bindtap="removePlan">删除</view>
+        <view class="primary-button save-plan-button" bindtap="saveDraft">保存计划</view>
+      </view>
+    </view>
+  </view>
+</view>

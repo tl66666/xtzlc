@@ -1,6 +1,6 @@
 const { DIMENSIONS, DIMENSION_MAP } = require('../../utils/constants');
 const { formatDate } = require('../../utils/date');
-const { submitCheckin, getProfile } = require('../../utils/storage');
+const { submitCheckin, getProfile, markPlanCompletion } = require('../../utils/storage');
 const { getAssetBundle } = require('../../utils/assets');
 const { playSound, playTapFeedback } = require('../../utils/sound');
 
@@ -184,6 +184,13 @@ Page({
       date: formatDate(),
       payload
     });
+    if (payload.planId) {
+      markPlanCompletion(payload.planId, formatDate(), {
+        checkinId: result.record.id,
+        dimension: dimension.id,
+        title: payload.customAction || payload.primary
+      });
+    }
     const unlock = result.ecosystemUnlocks[0] || null;
     const achievement = result.unlocked[0] || null;
     const completedCount = result.stats.today.completedCount || 0;

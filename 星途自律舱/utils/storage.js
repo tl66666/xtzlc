@@ -12,6 +12,7 @@ const GOAL_KEY = 'star_cabin_goal';
 const ONBOARDING_KEY = 'star_cabin_onboarding';
 const REMINDER_KEY = 'star_cabin_reminder';
 const CUSTOM_PLANS_KEY = 'star_cabin_custom_plans';
+const PLAN_LOGS_KEY = 'star_cabin_plan_logs';
 
 function safeGet(key, fallback) {
   try {
@@ -95,6 +96,9 @@ function saveCustomPlan(plan) {
     title: plan.title,
     dimension: plan.dimension,
     payload: plan.payload || {},
+    reminderEnabled: plan.reminderEnabled !== false,
+    reminderTime: plan.reminderTime || '19:30',
+    repeat: plan.repeat || '每天',
     createdAt: plan.createdAt || now,
     updatedAt: now
   };
@@ -112,6 +116,39 @@ function deleteCustomPlan(id) {
   safeSet(CUSTOM_PLANS_KEY, nextPlans);
   updateProfileToCloud({ customPlans: nextPlans });
   return nextPlans;
+}
+
+function listPlanLogs() {
+  return safeGet(PLAN_LOGS_KEY, []);
+}
+
+function markPlanCompletion(planId, date = formatDate(), payload = {}) {
+  const logs = listPlanLogs();
+  const createdAt = new Date().toISOString();
+  const nextLog = {
+    id: `${date}-${planId}`,
+    planId,
+    date,
+    done: true,
+    payload,
+    completedAt: createdAt
+  };
+  const nextLogs = [
+    nextLog,
+    ...logs.filter((item) => !(item.planId === planId && item.date === date))
+  ].slice(0, 180);
+  safeSet(PLAN_LOGS_KEY, nextLogs);
+  updateProfileToCloud({ planLogs: nextLogs.slice(0, 60) });
+  return nextLog;
+}
+
+function getPlanLogMap(date = formatDate()) {
+  return listPlanLogs()
+    .filter((item) => item.date === date && item.done)
+    .reduce((map, item) => {
+      map[item.planId] = item;
+      return map;
+    }, {});
 }
 
 function listCheckins() {
@@ -251,5 +288,8 @@ module.exports = {
   listCustomPlans,
   saveCustomPlan,
   deleteCustomPlan,
+  listPlanLogs,
+  markPlanCompletion,
+  getPlanLogMap,
   resetOnboardingSeen
 };

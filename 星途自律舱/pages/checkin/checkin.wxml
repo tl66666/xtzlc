@@ -79,6 +79,31 @@
     </view>
   </view>
 
+  <view class="plan-portal cabin-panel">
+    <view class="plan-portal-top">
+      <view>
+        <view class="scan-label">计划中心</view>
+        <view class="portal-title">先定计划，再进入行动舱</view>
+        <view class="muted portal-desc">{{planSummary.nextSubtitle}}</view>
+      </view>
+      <view class="portal-count">
+        <view>{{planSummary.done}}/{{planSummary.total}}</view>
+        <text>今日计划</text>
+      </view>
+    </view>
+    <view class="portal-next" wx:if="{{planSummary.next}}">
+      <view class="portal-dot" style="background: {{planSummary.next.color}};"></view>
+      <view class="portal-next-copy">
+        <view>{{planSummary.nextTitle}}</view>
+        <text>{{planSummary.next.summary}}</text>
+      </view>
+    </view>
+    <view class="portal-actions">
+      <view class="portal-primary" bindtap="createPlan">新建计划</view>
+      <view class="portal-secondary" bindtap="goPlanCenter">查看计划中心</view>
+    </view>
+  </view>
+
   <view class="dimension-board cabin-panel">
     <view class="board-head">
       <view>
@@ -113,9 +138,18 @@
     <view class="panel-top">
       <view>
         <view class="scan-label">{{active.name}}行动</view>
-        <view class="panel-title">写下这次要完成什么</view>
+        <view class="panel-title">先进入行动舱，再结算星光</view>
       </view>
-      <view class="compact-state">{{activePlans.length}} 个常用计划</view>
+      <view class="compact-state">{{active.sceneName}}</view>
+    </view>
+
+    <view class="room-entry-card" style="border-color: {{active.color}};" bindtap="enterActionRoom">
+      <view class="room-entry-main">
+        <view class="room-entry-kicker">推荐主流程</view>
+        <view class="room-entry-title">进入{{active.name}}行动舱</view>
+        <view class="room-entry-desc">计时专注、记录结果，完成后立即结算星光、生态解锁和宝箱进度。</view>
+      </view>
+      <view class="room-entry-action">开始</view>
     </view>
 
     <view wx:if="{{activePlans.length}}" class="saved-plan-strip">
@@ -124,7 +158,7 @@
           <view wx:for="{{activePlans}}" wx:key="id" class="plan-card compact" data-id="{{item.id}}" bindtap="usePlan" bindlongpress="deletePlan">
             <view class="plan-dot" style="background: {{item.color}};"></view>
             <view class="plan-title">{{item.title}}</view>
-            <view class="muted plan-summary">{{item.summary}}</view>
+            <view class="muted plan-summary">{{item.reminderLabel}} · {{item.doneToday ? '今日已完成' : '待执行'}}</view>
           </view>
         </view>
       </scroll-view>
@@ -172,32 +206,9 @@
     <textarea class="note-input" value="{{form.note}}" placeholder="可选：完成后想记录的结果或感受" bindinput="inputNote"></textarea>
 
     <view class="action-buttons">
-      <view class="save-button" bindtap="saveCurrentPlan">保存计划</view>
-      <view class="room-button" bindtap="enterActionRoom">进入行动舱</view>
-      <view class="primary-button submit-button" bindtap="submitActive">立即完成</view>
+      <view class="save-button" bindtap="saveCurrentPlan">保存为计划</view>
+      <view class="primary-button submit-button" bindtap="submitActive">快速完成</view>
     </view>
   </view>
 
-  <view class="plan-panel cabin-panel">
-    <view class="board-head">
-      <view>
-        <view class="scan-label">我的计划库</view>
-        <view class="board-title">下次直接复用</view>
-      </view>
-      <view class="muted">长按删除</view>
-    </view>
-    <scroll-view wx:if="{{customPlans.length}}" scroll-x class="plan-scroll">
-      <view class="plan-row">
-        <view wx:for="{{customPlans}}" wx:key="id" class="plan-card" data-id="{{item.id}}" bindtap="usePlan" bindlongpress="deletePlan">
-          <view class="plan-meta">
-            <view class="plan-dot" style="background: {{item.color}};"></view>
-            <view class="plan-dimension">{{item.dimensionName}}</view>
-          </view>
-          <view class="plan-title">{{item.title}}</view>
-          <view class="muted plan-summary">{{item.summary}}</view>
-        </view>
-      </view>
-    </scroll-view>
-    <view wx:else class="empty-plan">把常做的学习、工作、运动计划保存下来，下次打卡时点一下就能进入行动舱。</view>
-  </view>
 </view>

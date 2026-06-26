@@ -97,6 +97,116 @@
   background: linear-gradient(90deg, #f5c842, #8fd68f);
 }
 
+.plan-portal {
+  margin-top: 22rpx;
+  padding: 24rpx;
+  border-color: rgba(217,151,47,0.18);
+}
+
+.plan-portal-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.portal-title {
+  margin-top: 8rpx;
+  color: #172033;
+  font-size: 31rpx;
+  line-height: 1.24;
+  font-weight: 900;
+}
+
+.portal-desc {
+  margin-top: 9rpx;
+  font-size: 22rpx;
+  line-height: 1.45;
+}
+
+.portal-count {
+  width: 116rpx;
+  height: 116rpx;
+  flex: 0 0 116rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 34rpx;
+  color: #9a651f;
+  background: linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,238,181,0.78));
+  box-shadow: inset 0 -10rpx 28rpx rgba(154,101,31,0.08);
+  font-size: 31rpx;
+  font-weight: 900;
+}
+
+.portal-count text {
+  margin-top: 3rpx;
+  color: rgba(23,32,51,0.48);
+  font-size: 18rpx;
+}
+
+.portal-next {
+  margin-top: 18rpx;
+  padding: 16rpx;
+  display: flex;
+  align-items: center;
+  gap: 13rpx;
+  border-radius: 20rpx;
+  background: rgba(255,255,255,0.58);
+}
+
+.portal-dot {
+  width: 22rpx;
+  height: 22rpx;
+  flex: 0 0 22rpx;
+  border-radius: 50%;
+}
+
+.portal-next-copy {
+  min-width: 0;
+  color: #172033;
+  font-size: 24rpx;
+  font-weight: 900;
+}
+
+.portal-next-copy text {
+  display: block;
+  margin-top: 5rpx;
+  color: rgba(23,32,51,0.55);
+  font-size: 20rpx;
+  font-weight: 700;
+}
+
+.portal-actions {
+  margin-top: 18rpx;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12rpx;
+}
+
+.portal-primary,
+.portal-secondary {
+  height: 78rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 900;
+}
+
+.portal-primary {
+  color: #151006;
+  background: #f5c842;
+  box-shadow: 0 12rpx 26rpx rgba(217,151,47,0.16);
+}
+
+.portal-secondary {
+  color: #8f5b18;
+  background: rgba(245,200,66,0.12);
+}
+
 .dimension-board,
 .action-panel,
 .plan-panel {
@@ -198,6 +308,80 @@
 
 .saved-plan-strip {
   margin-top: 18rpx;
+}
+
+.room-entry-card {
+  position: relative;
+  margin-top: 22rpx;
+  min-height: 178rpx;
+  box-sizing: border-box;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  overflow: hidden;
+  border: 1rpx solid rgba(217,151,47,0.24);
+  border-radius: 28rpx;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(245,200,66,0.26), transparent 34%),
+    linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,244,207,0.82));
+  box-shadow: 0 22rpx 46rpx rgba(91,75,45,0.14);
+}
+
+.room-entry-card::after {
+  content: "";
+  position: absolute;
+  right: -58rpx;
+  top: -70rpx;
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 50%;
+  background: rgba(245,200,66,0.25);
+  opacity: 0.7;
+}
+
+.room-entry-main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.room-entry-kicker {
+  color: #9a651f;
+  font-size: 20rpx;
+  font-weight: 900;
+}
+
+.room-entry-title {
+  margin-top: 8rpx;
+  color: #172033;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.room-entry-desc {
+  margin-top: 10rpx;
+  color: rgba(23,32,51,0.6);
+  font-size: 22rpx;
+  line-height: 1.45;
+}
+
+.room-entry-action {
+  position: relative;
+  z-index: 1;
+  width: 104rpx;
+  height: 104rpx;
+  flex: 0 0 104rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 34rpx;
+  color: #151006;
+  background: #f5c842;
+  box-shadow: 0 16rpx 34rpx rgba(217,151,47,0.26);
+  font-size: 26rpx;
+  font-weight: 900;
 }
 
 .action-input {
@@ -303,12 +487,11 @@
 .action-buttons {
   margin-top: 18rpx;
   display: grid;
-  grid-template-columns: 150rpx 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 12rpx;
 }
 
 .save-button,
-.room-button,
 .submit-button {
   height: 86rpx;
   display: flex;
@@ -324,16 +507,6 @@
   color: #8f5b18;
   background: rgba(245,200,66,0.12);
   font-size: 22rpx;
-}
-
-.room-button {
-  color: #172033;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,241,196,0.78)),
-    radial-gradient(circle at 20% 20%, rgba(245,200,66,0.4), transparent 34%);
-  border: 1rpx solid rgba(217,151,47,0.28);
-  box-shadow: 0 12rpx 26rpx rgba(91,75,45,0.12);
-  font-size: 24rpx;
 }
 
 .submit-button {
@@ -412,6 +585,223 @@
   background: rgba(255,255,255,0.42);
   font-size: 22rpx;
   line-height: 1.5;
+}
+
+.new-plan-button {
+  flex: 0 0 auto;
+  padding: 13rpx 18rpx;
+  border-radius: 999rpx;
+  color: #151006;
+  background: #f5c842;
+  box-shadow: 0 12rpx 26rpx rgba(217,151,47,0.18);
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.plan-status {
+  margin-top: 18rpx;
+  padding: 18rpx;
+  display: grid;
+  grid-template-columns: 128rpx 1fr;
+  gap: 18rpx;
+  border: 1rpx solid rgba(217,151,47,0.16);
+  border-radius: 22rpx;
+  background: rgba(255,255,255,0.58);
+}
+
+.plan-status-number {
+  color: #9a651f;
+  font-size: 40rpx;
+  font-weight: 900;
+}
+
+.plan-status-copy {
+  min-width: 0;
+}
+
+.plan-status-title {
+  color: #172033;
+  font-size: 25rpx;
+  font-weight: 900;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.plan-list {
+  margin-top: 16rpx;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14rpx;
+}
+
+.plan-item {
+  padding: 18rpx;
+  border: 1rpx solid rgba(181,118,34,0.12);
+  border-radius: 22rpx;
+  background: rgba(255,255,255,0.64);
+}
+
+.plan-item.done {
+  background: rgba(235,247,225,0.72);
+}
+
+.plan-item-head,
+.plan-actions,
+.editor-head,
+.editor-reminder,
+.switch-row {
+  display: flex;
+  align-items: center;
+}
+
+.plan-item-head,
+.editor-head,
+.editor-reminder {
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.plan-state {
+  flex: 0 0 auto;
+  padding: 8rpx 12rpx;
+  border-radius: 999rpx;
+  color: #8f5b18;
+  background: rgba(245,200,66,0.14);
+  font-size: 19rpx;
+  font-weight: 900;
+}
+
+.plan-actions {
+  margin-top: 16rpx;
+  gap: 10rpx;
+}
+
+.plan-action {
+  height: 66rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17rpx;
+  color: #8f5b18;
+  background: rgba(245,200,66,0.12);
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.plan-action.primary {
+  color: #151006;
+  background: #f5c842;
+}
+
+.plan-action.ghost {
+  flex: 0.72;
+  color: rgba(23,32,51,0.58);
+  background: rgba(255,255,255,0.6);
+}
+
+.plan-editor-mask {
+  position: fixed;
+  z-index: 888;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0 24rpx 32rpx;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(244,240,231,0.56);
+}
+
+.plan-editor {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28rpx 24rpx 24rpx;
+  border: 1rpx solid rgba(255,255,255,0.78);
+  border-radius: 34rpx 34rpx 26rpx 26rpx;
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 36rpx 90rpx rgba(91,75,45,0.2);
+}
+
+.editor-title {
+  margin-top: 8rpx;
+  color: #172033;
+  font-size: 32rpx;
+  font-weight: 900;
+}
+
+.editor-close {
+  padding: 12rpx 16rpx;
+  border-radius: 999rpx;
+  color: rgba(23,32,51,0.55);
+  background: rgba(244,240,231,0.86);
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.editor-input {
+  margin-top: 16rpx;
+  width: 100%;
+  height: 84rpx;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  border: 1rpx solid rgba(23,32,51,0.08);
+  border-radius: 20rpx;
+  color: #172033;
+  background: rgba(244,240,231,0.45);
+  font-size: 25rpx;
+  font-weight: 800;
+}
+
+.editor-reminder {
+  margin-top: 18rpx;
+}
+
+.time-picker {
+  min-width: 146rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18rpx;
+  color: #9a651f;
+  background: rgba(245,200,66,0.14);
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.switch-row {
+  gap: 10rpx;
+  color: rgba(23,32,51,0.58);
+  font-size: 23rpx;
+  font-weight: 900;
+}
+
+.editor-note {
+  height: 86rpx;
+}
+
+.editor-submit,
+.editor-delete {
+  margin-top: 16rpx;
+  height: 82rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  font-weight: 900;
+}
+
+.editor-submit {
+  color: #151006;
+  background: #f5c842;
+}
+
+.editor-delete {
+  color: rgba(176,67,53,0.92);
+  background: rgba(176,67,53,0.08);
 }
 
 .reward-layer {

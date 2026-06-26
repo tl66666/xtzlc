@@ -7,7 +7,9 @@ const {
   getGoal,
   listCustomPlans,
   saveCustomPlan,
-  deleteCustomPlan
+  deleteCustomPlan,
+  markPlanCompletion,
+  getPlanLogMap
 } = require('../../utils/storage');
 const { buildDashboardStats } = require('../../utils/stats');
 const { getGoalPreset } = require('../../utils/goals');
@@ -88,6 +90,21 @@ function buildDefaultForm(dimensionId) {
   };
 }
 
+function buildPlanDraft(dimensionId, form = {}) {
+  return {
+    id: '',
+    title: form.customAction || '',
+    dimension: dimensionId || 'study',
+    action: form.customAction || form.primary || '',
+    metric: form.metric || '',
+    mood: form.mood || '',
+    note: form.note || '',
+    reminderEnabled: true,
+    reminderTime: '19:30',
+    repeat: '每天'
+  };
+}
+
 Page({
   data: {
     date: formatDate(),
@@ -106,6 +123,9 @@ Page({
     quickActions: [],
     customPlans: [],
     activePlans: [],
+    planSummary: { total: 0, done: 0, next: null },
+    planEditorVisible: false,
+    planDraft: buildPlanDraft('sport'),
     rewardModal: null,
     dailyChest: { ready: false, claimed: false, label: '完成六类后开启', progress: 0 },
     rewardFrames: getAssetBundle().starlightFrames,
@@ -122,6 +142,10 @@ Page({
     const profile = getProfile();
     const savedGoal = getGoal();
     const goal = getGoalPreset(savedGoal ? savedGoal.id : 'balanced_life');
+    const planLogs = getPlanLogMap(stats.today.date || formatDate());
+    const decoratedPlans = this.decoratePlans(listCustomPlans(), planLogs);
+    const undonePlans = decoratedPlans.filter((plan) => !plan.doneToday);
+    const nextPlan = undonePlans[0] || decoratedPlans[0] || null;
     const completedSet = new Set(stats.today.completedDimensions || []);
     const dimensions = DIMENSIONS.map((dimension) => {
       const record = records.find((item) => item.date === stats.today.date && item.dimension === dimension.id);
@@ -144,7 +168,14 @@ Page({
       motivation: buildMotivation(goal, stats.today.completedDimensions),
       dimensions,
       dailyChest: this.buildDailyChest(stats),
-      customPlans: this.decoratePlans(listCustomPlans())
+      customPlans: decoratedPlans,
+      planSummary: {
+        total: decoratedPlans.length,
+        done: decoratedPlans.filter((plan) => plan.doneToday).length,
+        next: nextPlan,
+        nextTitle: nextPlan ? `下一项：${nextPlan.title}` : '先创建一个每天要执行的计划',
+        nextSubtitle: nextPlan ? `${nextPlan.reminderLabel} · ${nextPlan.dimensionName}` : '例如：每天 19:30 编程 60 分钟'
+      }
     }, () => {
       this.activateDimension(nextActiveId, false);
     });
@@ -162,13 +193,18 @@ Page({
     };
   },
 
-  decoratePlans(plans) {
+  decoratePlans(plans, planLogs = getPlanLogMap(this.data.date)) {
     return plans.map((plan) => {
       const dimension = DIMENSION_MAP[plan.dimension] || {};
+      const doneLog = planLogs[plan.id] || null;
       return {
         ...plan,
         dimensionName: dimension.name || '计划',
         color: dimension.color || '#d9972f',
+        sceneName: dimension.sceneName || '行动区',
+        reminderLabel: plan.reminderEnabled === false ? '未开启提醒' : `${plan.reminderTime || '19:30'} 开始`,
+        doneToday: !!doneLog,
+        doneAt: doneLog ? doneLog.completedAt : '',
         summary: this.buildSummary(plan.dimension, plan.payload)
       };
     });
@@ -267,6 +303,7 @@ Page({
       success: (res) => {
         if (!res.confirm) return;
         deleteCustomPlan(id);
+        this.setData({ planEditorVisible: false });
         this.refresh(true);
       }
     });
@@ -274,19 +311,28 @@ Page({
 
   saveCurrentPlan() {
     if (!this.data.active) return;
-    const title = (this.data.form.customAction || `${this.data.active.name}行动`).trim();
-    if (!title) {
-      wx.showToast({ title: '先写下你要做什么', icon: 'none' });
-      return;
-    }
-    saveCustomPlan({
-      title,
+    const draft = {
+      title: this.data.form.customAction || `${this.data.active.name}行动`,
+      action: this.data.form.customAction || this.data.form.primary || `${this.data.active.name}行动`,
       dimension: this.data.active.id,
-      payload: { ...this.data.form }
-    });
-    this.refresh(true);
-    playSound('success');
-    wx.showToast({ title: '已保存到我的计划', icon: 'none' });
+      metric: this.data.form.metric || '',
+      mood: this.data.form.mood || '',
+      note: this.data.form.note || ''
+    };
+    const query = Object.keys(draft)
+      .map((key) => `${key}=${encodeURIComponent(draft[key])}`)
+      .join('&');
+    wx.navigateTo({ url: `/pages/plans/plans?mode=new&${query}` });
+  },
+
+  goPlanCenter() {
+    playTapFeedback();
+    wx.navigateTo({ url: '/pages/plans/plans' });
+  },
+
+  createPlan() {
+    playTapFeedback();
+    wx.navigateTo({ url: `/pages/plans/plans?mode=new&dimension=${this.data.activeId || 'study'}` });
   },
 
   enterActionRoom() {
@@ -318,12 +364,19 @@ Page({
       ...this.data.form,
       customAction: customAction || `${this.data.form.primary} ${this.data.form.metric}`
     };
+    this.finishDimensionCheckin(this.data.active.id, payload);
+  },
+
+  finishDimensionCheckin(dimensionId, payload, afterResult) {
     const result = submitCheckin({
-      dimension: this.data.active.id,
+      dimension: dimensionId,
       date: this.data.date,
       payload
     });
-    const dimension = DIMENSION_MAP[this.data.active.id];
+    if (afterResult) {
+      afterResult(result);
+    }
+    const dimension = DIMENSION_MAP[dimensionId];
     const ecosystemUnlock = result.ecosystemUnlocks[0] || null;
     const achievement = result.unlocked[0] || null;
     const isPerfect = (result.stats.today.completedCount || 0) >= 6;
@@ -357,6 +410,148 @@ Page({
       this.refresh(true);
     });
     playSound(ecosystemUnlock ? 'unlock' : 'success');
+    return result;
+  },
+
+  openPlanEditor() {
+    this.setData({
+      planEditorVisible: true,
+      planDraft: buildPlanDraft(this.data.activeId || 'study', this.data.form)
+    });
+    playTapFeedback();
+  },
+
+  editPlan(event) {
+    const id = event.currentTarget.dataset.id;
+    const plan = listCustomPlans().find((item) => item.id === id);
+    if (!plan) return;
+    this.setData({
+      planEditorVisible: true,
+      planDraft: {
+        id: plan.id,
+        title: plan.title || '',
+        dimension: plan.dimension || 'study',
+        action: plan.payload ? (plan.payload.customAction || plan.payload.primary || '') : '',
+        metric: plan.payload ? (plan.payload.metric || '') : '',
+        mood: plan.payload ? (plan.payload.mood || '') : '',
+        note: plan.payload ? (plan.payload.note || '') : '',
+        reminderEnabled: plan.reminderEnabled !== false,
+        reminderTime: plan.reminderTime || '19:30',
+        repeat: plan.repeat || '每天'
+      }
+    });
+    playTapFeedback();
+  },
+
+  closePlanEditor() {
+    this.setData({ planEditorVisible: false });
+  },
+
+  inputPlanTitle(event) {
+    this.setData({ 'planDraft.title': event.detail.value });
+  },
+
+  inputPlanAction(event) {
+    this.setData({ 'planDraft.action': event.detail.value });
+  },
+
+  inputPlanNote(event) {
+    this.setData({ 'planDraft.note': event.detail.value });
+  },
+
+  selectPlanDimension(event) {
+    const id = event.currentTarget.dataset.id;
+    const preset = getPreset(id);
+    this.setData({
+      'planDraft.dimension': id,
+      'planDraft.metric': this.data.planDraft.metric || preset.metricOptions[1] || preset.metricOptions[0],
+      'planDraft.mood': this.data.planDraft.mood || preset.moodOptions[0]
+    });
+    playTapFeedback();
+  },
+
+  changePlanReminderTime(event) {
+    this.setData({ 'planDraft.reminderTime': event.detail.value });
+  },
+
+  togglePlanReminder(event) {
+    this.setData({ 'planDraft.reminderEnabled': event.detail.value });
+  },
+
+  savePlanDraft() {
+    const draft = this.data.planDraft;
+    const dimension = DIMENSION_MAP[draft.dimension] || DIMENSION_MAP.study;
+    const title = (draft.title || draft.action || '').trim();
+    const action = (draft.action || title).trim();
+    if (!title || !action) {
+      wx.showToast({ title: '写下计划名称和行动内容', icon: 'none' });
+      return;
+    }
+    saveCustomPlan({
+      id: draft.id,
+      title,
+      dimension: dimension.id,
+      reminderEnabled: draft.reminderEnabled,
+      reminderTime: draft.reminderTime,
+      repeat: draft.repeat || '每天',
+      payload: {
+        primary: action,
+        customAction: action,
+        metric: draft.metric || getPreset(dimension.id).metricOptions[0],
+        mood: draft.mood || getPreset(dimension.id).moodOptions[0],
+        note: draft.note || `${dimension.sceneName}每日计划`
+      }
+    });
+    this.setData({ planEditorVisible: false });
+    this.refresh(true);
+    playSound('success');
+    wx.showToast({ title: draft.reminderEnabled ? `计划已保存，${draft.reminderTime}提醒` : '计划已保存', icon: 'none' });
+  },
+
+  startPlanActionRoom(event) {
+    const id = event.currentTarget.dataset.id;
+    const plan = listCustomPlans().find((item) => item.id === id);
+    if (!plan) return;
+    try {
+      wx.setStorageSync('star_cabin_pending_action', {
+        dimension: plan.dimension,
+        payload: {
+          ...plan.payload,
+          planId: plan.id,
+          customAction: plan.title || (plan.payload && plan.payload.customAction)
+        },
+        createdAt: Date.now()
+      });
+    } catch (error) {
+      console.warn('save pending plan action failed', error);
+    }
+    playTapFeedback();
+    wx.navigateTo({
+      url: `/pages/actionRoom/actionRoom?dimension=${plan.dimension}`
+    });
+  },
+
+  completePlanToday(event) {
+    const id = event.currentTarget.dataset.id;
+    const plan = listCustomPlans().find((item) => item.id === id);
+    if (!plan) return;
+    if (this.data.customPlans.find((item) => item.id === id && item.doneToday)) {
+      wx.showToast({ title: '今天已经完成过这个计划', icon: 'none' });
+      return;
+    }
+    const payload = {
+      ...plan.payload,
+      planId: plan.id,
+      customAction: plan.title || (plan.payload && plan.payload.customAction),
+      note: (plan.payload && plan.payload.note) || '按计划完成'
+    };
+    this.finishDimensionCheckin(plan.dimension, payload, (result) => {
+      markPlanCompletion(plan.id, this.data.date, {
+        checkinId: result.record.id,
+        dimension: plan.dimension,
+        title: plan.title
+      });
+    });
   },
 
   closeRewardModal() {
