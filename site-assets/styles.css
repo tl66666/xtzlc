@@ -1610,7 +1610,7 @@ body {
 
 .hero {
   min-height: 100vh;
-  padding: 120px max(36px, 6vw) 80px;
+  padding: 120px max(24px, 4vw) 80px;
   display: grid;
   align-items: start;
   justify-items: start;
@@ -1633,11 +1633,12 @@ body {
 }
 
 .hero-content {
-  width: min(520px, 100%);
-  max-width: 520px;
+  width: min(460px, 100%);
+  max-width: 460px;
   padding: 0;
   text-align: left;
   margin-top: 6vh;
+  margin-left: 0;
 }
 
 .mobile-break {
