@@ -1929,6 +1929,259 @@ body {
   margin: 0 0 24px;
 }
 
+/* ========== 核心亮点新布局 ========== */
+.highlights-section .highlight-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.highlights-section .highlight-row:last-child {
+  margin-bottom: 0;
+}
+
+.highlights-section .highlight-row.reverse .highlight-phone {
+  order: -1;
+}
+
+.highlight-text {
+  max-width: 460px;
+}
+
+.highlight-num {
+  display: inline-block;
+  font-family: "Instrument Serif", serif;
+  font-size: 56px;
+  font-style: italic;
+  color: rgba(255, 226, 122, 0.35);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.highlight-text h3 {
+  font-family: "Noto Serif SC", serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 900;
+  color: #fffaf0;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-text p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(246, 250, 255, 0.72);
+  margin: 0 0 20px;
+}
+
+.highlight-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.highlight-points li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+  color: rgba(246, 250, 255, 0.8);
+  font-family: "Inter", sans-serif;
+}
+
+.highlight-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffe27a;
+  box-shadow: 0 0 8px rgba(255, 226, 122, 0.4);
+}
+
+.highlight-phone {
+  display: flex;
+  justify-content: center;
+}
+
+.phone-frame {
+  position: relative;
+  width: 260px;
+  border-radius: 36px;
+  background: rgba(3, 10, 28, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 40px 80px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.phone-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 6px;
+  border-radius: 0 0 8px 8px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.phone-frame-graphic {
+  height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reminder-graphic {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 8px;
+}
+
+.reminder-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.reminder-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 226, 122, 0.15);
+  color: #ffe27a;
+}
+
+.reminder-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.reminder-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reminder-text strong {
+  font-size: 13px;
+  color: #fff;
+}
+
+.reminder-text span {
+  font-size: 12px;
+  color: rgba(246, 250, 255, 0.65);
+}
+
+.reminder-time {
+  font-size: 11px;
+  color: rgba(246, 250, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.streak-display {
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(7, 18, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.streak-num {
+  font-family: "Noto Serif SC", serif;
+  font-size: 64px;
+  font-weight: 900;
+  color: #ffe27a;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 226, 122, 0.3);
+}
+
+.streak-label {
+  font-size: 12px;
+  color: rgba(246, 250, 255, 0.6);
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
+.streak-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.streak-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.streak-dots .dot.active {
+  background: #ffe27a;
+  box-shadow: 0 0 6px rgba(255, 226, 122, 0.5);
+}
+
+@media (max-width: 768px) {
+  .highlights-section .highlight-row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 70px;
+  }
+
+  .highlights-section .highlight-row.reverse .highlight-phone {
+    order: 0;
+  }
+
+  .phone-frame {
+    width: 220px;
+  }
+
+  .phone-frame-graphic {
+    height: 400px;
+  }
+
+  .highlight-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .highlight-points {
+    align-items: center;
+  }
+}
+
 .reward-planet-comparison {
   padding: 22px;
   border-radius: 30px;
