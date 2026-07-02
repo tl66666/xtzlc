@@ -1893,6 +1893,42 @@ body {
     radial-gradient(circle at 50% 50%, rgba(94, 231, 223, 0.08), transparent 64%);
 }
 
+#highlights .reward-showcase {
+  border-radius: 24px;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#highlights .screenshot-img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+#highlights .rewards-layout {
+  margin-bottom: 80px;
+}
+
+#highlights .rewards-layout:last-child {
+  margin-bottom: 0;
+}
+
+#highlights .rewards-content h2 {
+  font-size: clamp(28px, 3.8vw, 52px);
+}
+
+#highlights .rewards-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 0 24px;
+}
+
 .reward-planet-comparison {
   padding: 22px;
   border-radius: 30px;
